@@ -20,7 +20,9 @@ export const TextInput = (props: ITextInputProps) => {
       <Form.Label className="d-flex justify-content-between">
         {label}
         {tipText && (
-          <Button className="btn btn-dark btn-sm py-0 px-1" onClick={() => setShowHelp((prev) => !prev)}>
+          <Button
+            className="btn btn-dark btn-outline-secondary d-flex py-0 px-2 fs-5"
+            onClick={() => setShowHelp((prev) => !prev)}>
             {showHelp ? <BsChevronUp /> : <BsQuestion />}
           </Button>
         )}
