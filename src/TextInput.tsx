@@ -16,7 +16,7 @@ export const TextInput = (props: ITextInputProps) => {
   const [showHelp, setShowHelp] = useState(false);
 
   return (
-    <Form.Group className="my-4" controlId={`form${label.replace(/\s/g, "")}`}>
+    <Form.Group className="mt-3" controlId={`form${label.replace(/\s/g, "")}`}>
       <Form.Label className="d-flex justify-content-between">
         {label}
         {tipText && (

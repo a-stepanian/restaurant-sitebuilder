@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { IHeroBuilderForm } from "../App";
 import { HeroBuilderForm } from "./HeroBuilderForm";
 import { WidescreenView } from "./WidescreenView";
+import { MdOutlineFastfood } from "react-icons/md";
 
 export interface IHeroBuilderProps {
   heroBuilderForm: IHeroBuilderForm;
@@ -14,20 +15,24 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
 
   return (
     <>
-      <Row>
-        <Col md={6}>
+      <Row className="mt-5 mb-3">
+        <Col md={5}>
           <h1 className="text-primary my-5">Grow your business</h1>
           <h2>
-            Build your online presence in <span className="text-primary">minutes</span>
+            Build an online presence in <span className="text-primary">minutes</span>
           </h2>
         </Col>
-        <Col md={6}>
+        <Col md={7}>
           <WidescreenView heroBuilderForm={heroBuilderForm} />
         </Col>
       </Row>
       <Row className="py-5">
-        <Col xs={12} md={8} className="order-md-2"></Col>
-        <Col xs={12} md={4} className="order-md-1">
+        <Col xs={12} md={5}>
+          <div className="d-flex" style={{ transform: "scale(5)" }}>
+            <MdOutlineFastfood />
+          </div>
+        </Col>
+        <Col xs={12} md={7}>
           <HeroBuilderForm heroBuilderForm={heroBuilderForm} setHeroBuilderForm={setHeroBuilderForm} />
         </Col>
       </Row>
