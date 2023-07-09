@@ -1,0 +1,7 @@
+{
+  "editor.wordWrapColumn": 120,
+  "prettier.printWidth": 120,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "prettier.bracketSameLine": true
+}
