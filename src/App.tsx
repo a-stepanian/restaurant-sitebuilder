@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Header } from "./Header";
 import { HeroBuilder } from "./HeroBuilder/HeroBuilder";
 import { Button, Container } from "react-bootstrap";
-import "./App.css";
+import "./App.scss";
 
 export interface IHeroBuilderForm {
   restaurantName: string;
@@ -19,15 +19,15 @@ export interface IHeroBuilderForm {
 export const App = () => {
   const [step, setStep] = useState<number>(1);
   const [heroBuilderForm, setHeroBuilderForm] = useState<IHeroBuilderForm>({
-    restaurantName: "Double R Diner",
-    cuisineType: "sushi",
-    emailAddress: "laura.palmer@gmail.com",
-    phoneNumber: "555-555-5555",
-    street1: "123 Elm St.",
-    street2: "Suite B",
-    city: "Twin Peaks",
-    state: "Washington",
-    zipCode: "60652",
+    restaurantName: "",
+    cuisineType: "ramen",
+    emailAddress: "",
+    phoneNumber: "",
+    street1: "",
+    street2: "",
+    city: "",
+    state: "",
+    zipCode: "",
   });
 
   return (
