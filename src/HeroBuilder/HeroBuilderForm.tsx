@@ -33,11 +33,14 @@ export const HeroBuilderForm = (props: IHeroBuilderFormProps) => {
             required={true}
             tipText="Enter the restaurant name as you want it to be displayed accross the website."
             placeholder="Double R Diner"
-            currentValue={heroBuilderForm.restaurantName}
+            currentValue={heroBuilderForm.basicInformation.restaurantName}
             changeHandler={(e: any) =>
               setHeroBuilderForm({
                 ...heroBuilderForm,
-                restaurantName: e.target.value,
+                basicInformation: {
+                  ...heroBuilderForm.basicInformation,
+                  restaurantName: e.target.value,
+                },
               })
             }
           />
@@ -45,13 +48,15 @@ export const HeroBuilderForm = (props: IHeroBuilderFormProps) => {
             <Form.Label className="d-flex justify-content-between">Cuisine</Form.Label>
             <Form.Select
               aria-label="Select a cuisine type"
-              className="bg-secondary text-white"
               required
-              value={heroBuilderForm.cuisineType}
+              value={heroBuilderForm.basicInformation.cuisineType}
               onChange={(e) => {
                 setHeroBuilderForm({
                   ...heroBuilderForm,
-                  cuisineType: e.target.value,
+                  basicInformation: {
+                    ...heroBuilderForm.basicInformation,
+                    cuisineType: e.target.value,
+                  },
                 });
               }}>
               {data.cuisines.map((cuisine) => {
@@ -70,7 +75,7 @@ export const HeroBuilderForm = (props: IHeroBuilderFormProps) => {
             <Form.Label className="d-flex justify-content-between">
               Email Address
               <Button
-                className="btn btn-dark btn-outline-secondary d-flex py-0 px-2 fs-5"
+                className="btn btn-outline-dark d-flex py-0 px-2 fs-5 bg-transparent"
                 onClick={() => setShowHelp2((prev) => !prev)}>
                 {showHelp2 ? <BsChevronUp /> : <BsQuestion />}
               </Button>
@@ -84,15 +89,18 @@ export const HeroBuilderForm = (props: IHeroBuilderFormProps) => {
               </p>
             )}
             <Form.Control
-              className="bg-secondary text-white"
               type="email"
               placeholder="laura.palmer@gmail.com"
               required
-              value={heroBuilderForm.emailAddress}
+              autoComplete="off"
+              value={heroBuilderForm.location.emailAddress}
               onChange={(e) =>
                 setHeroBuilderForm({
                   ...heroBuilderForm,
-                  emailAddress: e.target.value,
+                  location: {
+                    ...heroBuilderForm.location,
+                    emailAddress: e.target.value,
+                  },
                 })
               }
             />
@@ -105,11 +113,14 @@ export const HeroBuilderForm = (props: IHeroBuilderFormProps) => {
             required={true}
             tipText="Add a phone number where your customers can reach you."
             placeholder="555-555-5555"
-            currentValue={heroBuilderForm.phoneNumber}
+            currentValue={heroBuilderForm.location.phoneNumber}
             changeHandler={(e: any) =>
               setHeroBuilderForm({
                 ...heroBuilderForm,
-                phoneNumber: e.target.value,
+                location: {
+                  ...heroBuilderForm.location,
+                  phoneNumber: e.target.value,
+                },
               })
             }
           />
@@ -118,82 +129,105 @@ export const HeroBuilderForm = (props: IHeroBuilderFormProps) => {
           <TextInput
             label="Address Line 1"
             required={true}
+            capitalize={true}
             placeholder="123 Elm St."
-            currentValue={heroBuilderForm.street1}
+            currentValue={heroBuilderForm.location.street1}
             changeHandler={(e) =>
               setHeroBuilderForm({
                 ...heroBuilderForm,
-                street1: e.target.value,
+                location: {
+                  ...heroBuilderForm.location,
+                  street1: e.target.value,
+                },
               })
             }
           />
           <TextInput
             label="Address Line 2 (optional)"
             required={false}
+            capitalize={true}
             placeholder="Suite B (optional)"
-            currentValue={heroBuilderForm.street2}
+            currentValue={heroBuilderForm.location.street2}
             changeHandler={(e) =>
               setHeroBuilderForm({
                 ...heroBuilderForm,
-                street2: e.target.value,
+                location: {
+                  ...heroBuilderForm.location,
+                  street2: e.target.value,
+                },
               })
             }
           />
           <TextInput
             label="City"
             required={true}
+            capitalize={true}
             placeholder="Twin Peaks"
-            currentValue={heroBuilderForm.city}
+            currentValue={heroBuilderForm.location.city}
             changeHandler={(e) =>
               setHeroBuilderForm({
                 ...heroBuilderForm,
-                city: e.target.value,
+                location: {
+                  ...heroBuilderForm.location,
+                  city: e.target.value,
+                },
               })
             }
           />
-
-          <Form.Group className="mt-3" controlId="formState">
-            <Form.Label className="d-flex justify-content-between">State</Form.Label>
-            <Form.Select
-              aria-label="Select a state"
-              className="bg-secondary text-white"
-              required
-              value={heroBuilderForm.state}
-              onChange={(e) => {
-                setHeroBuilderForm({
-                  ...heroBuilderForm,
-                  state: e.target.value,
-                });
-              }}>
-              {data.states.map((state) => {
-                return (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                );
-              })}
-            </Form.Select>
-            <Form.Control.Feedback type="invalid">
-              <small>This field is required</small>
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <TextInput
-            label="Zip Code"
-            required={true}
-            placeholder="68652"
-            currentValue={heroBuilderForm.zipCode}
-            changeHandler={(e: any) =>
-              setHeroBuilderForm({
-                ...heroBuilderForm,
-                zipCode: e.target.value,
-              })
-            }
-          />
+          <Row>
+            <Col xs={7}>
+              <Form.Group className="mt-3" controlId="formState">
+                <Form.Label className="d-flex justify-content-between">State</Form.Label>
+                <Form.Select
+                  aria-label="Select a state"
+                  required
+                  value={heroBuilderForm.location.state}
+                  onChange={(e) => {
+                    setHeroBuilderForm({
+                      ...heroBuilderForm,
+                      location: {
+                        ...heroBuilderForm.location,
+                        state: e.target.value,
+                      },
+                    });
+                  }}>
+                  {data.states.map((state) => {
+                    return (
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
+                    );
+                  })}
+                </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                  <small>This field is required</small>
+                </Form.Control.Feedback>
+              </Form.Group>
+            </Col>
+            <Col xs={5}>
+              <TextInput
+                label="Zip Code"
+                required={true}
+                placeholder="68652"
+                currentValue={heroBuilderForm.location.zipCode}
+                changeHandler={(e: any) =>
+                  setHeroBuilderForm({
+                    ...heroBuilderForm,
+                    location: {
+                      ...heroBuilderForm.location,
+                      zipCode: e.target.value,
+                    },
+                  })
+                }
+              />
+            </Col>
+          </Row>
         </Col>
-        <Button variant="primary" type="submit" className="my-3">
-          Submit
-        </Button>
+        <Col>
+          <Button variant="primary" type="submit" className="my-3">
+            Submit
+          </Button>
+        </Col>
       </Row>
     </Form>
   );

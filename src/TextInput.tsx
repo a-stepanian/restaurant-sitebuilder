@@ -9,10 +9,11 @@ interface ITextInputProps {
   changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   tipText?: string;
+  capitalize?: boolean;
 }
 
 export const TextInput = (props: ITextInputProps) => {
-  const { label, required, tipText, placeholder, currentValue, changeHandler } = props;
+  const { label, required, tipText, placeholder, currentValue, changeHandler, capitalize } = props;
   const [showHelp, setShowHelp] = useState(false);
 
   return (
@@ -21,7 +22,7 @@ export const TextInput = (props: ITextInputProps) => {
         {label}
         {tipText && (
           <Button
-            className="btn btn-dark btn-outline-secondary d-flex py-0 px-2 fs-5"
+            className="btn btn-outline-dark d-flex py-0 px-2 fs-5 bg-transparent"
             onClick={() => setShowHelp((prev) => !prev)}>
             {showHelp ? <BsChevronUp /> : <BsQuestion />}
           </Button>
@@ -33,8 +34,9 @@ export const TextInput = (props: ITextInputProps) => {
         </p>
       )}
       <Form.Control
-        className="bg-secondary text-white"
         type="text"
+        className={capitalize ? "text-capitalize" : ""}
+        autoComplete="off"
         placeholder={placeholder}
         required={required}
         value={currentValue}

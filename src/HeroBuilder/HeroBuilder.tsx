@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { IHeroBuilderForm } from "../App";
 import { HeroBuilderForm } from "./HeroBuilderForm";
 import { WidescreenView } from "./WidescreenView";
-import { MdOutlineFastfood } from "react-icons/md";
+import { IoRestaurantOutline } from "react-icons/io5";
+import { FcBullish } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
+import { FcTwoSmartphones } from "react-icons/fc";
+import { FcComboChart } from "react-icons/fc";
 
 export interface IHeroBuilderProps {
   heroBuilderForm: IHeroBuilderForm;
@@ -15,25 +19,28 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
 
   return (
     <>
-      <Row className="mt-5 mb-3">
-        <Col md={5}>
-          <h1 className="text-primary my-5">Grow your business</h1>
-          <h2>
-            Build an online presence in <span className="text-primary">minutes</span>
-          </h2>
+      <Row className="my-5">
+        <Col md={6}>
+          <h1 className="text-black feed-your-business">Feed your business</h1>
+          <p className="mt-5 text-black fs-4">
+            Build an online presence in <span className="fw-bold">minutes</span>
+            <br />
+            with Menu Web.
+          </p>
         </Col>
-        <Col md={7}>
+        <Col md={6}>
           <WidescreenView heroBuilderForm={heroBuilderForm} />
+          <HeroBuilderForm heroBuilderForm={heroBuilderForm} setHeroBuilderForm={setHeroBuilderForm} />
         </Col>
       </Row>
-      <Row className="py-5">
-        <Col xs={12} md={5}>
-          <div className="d-flex" style={{ transform: "scale(5)" }}>
-            <MdOutlineFastfood />
+      <Row className="my-5">
+        <Col md={6}>
+          <div className="d-flex justify-content-end">
+            <FcBullish className="bullish" />
           </div>
         </Col>
-        <Col xs={12} md={7}>
-          <HeroBuilderForm heroBuilderForm={heroBuilderForm} setHeroBuilderForm={setHeroBuilderForm} />
+        <Col md={6}>
+          <h2 className="mt-5 pt-5 increase-text">Increase your online presence, increase your sales.</h2>
         </Col>
       </Row>
     </>
