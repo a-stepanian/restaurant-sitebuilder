@@ -11,78 +11,105 @@
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";
 
-// Custom
+// Global Styles
 * {
   box-sizing: border-box;
-}
-
-.nav-home {
-  width: 110px;
-  display: flex;
-  justify-content: flex-end;
   font-family: "Poppins", sans-serif;
-  font-size: 1.1rem;
-  svg {
-    transition: 0.2s;
-    transform: rotate(0);
-  }
-  span {
-    letter-spacing: -0.05rem;
-    font-weight: 100;
-  }
-  &:hover svg {
-    font-size: 1.3rem;
-    transform: rotate(-10deg);
-  }
 }
-
-.navbar {
-  background-image: linear-gradient(white 70%, transparent);
-}
-.solid-white {
-  background-image: linear-gradient(white 70%, white);
-}
-
-.light-link {
-  font-weight: 400;
-  color: black;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border-bottom: 1px solid black;
-}
-
 .gradient-bg {
   background-image: linear-gradient(
-    203deg,
+    200deg,
     rgba(132, 174, 241, 0.867) 8.4%,
     rgba(38, 238, 159, 0.47) 30.67%,
     rgba(21, 188, 223, 0.333) 70.04%,
     hsla(0, 0%, 100%, 0) 85%
   );
 }
-
-.nav-cta {
-  font-family: "Poppins", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 400 !important;
+.gradient-bg1 {
+  background-image: linear-gradient(
+    135deg,
+    rgba(132, 174, 241, 0.8) 10%,
+    rgba(38, 238, 159, 0.4) 30%,
+    rgba(21, 188, 223, 0.3) 70%,
+    hsla(0, 0%, 100%, 0) 85%
+  );
+}
+.gradient-bg2 {
+  background-image: linear-gradient(
+    -135deg,
+    hsla(0, 0%, 100%, 0) 10%,
+    rgba(21, 188, 223, 0.3) 30%,
+    rgba(38, 238, 159, 0.4) 70%,
+    rgba(132, 174, 241, 0.8) 85%
+  );
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.bg-black.rounded-pill {
+  transform: translateY(0);
+  transition: 0.2s !important;
+}
+.bg-black.rounded-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.3);
 }
 
+// Header
+.main-navbar {
+  background-image: linear-gradient(white 70%, transparent);
+  .nav-home {
+    width: 110px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.1rem;
+    svg {
+      transition: 0.2s;
+      transform: rotate(0);
+    }
+    span {
+      letter-spacing: -0.05rem;
+      font-weight: 100;
+    }
+    &:hover svg {
+      font-size: 1.3rem;
+      transform: rotate(-10deg);
+    }
+  }
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  .light-link {
+    font-weight: 400;
+    color: black;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+  }
+  .nav-cta {
+    padding: 0.7rem 1.4rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400 !important;
+  }
+}
+.solid-white {
+  background-image: linear-gradient(white 70%, white);
+  border-bottom: 1px solid #ccc;
+}
+
+// Pages/Home
 .feed-your-business {
   font-size: 3rem;
   margin-top: 15px;
 }
 .bullish {
-  font-size: 20rem;
+  font-size: 12rem;
 }
-
 .increase-text {
+  font-family: "Poppins", sans-serif;
   font-size: 2rem;
 }
-
-.bg-transparent {
-  background-color: transparent !important;
-}
-
 @media (min-width: 768px) {
   .feed-your-business {
     font-size: 4rem;
@@ -99,20 +126,14 @@
   }
 }
 
-.burger {
-  animation: burgerAnimation 4s ease-in forwards;
-}
-
-@keyframes burgerAnimation {
-  0% {
-    opacity: 0;
-    font-size: 100px;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    font-size: 160px;
+// PreviewWidescreen.tsx
+.computer-screen {
+  transform: scale(0.5) translate(-50%, -50%);
+  width: 200%;
+  height: 50%;
+  .text {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
   }
 }
