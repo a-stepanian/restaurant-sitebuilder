@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { Header } from "./Header";
-import { HeroBuilder } from "./HeroBuilder/HeroBuilder";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "./App.scss";
+import Home from "./Pages/Home/Home";
+import { Footer } from "./Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GetStarted from "./Pages/GetStarted/GetStarted";
+import { Login } from "./Pages/Login/Login";
+import { Pricing } from "./Pages/Pricing/Pricing";
 
-interface IBasicInformation {
+export interface IBasicInformation {
   restaurantName: string;
   catchPhrase: string;
   about: string;
   cuisineType: string;
 }
 
-interface ILocation {
+export interface ILocation {
   emailAddress: string;
   phoneNumber: string;
   street1: string;
@@ -58,34 +63,29 @@ export const App = () => {
   };
 
   return (
-    <Container fluid className="px-0 gradient-bg">
-      <Header />
-      <div className="fade-bar"></div>
-      <Container>
-        {step === 1 && <HeroBuilder heroBuilderForm={heroBuilderForm} setHeroBuilderForm={setHeroBuilderForm} />}
-        <Row>
-          <Col>
-            <div className="d-flex w-100 justify-content-between">
-              <Button
-                type="button"
-                onClick={() => {
-                  if (step > 1) setStep((prev) => prev - 1);
-                  return;
-                }}>
-                Back
-              </Button>
-              <Button
-                type="button"
-                onClick={() => {
-                  if (step < 3) setStep((prev) => prev + 1);
-                  return;
-                }}>
-                Next Step
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </Container>
+    <>
+      <BrowserRouter>
+        <Container fluid className="px-0 gradient-bg1">
+          <Header />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  heroBuilderForm={heroBuilderForm}
+                  setHeroBuilderForm={setHeroBuilderForm}
+                  step={step}
+                  setStep={setStep}
+                />
+              }
+            />
+            <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/pricing" element={<Pricing />} />
+          </Routes>
+        </Container>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 };
