@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "./Header";
 import { Container } from "react-bootstrap";
 import "./App.scss";
 import Home from "./Pages/Home/Home";
 import { Footer } from "./Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import GetStarted from "./Pages/GetStarted/GetStarted";
 import { Login } from "./Pages/Login/Login";
 import { Pricing } from "./Pages/Pricing/Pricing";
@@ -33,6 +33,12 @@ export interface IHeroBuilderForm {
 }
 
 export const App = () => {
+  const [hideCTA, setHideCTA] = useState<boolean>(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setHideCTA(location.pathname === "/get-started");
+  }, [location]);
   const [step, setStep] = useState<number>(1);
   const [heroBuilderForm, setHeroBuilderForm] = useState<IHeroBuilderForm>({
     basicInformation: {
@@ -64,28 +70,26 @@ export const App = () => {
 
   return (
     <>
-      <BrowserRouter>
-        <Container fluid className="px-0 gradient-bg1">
-          <Header />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  heroBuilderForm={heroBuilderForm}
-                  setHeroBuilderForm={setHeroBuilderForm}
-                  step={step}
-                  setStep={setStep}
-                />
-              }
-            />
-            <Route path="/get-started" element={<GetStarted />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/pricing" element={<Pricing />} />
-          </Routes>
-        </Container>
-        <Footer />
-      </BrowserRouter>
+      <Container fluid className="px-0 gradient-bg1">
+        <Header hideCTA={hideCTA} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                heroBuilderForm={heroBuilderForm}
+                setHeroBuilderForm={setHeroBuilderForm}
+                step={step}
+                setStep={setStep}
+              />
+            }
+          />
+          <Route path="/get-started" element={<GetStarted />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/pricing" element={<Pricing />} />
+        </Routes>
+      </Container>
+      <Footer hideCTA={hideCTA} />
     </>
   );
 };
