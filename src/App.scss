@@ -43,8 +43,14 @@
     rgba(132, 174, 241, 0.8) 85%
   );
 }
+.silver-bg {
+  background: linear-gradient(115deg, #bdcbd5, #ffffff, #c6dbe9);
+}
 .bg-transparent {
   background-color: transparent !important;
+}
+.bg-frosted {
+  background: linear-gradient(to left, #ffffffcc, #ffffff77) !important;
 }
 .bg-black.rounded-pill {
   transform: translateY(0);
