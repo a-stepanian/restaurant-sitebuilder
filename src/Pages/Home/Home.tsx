@@ -1,18 +1,9 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { IHeroBuilderForm } from "../../App";
-import { FaRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import { FaRightLong } from "react-icons/fa6";
 
-interface IHomeProps {
-  heroBuilderForm: IHeroBuilderForm;
-  setHeroBuilderForm: React.Dispatch<React.SetStateAction<IHeroBuilderForm>>;
-  step: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const Home = (props: IHomeProps) => {
-  const { heroBuilderForm, setHeroBuilderForm, step, setStep } = props;
+export const Home = () => {
   return (
     <>
       <Container>
@@ -82,5 +73,3 @@ const Home = (props: IHomeProps) => {
     </>
   );
 };
-
-export default Home;

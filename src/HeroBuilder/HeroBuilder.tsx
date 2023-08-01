@@ -1,48 +1,80 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { IHeroBuilderForm } from "../App";
-import { HeroBuilderForm } from "./HeroBuilderForm";
-import { WidescreenView } from "./WidescreenView";
-import { IoRestaurantOutline } from "react-icons/io5";
-import { FcBullish } from "react-icons/fc";
-import { FcGoogle } from "react-icons/fc";
-import { FcTwoSmartphones } from "react-icons/fc";
-import { FcComboChart } from "react-icons/fc";
+import React, { useState } from "react";
+import { Row, Col, Container, Button } from "react-bootstrap";
+import { ComputerScreen } from "./ComputerScreen/ComputerScreen";
+import { BasicInfoForm } from "./Forms/BasicInfoForm";
+import { ContactInfoForm } from "./Forms/ContactInfoForm";
+import { AddressForm } from "./Forms/AddressForm";
 
-export interface IHeroBuilderProps {
-  heroBuilderForm: IHeroBuilderForm;
-  setHeroBuilderForm: React.Dispatch<React.SetStateAction<IHeroBuilderForm>>;
+export interface IBasicInfo {
+  restaurantName: string;
+  cuisineType: string;
+  about: string;
+  catchPhrase?: string;
+  hours: string[];
+}
+export interface IContactInfo {
+  emailAddress: string;
+  phoneNumber: string;
+}
+export interface IAddress {
+  street1: string;
+  street2: string;
+  city: string;
+  state: string;
+  zipCode: string;
 }
 
-export const HeroBuilder = (props: IHeroBuilderProps) => {
-  const { heroBuilderForm, setHeroBuilderForm } = props;
+export const HeroBuilder = () => {
+  const [step, setStep] = useState<number>(1);
+  const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
+    restaurantName: "",
+    catchPhrase: "",
+    about: "",
+    cuisineType: "",
+    hours: [],
+  });
+  const [contactInfo, setContactInfo] = useState<IContactInfo>({
+    emailAddress: "",
+    phoneNumber: "",
+  });
+  const [address, setAddress] = useState<IAddress>({
+    street1: "",
+    street2: "",
+    city: "",
+    state: "",
+    zipCode: "",
+  });
 
   return (
-    <>
-      <Row className="my-5">
-        <Col md={6}>
-          <h1 className="text-black feed-your-business">Feed your business</h1>
-          <p className="mt-5 text-black fs-4">
-            Build an online presence in <span className="fw-bold">minutes</span>
-            <br />
-            with Menu Web.
-          </p>
-        </Col>
-        <Col md={6}>
-          <WidescreenView heroBuilderForm={heroBuilderForm} />
-          <HeroBuilderForm heroBuilderForm={heroBuilderForm} setHeroBuilderForm={setHeroBuilderForm} />
-        </Col>
-      </Row>
-      <Row className="my-5">
-        <Col md={6}>
-          <div className="d-flex justify-content-end">
-            <FcBullish className="bullish" />
-          </div>
-        </Col>
-        <Col md={6}>
-          <h2 className="mt-5 pt-5 increase-text">Increase your online presence, increase your sales.</h2>
-        </Col>
-      </Row>
-    </>
+    <main>
+      <Container>
+        <Row className="my-5 py-5">
+          <Col md={6}>
+            {step === 1 && <BasicInfoForm basicInfo={basicInfo} setBasicInfo={setBasicInfo} />}
+            {step === 2 && <ContactInfoForm contactInfo={contactInfo} setContactInfo={setContactInfo} />}
+            {step === 3 && <AddressForm address={address} setAddress={setAddress} />}
+            <Row>
+              <Col>
+                <Button
+                  type="button"
+                  className="btn btn-lg btn-dark bg-black rounded-pill my-3"
+                  onClick={() => setStep((prev) => prev - 1)}>
+                  Back
+                </Button>
+                <Button
+                  type="button"
+                  className="btn btn-lg btn-dark bg-black rounded-pill my-3"
+                  onClick={() => setStep((prev) => prev + 1)}>
+                  Next
+                </Button>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={6}>
+            <ComputerScreen basicInfo={basicInfo} contactInfo={contactInfo} address={address} />
+          </Col>
+        </Row>
+      </Container>
+    </main>
   );
 };

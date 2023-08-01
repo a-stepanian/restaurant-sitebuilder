@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card, Col, Container, ListGroup, Row, Table } from "react-bootstrap";
 import { LiaCheckSolid, LiaCubeSolid, LiaCubesSolid, LiaSquare, LiaTimesSolid } from "react-icons/lia";
-import { Link } from "react-router-dom";
 
 export const Pricing = () => {
   return (

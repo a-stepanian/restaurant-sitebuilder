@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { IHeroBuilderForm } from "../../App";
 import { PreviewHeader } from "./PreviewHeader";
 import { data } from "../../data";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-import styled from "styled-components";
+import { IAddress, IBasicInfo, IContactInfo } from "../HeroBuilder";
 
 interface IPreviewWidescreenProps {
-  heroBuilderForm: IHeroBuilderForm;
+  basicInfo: IBasicInfo;
+  contactInfo: IContactInfo;
+  address: IAddress;
 }
 
 interface IBackgroundStyles {
@@ -15,14 +16,17 @@ interface IBackgroundStyles {
   backgroundSize: string;
   backgroundRepeat: string;
   backgroundPosition: string;
+  height: string;
 }
 
 interface ITheme {
   backgroundStyles: IBackgroundStyles;
 }
 
-export const PreviewWidescreen = (props: IPreviewWidescreenProps) => {
-  const { heroBuilderForm } = props;
+export const ScreenContent = (props: IPreviewWidescreenProps) => {
+  const { basicInfo, contactInfo, address } = props;
+  const { catchPhrase } = basicInfo;
+
   const [theme, setTheme] = useState<ITheme>({
     backgroundStyles: {
       backgroundImage:
@@ -30,48 +34,51 @@ export const PreviewWidescreen = (props: IPreviewWidescreenProps) => {
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center center",
+      height: "600px",
     },
   });
 
   useEffect(() => {
-    if (heroBuilderForm.basicInformation.cuisineType) {
-      const url = data.cuisines.find((x) => x.name === heroBuilderForm.basicInformation.cuisineType)?.url;
+    if (basicInfo.cuisineType) {
+      const url = data.cuisines.find((x) => x.name === basicInfo.cuisineType)?.url;
       setTheme((prev: ITheme) => {
         return {
           ...prev,
           backgroundStyles: {
+            ...prev.backgroundStyles,
             backgroundImage: `url('${url}')`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center center",
           },
         };
       });
     }
-  }, [heroBuilderForm.basicInformation.cuisineType]);
+  }, [basicInfo.cuisineType]);
 
   return (
-    <Wrapper>
-      <PreviewHeader />
-      <div className="bg-black px-0 border-3 py-5" style={theme.backgroundStyles}>
-        <h2>
-          {heroBuilderForm.basicInformation.restaurantName.length > 0
-            ? heroBuilderForm.basicInformation.restaurantName
-            : "Double R Diner"}
+    <section className="computer-screen">
+      <PreviewHeader basicInfo={basicInfo} />
+      <div className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
+        <h2 className="text-white" style={{ fontSize: "9rem", fontFamily: "Anton" }}>
+          {catchPhrase}
+        </h2>
+        {catchPhrase?.length === 0 && (
+          <h2 style={{ fontSize: "8rem", fontFamily: "Anton", color: "rgba(255, 255, 255, 0.1)" }}>
+            PRIME. <br /> SIZZLING. <br /> PERFECTION.
+          </h2>
+        )}
+        <h2 className="text-white" style={{ fontSize: "9rem", fontFamily: "Anton" }}>
+          {catchPhrase?.length && catchPhrase.length > 0 ? catchPhrase : "PRIME. <br/> SIZZLING. <br/> PERFECTION."}
         </h2>
       </div>
       <Container>
         <Row>
           <Col lg={6}>
             <h3>Location</h3>
+            <p className="text">{address.street1.length > 0 ? address.street1 : "123 Elm Street"}</p>
+            <p className="text">{address.street2.length > 0 && address.street2}</p>
             <p className="text">
-              {heroBuilderForm.location.street1.length > 0 ? heroBuilderForm.location.street1 : "123 Elm Street"}
-            </p>
-            <p className="text">{heroBuilderForm.location.street2.length > 0 && heroBuilderForm.location.street2}</p>
-            <p className="text">
-              {heroBuilderForm.location.city.length > 0 ? heroBuilderForm.location.city : "Twin Peaks"},&nbsp;
-              {heroBuilderForm.location.state.length > 0 ? heroBuilderForm.location.state : "WA"},&nbsp;
-              {heroBuilderForm.location.zipCode.length > 0 ? heroBuilderForm.location.zipCode : "98045"},&nbsp;
+              {address.city.length > 0 ? address.city : "Twin Peaks"},&nbsp;
+              {address.state.length > 0 ? address.state : "WA"},&nbsp;
+              {address.zipCode.length > 0 ? address.zipCode : "98045"},&nbsp;
             </p>
           </Col>
           <Col lg={6}>
@@ -89,25 +96,13 @@ export const PreviewWidescreen = (props: IPreviewWidescreenProps) => {
         <h3>Contact Us</h3>
         <p className="text">
           <AiOutlinePhone className="me-3" />
-          {heroBuilderForm.location.phoneNumber.length > 0 ? heroBuilderForm.location.phoneNumber : "555-555-5555"}
+          {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
         </p>
         <p className="text">
           <AiOutlineMail className="me-3" />
-          {heroBuilderForm.location.emailAddress.length > 0
-            ? heroBuilderForm.location.emailAddress
-            : "RRdiner@gmail.com"}
+          {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
         </p>
       </Container>
-    </Wrapper>
+    </section>
   );
 };
-
-const Wrapper = styled.section`
-  transform: scale(0.5) translate(-50%, -50%);
-  width: 200%;
-  .text {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-  }
-`;

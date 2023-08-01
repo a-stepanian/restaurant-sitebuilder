@@ -1,7 +1,6 @@
 import React from "react";
+import { HeroBuilder } from "../../HeroBuilder/HeroBuilder";
 
-const GetStarted = () => {
-  return <div>GetStarted</div>;
+export const GetStarted = () => {
+  return <HeroBuilder />;
 };
-
-export default GetStarted;
