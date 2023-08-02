@@ -114,29 +114,39 @@ export const Pricing = () => {
               </td>
             </tr>
             <tr>
-              <td className="bg-body-secondary">
-                <div className="d-flex justify-content-around align-items-center">
-                  <span>Free</span>
-                  <Link to="/get-started" className="btn btn-outline-dark border-1 rounded-pill">
-                    Select
-                  </Link>
-                </div>
+              <td className="secondary align-middle">
+                <p className="mb-0 text-center">Free</p>
               </td>
-              <td className="silver-bg">
-                <div className="d-flex justify-content-around align-items-center">
+              <td className="align-middle">
+                <p className="mb-0 text-center">$19.99</p>
+              </td>
+              <td className="align-middle">
+                <p className="mb-0 text-center">$99.99</p>
+              </td>
+            </tr>
+            <tr>
+              <td className="bg-body-secondary p-4">
+                <Link to="/get-started" className="btn btn-lg btn-dark bg-black rounded-pill w-100">
+                  Select
+                </Link>
+              </td>
+              <td className="silver-bg align-middle">
+                {/* <div className="d-flex justify-content-around align-items-center">
                   <span>$49.99</span>
                   <Link to="/get-started" className="btn btn-outline-dark border-1 rounded-pill">
                     Select
                   </Link>
-                </div>
+                </div> */}
+                <h5 className="mb-0 text-center text-black">Coming soon...</h5>
               </td>
-              <td className="gradient-bg">
-                <div className="d-flex justify-content-around align-items-center">
+              <td className="gradient-bg align-middle">
+                {/* <div className="d-flex justify-content-around align-items-center">
                   <span>$99.99</span>
                   <Link to="/get-started" className="btn btn-outline-dark border-1 rounded-pill">
                     Select
                   </Link>
-                </div>
+                </div> */}
+                <h5 className="mb-0 text-center text-black">Coming soon...</h5>
               </td>
             </tr>
           </tbody>
@@ -172,7 +182,7 @@ export const Pricing = () => {
                 </ListGroup.Item>
               </ListGroup>
               <Card.Body className="bg-body-secondary">
-                <Link to="/get-started" className="btn btn-outline-dark btn-lg border-2 rounded-pill w-100">
+                <Link to="/get-started" className="btn btn-dark btn-lg bg-black rounded-pill w-100">
                   Select
                 </Link>
               </Card.Body>
@@ -210,10 +220,15 @@ export const Pricing = () => {
                   <span className="px-2" />
                 </ListGroup.Item>
               </ListGroup>
-              <Card.Body className="bg-transparent">
+              {/* <Card.Body className="bg-transparent">
                 <Link to="/get-started" className="btn btn-dark btn-lg bg-black rounded-pill w-100">
                   Select
                 </Link>
+              </Card.Body> */}
+              <Card.Body
+                className="bg-transparent d-flex align-items-center justify-content-center"
+                style={{ height: "81.56px" }}>
+                <h4 className="text-center mb-0">Coming Soon...</h4>
               </Card.Body>
             </Card>
           </Col>
@@ -246,11 +261,16 @@ export const Pricing = () => {
                   <span className="px-2" />
                 </ListGroup.Item>
               </ListGroup>
-              <Card.Body className="silver-bg">
+              <Card.Body
+                className="silver-bg d-flex align-items-center justify-content-center"
+                style={{ height: "81.56px" }}>
+                <h4 className="text-center mb-0">Coming Soon...</h4>
+              </Card.Body>
+              {/* <Card.Body className="silver-bg">
                 <Link to="/get-started" className="btn btn-outline-dark btn-lg border-2 rounded-pill w-100">
                   Select
                 </Link>
-              </Card.Body>
+              </Card.Body> */}
             </Card>
           </Col>
         </Row>
