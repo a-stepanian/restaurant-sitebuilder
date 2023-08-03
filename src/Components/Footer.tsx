@@ -6,38 +6,38 @@ import { MdOutlineFastfood } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 interface IFooterProps {
-  hideCTA: boolean;
+  onGetStartedPage: boolean;
 }
 export const Footer = (props: IFooterProps) => {
-  const { hideCTA } = props;
+  const { onGetStartedPage } = props;
   return (
     <>
-      <Container fluid className="px-0 py-5" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
-        <Row className="g-0 py-5">
-          <Col>
-            <div className="d-flex flex-column align-items-center">
-              <h2 className="text-center mb-5">
-                Increase your online presence
-                <br className="d-none d-md-inline" />
-                &nbsp;& increase your sales now.
-              </h2>
-              <p className="text-center mb-5 lead">
-                Whether you want to simply get your menu online
-                <br className="d-none d-md-inline" />
-                &nbsp;or a fully customized website,
-                <br className="d-md-none" />
-                &nbsp;we have you covered.
-              </p>
-              {!hideCTA && (
+      {!onGetStartedPage && (
+        <Container fluid className="px-0 py-5" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
+          <Row className="g-0 py-5">
+            <Col>
+              <div className="d-flex flex-column align-items-center">
+                <h2 className="text-center mb-5">
+                  Increase your online presence
+                  <br className="d-none d-md-inline" />
+                  &nbsp;& increase your sales now.
+                </h2>
+                <p className="text-center mb-5 lead">
+                  Whether you want to simply get your menu online
+                  <br className="d-none d-md-inline" />
+                  &nbsp;or a fully customized website,
+                  <br className="d-md-none" />
+                  &nbsp;we have you covered.
+                </p>
                 <Link to="/get-started" className="btn btn-dark btn-lg bg-black rounded-pill">
                   Start free trial
                 </Link>
-              )}
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid className="px-0 py-5 gradient-bg">
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      )}
+      <Container fluid className="px-0 py-5 bg-light">
         <Row className="g-0 py-5">
           <Col>
             <Container>

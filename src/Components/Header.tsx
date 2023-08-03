@@ -3,11 +3,11 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { MdOutlineFastfood } from "react-icons/md";
 import { Link } from "react-router-dom";
 interface IHeaderProps {
-  hideCTA: boolean;
+  onGetStartedPage: boolean;
 }
 
 export const Header = (props: IHeaderProps) => {
-  const { hideCTA } = props;
+  const { onGetStartedPage } = props;
 
   return (
     <Navbar expand="md" className="main-navbar navbar sticky-top" data-bs-theme="light">
@@ -47,7 +47,7 @@ export const Header = (props: IHeaderProps) => {
         <Link to="/login" className="d-none d-md-block px-3 text-black">
           Log in
         </Link>
-        {!hideCTA && (
+        {!onGetStartedPage && (
           <Link to="/get-started" className="d-none d-md-block btn btn-dark bg-black rounded-pill nav-cta">
             Start free trial
           </Link>

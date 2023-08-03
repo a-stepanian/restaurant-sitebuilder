@@ -2,7 +2,7 @@
 @import "../node_modules/bootstrap/scss/functions";
 
 // Bootstrap default variable overrides
-// $primary: #000;
+$primary: #000;
 
 // Bootstrap Required
 @import "../node_modules/bootstrap/scss/variables";
@@ -41,6 +41,14 @@
     rgba(21, 188, 223, 0.3) 30%,
     rgba(38, 238, 159, 0.4) 70%,
     rgba(132, 174, 241, 0.8) 85%
+  );
+}
+.gradient-bg3 {
+  background-image: linear-gradient(
+    90deg,
+    rgba(38, 238, 159, 0.4) 10%,
+    rgba(21, 188, 223, 0.3) 25%,
+    hsla(0, 0%, 100%, 0) 75%
   );
 }
 .silver-bg {
@@ -93,7 +101,7 @@
     border-bottom: 1px solid black;
   }
   .nav-cta {
-    padding: 0.7rem 1.4rem;
+    padding: 0.6rem 1.4rem;
     font-family: "Poppins", sans-serif;
     font-size: 0.75rem;
     font-weight: 400 !important;
@@ -155,6 +163,12 @@ th,
 td {
   border: 1px solid rgb(150, 150, 150);
 }
+.card:hover {
+  transition: 0.2s;
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(57, 125, 165, 0.5);
+}
 
 // Footer
 .linkedin {
@@ -168,4 +182,19 @@ td {
   border: none;
   background: transparent;
   font-size: 1.7rem;
+}
+
+// Get Started
+form {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards linear;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
