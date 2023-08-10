@@ -2,17 +2,19 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiTwotoneMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { FaRightLong } from "react-icons/fa6";
 import { MdOutlineFastfood } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 interface IFooterProps {
   onGetStartedPage: boolean;
+  onFourOhFourPage: boolean;
 }
 export const Footer = (props: IFooterProps) => {
-  const { onGetStartedPage } = props;
+  const { onGetStartedPage, onFourOhFourPage } = props;
   return (
     <>
-      {!onGetStartedPage && (
+      {!onGetStartedPage && !onFourOhFourPage && (
         <Container fluid className="px-0 py-5" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
           <Row className="g-0 py-5">
             <Col>
@@ -37,77 +39,90 @@ export const Footer = (props: IFooterProps) => {
           </Row>
         </Container>
       )}
-      <Container fluid className="px-0 py-5 bg-light">
-        <Row className="g-0 py-5">
-          <Col>
-            <Container>
-              <Row>
-                <Col md={4}>
-                  <div className="d-flex align-items-end">
-                    <MdOutlineFastfood className="display-1 text-black" />
-                  </div>
-                </Col>
-                <Col md={4}>
-                  <h5>Get In Touch</h5>
-                  <ul className="list-unstyled">
+      <Container fluid className="px-0 bg-light">
+        <Row className="g-0">
+          <Col md={4}>
+            <div className="d-none d-md-flex footer-col">
+              <p className="display-6 mb-0 text-nowrap">
+                <MdOutlineFastfood className="mb-2 me-2" />
+                MenuWeb
+              </p>
+            </div>
+          </Col>
+          <Col md={8}>
+            <Row className="g-0">
+              <Col xs={6}>
+                <div className="footer-col">
+                  <nav className="d-flex align-items-center">
+                    <MdOutlineFastfood className="d-none d-sm-block d-md-none m-4 display-6" />
+                    <h5 className="mb-0">
+                      <span className="d-none d-lg-block">Links</span>
+                    </h5>
+                    <ul className="list-unstyled m-3">
+                      <li className="p-2 footer-link">
+                        <Link className="p-2" to="/">
+                          Home&nbsp;
+                          <FaRightLong className="link" />
+                        </Link>
+                      </li>
+                      <li className="p-2 footer-link">
+                        <Link className="p-2" to="/pricing">
+                          Pricing&nbsp;
+                          <FaRightLong className="link" />
+                        </Link>
+                      </li>
+                      <li className="p-2 footer-link">
+                        <Link className="p-2" to="/login">
+                          Log in&nbsp;
+                          <FaRightLong className="link" />
+                        </Link>
+                      </li>
+                      <li className="p-2 footer-link">
+                        <Link className="p-2" to="/get-started">
+                          Get Started&nbsp;
+                          <FaRightLong className="link" />
+                        </Link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </Col>
+              <Col xs={6}>
+                <div
+                  className="footer-col"
+                  style={{
+                    backgroundImage: "url('/images/scribble.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "left",
+                  }}>
+                  <ul className="list-unstyled m-0 d-flex align-items-center">
                     <li>
                       <a
                         href="https://www.linkedin.com/in/alexander-stepanian/"
                         target="_blank"
                         rel="noreferrer"
-                        className="p-3 linkedin">
-                        <BsLinkedin className="text-black" />
+                        className="linkedin">
+                        <BsLinkedin className="text-white" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://github.com/a-stepanian" target="_blank" rel="noreferrer" className="p-3 github">
-                        <BsGithub className="text-black" />
+                      <a href="https://github.com/a-stepanian" target="_blank" rel="noreferrer" className="github">
+                        <BsGithub className="text-white" />
                       </a>
                     </li>
                     <li>
-                      <button className="p-3 email-button" type="button">
-                        <AiTwotoneMail className="text-black" />
+                      <button className="email-button" type="button">
+                        <AiTwotoneMail className="text-white" />
                       </button>
                     </li>
                   </ul>
-                </Col>
-                <Col md={4}>
-                  <h5>Links</h5>
-                  <ul className="list-unstyled">
-                    <li className="m-3">
-                      <Link to="/" className="text-black">
-                        Home
-                      </Link>
-                    </li>
-                    <li className="m-3">
-                      <Link to="/pricing" className="text-black">
-                        Pricing
-                      </Link>
-                    </li>
-                    <li className="m-3">
-                      <Link to="/login" className="text-black">
-                        Log in
-                      </Link>
-                    </li>
-                    <li className="m-3">
-                      <Link to="/get-started" className="text-black">
-                        Get Started
-                      </Link>
-                    </li>
-                  </ul>
-                </Col>
-              </Row>
-            </Container>
+                </div>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
-      <Container fluid className="bg-black">
-        <Row>
-          <Col>
-            <p className="text-secondary my-1 small text-center">Menu Web &copy;2023</p>
-          </Col>
-        </Row>
-      </Container>
+      <p className="bg-black text-secondary mb-0 small text-center">MenuWeb &copy;2023</p>
     </>
   );
 };

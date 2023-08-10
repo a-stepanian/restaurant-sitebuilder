@@ -19,7 +19,7 @@ $primary: #000;
 .gradient-bg {
   background-image: linear-gradient(
     200deg,
-    rgba(132, 174, 241, 0.867) 8.4%,
+    #84aef1dd 8.4%,
     rgba(38, 238, 159, 0.47) 30.67%,
     rgba(21, 188, 223, 0.333) 70.04%,
     hsla(0, 0%, 100%, 0) 85%
@@ -67,6 +67,17 @@ $primary: #000;
 .bg-black.rounded-pill:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+.checkered-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 10rem;
+}
+.space-bg {
+  background-image: linear-gradient(120deg, #0d1b31dd 8%, rgb(61, 60, 84) 30%, rgb(5, 41, 48) 60%, rgb(16, 21, 40) 85%);
 }
 
 // Header
@@ -170,20 +181,6 @@ td {
   box-shadow: 0 4px 12px rgba(57, 125, 165, 0.5);
 }
 
-// Footer
-.linkedin {
-  font-size: 1.5rem;
-}
-.github {
-  font-size: 1.6rem;
-}
-.email-button {
-  padding: 0;
-  border: none;
-  background: transparent;
-  font-size: 1.7rem;
-}
-
 // Get Started
 form {
   opacity: 0;
@@ -195,6 +192,83 @@ form {
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+// Footer
+.footer-col {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  .footer-link {
+    .link {
+      opacity: 0;
+      transition: 0.2s;
+    }
+    &:hover {
+      .link {
+        opacity: 1;
+      }
+    }
+  }
+  .linkedin {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+  .github {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+  }
+  .email-button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .footer-col {
+    .linkedin {
+      margin-right: 1rem;
+      font-size: 2rem;
+    }
+    .github {
+      margin-right: 1rem;
+      font-size: 2.1rem;
+    }
+    .email-button {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+// FourOhFour
+.astronaut-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+.astronaut {
+  animation: floating 10s linear infinite;
+}
+@keyframes floating {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(1px);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.8) rotate(45deg);
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    filter: blur(1px);
     opacity: 1;
   }
 }
