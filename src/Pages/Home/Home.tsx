@@ -28,7 +28,7 @@ export const Home = () => {
         <Row className="my-5 py-5">
           <Col md={6} className="order-1 order-md-2">
             <div className="d-flex flex-column justify-content-center h-100">
-              <svg
+              {/* <svg
                 id="10015.io"
                 viewBox="0 0 480 480"
                 xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ export const Home = () => {
                   fill="rgba(133, 179, 242, 0.8)"
                   d="M383,278.5Q301,317,256,343Q211,369,134.5,348Q58,327,114.5,267Q171,207,190.5,157Q210,107,256,135Q302,163,383.5,201.5Q465,240,383,278.5Z"
                 />
-              </svg>
+              </svg> */}
               <h2 className="my-5 pt-5 increase-text display-1">Increase your sales.</h2>
               <p className="fs-2 lead">Attract new customers and provide the information they need with ease.</p>
             </div>
@@ -50,9 +50,9 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid className="px-0" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
-        <Row className="g-0 mt-5 py-5">
-          <Col className="my-5 py-5">
+      <Container fluid className="px-0">
+        <Row className="g-0 py-5">
+          <Col className="py-5">
             <div className="checkered-bg" style={{ backgroundImage: "url('/images/honeycomb.png')" }}>
               <Link to="/get-started" className="mt-3 btn btn-dark btn-lg bg-black rounded-pill">
                 Try it now for free!
