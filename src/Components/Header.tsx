@@ -16,8 +16,7 @@ export const Header = (props: IHeaderProps) => {
           <Link to="/" className="text-black text-decoration-none nav-home">
             <div className="d-flex justify-content-center align-items-center">
               <MdOutlineFastfood />
-              <span className="mt-1 ms-1 fw-bold fs-6">Menu</span>
-              <span className="mt-1 ms-1 fw-bold fs-6">Web</span>
+              <span className="mt-1 ms-1 fw-bold fs-6">MenuWeb</span>
             </div>
           </Link>
         </Navbar.Brand>
@@ -29,13 +28,6 @@ export const Header = (props: IHeaderProps) => {
         </div>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Solutions" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/">Action</NavDropdown.Item>
-              <NavDropdown.Item href="/">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="/">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Separated link</NavDropdown.Item>
-            </NavDropdown>
             <Link to="/pricing" className="nav-link">
               Pricing
             </Link>
