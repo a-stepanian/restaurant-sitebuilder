@@ -11,16 +11,18 @@ interface ITextInputProps {
   tipText?: string;
   hideLabel?: boolean;
   inputClasses?: string;
+  autofocus?: boolean;
 }
 
 export const TextInput = (props: ITextInputProps) => {
-  const { label, required, tipText, placeholder, currentValue, changeHandler, hideLabel, inputClasses } = props;
+  const { label, required, tipText, placeholder, currentValue, changeHandler, hideLabel, inputClasses, autofocus } =
+    props;
   const [showHelp, setShowHelp] = useState(false);
 
   return (
-    <Form.Group className={`${hideLabel ? "" : "mt-3"}`} controlId={`form${label.replace(/\s/g, "")}`}>
+    <Form.Group className={`${hideLabel ? "" : "mt-2"}`} controlId={`form${label.replace(/\s/g, "")}`}>
       {!hideLabel && (
-        <Form.Label className="d-flex justify-content-between">
+        <Form.Label className="d-flex justify-content-between mb-0">
           {label}
           {tipText && (
             <Button
@@ -40,6 +42,7 @@ export const TextInput = (props: ITextInputProps) => {
         type="text"
         className={`${inputClasses ?? ""}`}
         autoComplete="off"
+        autoFocus={autofocus ?? false}
         placeholder={placeholder}
         required={required}
         value={currentValue}
