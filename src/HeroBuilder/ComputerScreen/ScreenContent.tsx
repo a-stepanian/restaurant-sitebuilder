@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { PreviewHeader } from "./PreviewHeader";
 import { data } from "../../data";
@@ -9,6 +9,8 @@ interface IPreviewWidescreenProps {
   basicInfo: IBasicInfo;
   contactInfo: IContactInfo;
   address: IAddress;
+  color: string;
+  step?: number;
 }
 
 interface IBackgroundStyles {
@@ -24,9 +26,30 @@ interface ITheme {
 }
 
 export const ScreenContent = (props: IPreviewWidescreenProps) => {
-  const { basicInfo, contactInfo, address } = props;
+  const { basicInfo, contactInfo, address, color, step } = props;
   const { catchPhrase } = basicInfo;
 
+  const heroRef = useRef<null | HTMLDivElement>(null);
+  const addressRef = useRef<null | HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (step === 1 && heroRef?.current) {
+      heroRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "start",
+      });
+    }
+    if (step === 2 && addressRef?.current) {
+      addressRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "start",
+      });
+    }
+  }, [step]);
+
+  const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [theme, setTheme] = useState<ITheme>({
     backgroundStyles: {
       backgroundImage:
@@ -40,7 +63,10 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
 
   useEffect(() => {
     if (basicInfo.cuisineType) {
-      const url = data.cuisines.find((x) => x.name === basicInfo.cuisineType)?.url;
+      const selectedCuisine = data.cuisines.find((x) => x.name === basicInfo.cuisineType);
+      const url = selectedCuisine?.url;
+      const style = selectedCuisine?.style;
+      setIsLightTheme(style === "light");
       setTheme((prev: ITheme) => {
         return {
           ...prev,
@@ -56,22 +82,28 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
   return (
     <section className="computer-screen">
       <PreviewHeader basicInfo={basicInfo} />
-      <div className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
-        <h2 className="text-white" style={{ fontSize: "9rem", fontFamily: "Anton" }}>
-          {catchPhrase}
-        </h2>
-        {catchPhrase?.length === 0 && (
-          <h2 style={{ fontSize: "8rem", fontFamily: "Anton", color: "rgba(255, 255, 255, 0.1)" }}>
+      <div ref={heroRef} className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
+        {catchPhrase && catchPhrase.length > 0 ? (
+          <h2 style={{ fontSize: "9rem", fontFamily: "Anton", color: color }}>{catchPhrase}</h2>
+        ) : (
+          <h2 style={{ fontSize: "8rem", fontFamily: "Anton", color: color }}>
             PRIME. <br /> SIZZLING. <br /> PERFECTION.
           </h2>
         )}
-        <h2 className="text-white" style={{ fontSize: "9rem", fontFamily: "Anton" }}>
-          {catchPhrase?.length && catchPhrase.length > 0 ? catchPhrase : "PRIME. <br/> SIZZLING. <br/> PERFECTION."}
-        </h2>
       </div>
       <Container>
-        <Row>
+        <Row ref={addressRef} className={`${isLightTheme ? "bg-light text-dark" : "bg-dark text-light"}`}>
           <Col lg={6}>
+            <h3>Hours of operation</h3>
+            <h3>Contact Us</h3>
+            <p className="text">
+              <AiOutlinePhone className="me-3" />
+              {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
+            </p>
+            <p className="text">
+              <AiOutlineMail className="me-3" />
+              {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
+            </p>
             <h3>Location</h3>
             <p className="text">{address.street1.length > 0 ? address.street1 : "123 Elm Street"}</p>
             <p className="text">{address.street2.length > 0 && address.street2}</p>
@@ -92,16 +124,6 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
               referrerPolicy="no-referrer-when-downgrade"></iframe>
           </Col>
         </Row>
-        <h3>Hours of operation</h3>
-        <h3>Contact Us</h3>
-        <p className="text">
-          <AiOutlinePhone className="me-3" />
-          {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
-        </p>
-        <p className="text">
-          <AiOutlineMail className="me-3" />
-          {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
-        </p>
       </Container>
     </section>
   );

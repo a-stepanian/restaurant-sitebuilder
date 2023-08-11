@@ -11,11 +11,11 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
   return (
     <Navbar expand="xs" bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">{restaurantName.length > 0 ? restaurantName : "SMOKY BONES"}</Navbar.Brand>
+        <Navbar.Brand href="#">{restaurantName.length > 0 ? restaurantName : "Smoky Bones"}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Get Started</Nav.Link>
+            <Nav.Link href="#">Get Started</Nav.Link>
             <NavDropdown title="Pricing" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

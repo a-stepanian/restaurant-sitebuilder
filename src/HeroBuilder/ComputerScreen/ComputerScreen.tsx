@@ -8,16 +8,15 @@ interface IWidescreenViewProps {
   basicInfo: IBasicInfo;
   contactInfo: IContactInfo;
   address: IAddress;
+  color: string;
+  step?: number;
 }
 
 export const ComputerScreen = (props: IWidescreenViewProps) => {
-  const { basicInfo, contactInfo, address } = props;
+  const { basicInfo, contactInfo, address, color, step } = props;
 
   return (
-    <Container
-      fluid
-      className="mt-5 bg-body my-3 p-2 border border-2 border-secondary-subtle rounded"
-      style={{ height: "350px" }}>
+    <Container fluid className="mt-5 bg-body my-3 p-2 border border-2 border-secondary-subtle rounded">
       <div className="d-flex mb-1">
         <MdArrowBack className="text-secondary" />
         <MdArrowForward className="text-secondary" />
@@ -34,7 +33,7 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
         <MdClose className="text-secondary" />
       </div>
       <div style={{ height: "300px", overflowY: "scroll", overflowX: "hidden", border: "1px solid gray" }}>
-        <ScreenContent basicInfo={basicInfo} contactInfo={contactInfo} address={address} />
+        <ScreenContent basicInfo={basicInfo} contactInfo={contactInfo} address={address} color={color} step={step} />
       </div>
     </Container>
   );
