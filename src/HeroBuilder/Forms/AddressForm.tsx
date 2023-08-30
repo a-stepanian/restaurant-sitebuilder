@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { data } from "../../data";
 import { TextInput } from "../../Components/TextInput";
-import { IAddress } from "../HeroBuilder";
+import { IAddress } from "../../App";
 
 interface IAddressFormProps {
   address: IAddress;

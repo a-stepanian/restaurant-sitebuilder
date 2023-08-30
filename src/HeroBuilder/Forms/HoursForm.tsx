@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { TextInput } from "../../Components/TextInput";
-import { IBasicInfo } from "../HeroBuilder";
+import { IBasicInfo } from "../../App";
 
 interface IHoursFormProps {
   basicInfo: IBasicInfo;

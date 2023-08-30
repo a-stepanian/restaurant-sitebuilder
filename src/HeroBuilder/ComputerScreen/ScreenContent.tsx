@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { PreviewHeader } from "./PreviewHeader";
 import { data } from "../../data";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-import { IAddress, IBasicInfo, IContactInfo } from "../HeroBuilder";
+import { IAddress, IBasicInfo, IContactInfo } from "../../App";
 
 interface IPreviewWidescreenProps {
   basicInfo: IBasicInfo;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { TextInput } from "../../Components/TextInput";
-import { IContactInfo } from "../HeroBuilder";
+import { IContactInfo } from "../../App";
 import { BsChevronUp, BsQuestion } from "react-icons/bs";
 
 interface IContactInfoFormProps {

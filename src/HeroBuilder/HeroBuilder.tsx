@@ -6,60 +6,21 @@ import { ContactInfoForm } from "./Forms/ContactInfoForm";
 import { AddressForm } from "./Forms/AddressForm";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { HoursForm } from "./Forms/HoursForm";
+import { IAddress, IBasicInfo, IContactInfo } from "../App";
 
-export interface IHours {
-  day: string;
-  open: string;
-  close: string;
-}
-export interface IBasicInfo {
-  restaurantName: string;
-  cuisineType: string;
-  about: string;
-  catchPhrase?: string;
-  hours: IHours[];
-}
-export interface IContactInfo {
-  emailAddress: string;
-  phoneNumber: string;
-}
-export interface IAddress {
-  street1: string;
-  street2: string;
-  city: string;
-  state: string;
-  zipCode: string;
+interface IHeroBuilderProps {
+  basicInfo: IBasicInfo;
+  setBasicInfo: any;
+  contactInfo: IContactInfo;
+  setContactInfo: any;
+  address: IAddress;
+  setAddress: any;
 }
 
-export const HeroBuilder = () => {
+export const HeroBuilder = (props: IHeroBuilderProps) => {
+  const { basicInfo, setBasicInfo, contactInfo, setContactInfo, address, setAddress } = props;
   const [step, setStep] = useState<number>(1);
   const [color, setColor] = useState("#000000");
-  const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
-    restaurantName: "",
-    catchPhrase: "",
-    about: "",
-    cuisineType: "Pick one",
-    hours: [
-      { day: "Sunday", open: "06:00", close: "22:00" },
-      { day: "Monday", open: "06:00", close: "22:00" },
-      { day: "Tuesday", open: "06:00", close: "22:00" },
-      { day: "Wednesday", open: "06:00", close: "22:00" },
-      { day: "Thursday", open: "06:00", close: "22:00" },
-      { day: "Friday", open: "06:00", close: "22:00" },
-      { day: "Saturday", open: "06:00", close: "22:00" },
-    ],
-  });
-  const [contactInfo, setContactInfo] = useState<IContactInfo>({
-    emailAddress: "",
-    phoneNumber: "",
-  });
-  const [address, setAddress] = useState<IAddress>({
-    street1: "",
-    street2: "",
-    city: "",
-    state: "",
-    zipCode: "",
-  });
 
   return (
     <main style={{ minHeight: "100vh" }}>

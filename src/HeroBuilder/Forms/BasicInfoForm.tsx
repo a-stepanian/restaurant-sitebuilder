@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { data } from "../../data";
 import { TextInput } from "../../Components/TextInput";
-import { IBasicInfo } from "../HeroBuilder";
+import { IBasicInfo } from "../../App";
 
 interface IBasicInfoFormProps {
   basicInfo: IBasicInfo;

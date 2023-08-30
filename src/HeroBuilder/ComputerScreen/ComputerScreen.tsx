@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { ScreenContent } from "./ScreenContent";
 import { MdArrowBack, MdArrowForward, MdClose, MdRefresh } from "react-icons/md";
-import { IAddress, IBasicInfo, IContactInfo } from "../HeroBuilder";
+import { IAddress, IBasicInfo, IContactInfo } from "../../App";
 
 interface IWidescreenViewProps {
   basicInfo: IBasicInfo;

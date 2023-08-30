@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import { IBasicInfo } from "../HeroBuilder";
+import { IBasicInfo } from "../../App";
 
 interface IPreviewHeaderProps {
   basicInfo: IBasicInfo;
