@@ -50,8 +50,9 @@ export const Home = () => {
           </Col>
           <Col md={6}>
             <div className="h-100 d-flex align-items-center justify-content-center">
-              {/* <FcBullish className="bullish w-100" /> */}
-              <img className="img-fluid" src="/images/menu.gif" alt="" loading="lazy" />
+              <video autoPlay loop muted playsInline>
+                <source src="/images/computer.mp4" type="video/mp4" />
+              </video>
             </div>
           </Col>
         </Row>
@@ -77,16 +78,9 @@ export const Home = () => {
           </Col>
           <Col className="pb-5" md={6}>
             <div className="d-flex justify-content-center align-items-center">
-              {/* <FcGoogle style={{ fontSize: "4rem" }} />
-                <FcGoogle style={{ fontSize: "6.5rem" }} />
-                <FcGoogle style={{ fontSize: "10rem" }} /> */}
-              <img
-                className="img-fluid"
-                style={{ maxHeight: "50vh" }}
-                src="/images/mobile-menu.gif"
-                alt=""
-                loading="lazy"
-              />
+              <video autoPlay loop muted playsInline>
+                <source src="/images/mobile-menu.mp4" type="video/mp4" />
+              </video>
             </div>
           </Col>
         </Row>
