@@ -101,17 +101,23 @@ export const Footer = (props: IFooterProps) => {
                         href="https://www.linkedin.com/in/alexander-stepanian/"
                         target="_blank"
                         rel="noreferrer"
-                        className="linkedin">
+                        className="linkedin"
+                        aria-label="LinkedIn profile">
                         <BsLinkedin className="text-white" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://github.com/a-stepanian" target="_blank" rel="noreferrer" className="github">
+                      <a
+                        href="https://github.com/a-stepanian"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="github"
+                        aria-label="GitHub profile">
                         <BsGithub className="text-white" />
                       </a>
                     </li>
                     <li>
-                      <button className="email-button" type="button">
+                      <button className="email-button" type="button" aria-label="Send email">
                         <AiTwotoneMail className="text-white" />
                       </button>
                     </li>
@@ -122,7 +128,7 @@ export const Footer = (props: IFooterProps) => {
           </Col>
         </Row>
       </Container>
-      <p className="bg-black text-secondary mb-0 small text-center">MenuWeb &copy;2023</p>
+      <p className="bg-black text-white mb-0 small text-center">MenuWeb &copy;2023</p>
     </>
   );
 };
