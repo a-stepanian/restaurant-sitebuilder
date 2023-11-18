@@ -7,24 +7,44 @@ export const Home = () => {
   return (
     <>
       <Container>
-        <Row className="mt-5 pb-5">
-          <Col md={6}>
-            <h1 className="text-center text-md-start text-black feed-your-business">Feed your business</h1>
-            <p className="mt-5 text-black text-center text-md-start fs-4 lead">
-              Build an online presence in <span className="fw-bold">minutes</span>&nbsp;
-              <br className="d-none d-md-block" />
-              with Menu Web.
+        <Row className="above-the-fold">
+          <svg
+            className="position-absolute w-100 hero-shape"
+            id="10015.io"
+            viewBox="0 0 480 480"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink">
+            <path
+              fill="rgba(161, 202, 209, 0.2)"
+              d="M412.5,315.5Q360,391,287.5,370Q215,349,120,346Q25,343,84,268Q143,193,177,153Q211,113,260.5,132.5Q310,152,387.5,196Q465,240,412.5,315.5Z"
+            />
+          </svg>
+          <Col md={6} className="d-flex flex-column justify-content-center">
+            <h1 className="my-5 my-md-3 my-lg-4 text-center text-md-start text-black fw-bold feed-your-business">
+              Feed your business
+            </h1>
+            <p className="w-100 text-black text-center text-md-start fs-4 lead">
+              Build an online presence in
+              <br />
+              <strong>minutes</strong>&nbsp; with Menu Web.
             </p>
+            <Link
+              to="/get-started"
+              className="d-none d-md-block mt-3 btn btn-dark btn-lg bg-black rounded-pill hero-cta">
+              Get Started <FaRightLong />
+            </Link>
           </Col>
           <Col md={6}>
             <div className="h-100 d-flex flex-column justify-content-center align-items-center">
               <img
-                className="img-fluid"
-                src="/images/landing-page-img.jpg"
+                className="img-fluid rounded-circle hero-image"
+                src="/images/food-doodle.jpg"
                 loading="eager"
-                alt="Chef holding cooking utensils"
+                width="640"
+                height="360"
+                alt="Assorted snack foods"
               />
-              <Link to="/get-started" className="mt-3 btn btn-dark btn-lg w-100 bg-black rounded-pill">
+              <Link to="/get-started" className="d-md-none mt-5 w-100 btn btn-dark btn-lg bg-black rounded-pill">
                 Get Started <FaRightLong />
               </Link>
             </div>
@@ -33,18 +53,7 @@ export const Home = () => {
         <Row className="my-5 py-5">
           <Col md={6} className="order-1 order-md-2">
             <div className="d-flex flex-column justify-content-center h-100">
-              <svg
-                className="position-absolute w-75"
-                id="10015.io"
-                viewBox="0 0 480 480"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink">
-                <path
-                  fill="rgba(161, 202, 209, 0.5)"
-                  d="M412.5,315.5Q360,391,287.5,370Q215,349,120,346Q25,343,84,268Q143,193,177,153Q211,113,260.5,132.5Q310,152,387.5,196Q465,240,412.5,315.5Z"
-                />
-              </svg>
-              <h2 className="my-5 pt-5 increase-text display-1">Increase your sales.</h2>
+              <h2 className="increase-text">Increase your sales</h2>
               <p className="fs-2 lead">Attract new customers and provide the information they need with ease.</p>
             </div>
           </Col>
@@ -57,14 +66,17 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid className="px-0">
-        <Row className="g-0 py-5">
+      <Container fluid className="home-try-it-now">
+        <Row className="py-5">
           <Col className="py-5">
-            <div className="checkered-bg" style={{ backgroundImage: "url('/images/honeycomb.png')" }}>
-              <Link to="/get-started" className="mt-3 btn btn-dark btn-lg bg-black rounded-pill">
+            <div className="d-flex justify-content-center align-items-center h-100">
+              <Link to="/get-started" className="py-3 px-5 my-3 btn btn-dark btn-lg bg-black rounded-pill">
                 Try it now for free!
               </Link>
             </div>
+          </Col>
+          <Col>
+            <img src="/images/cat-food.png" height={"300px"} alt="" />
           </Col>
         </Row>
       </Container>

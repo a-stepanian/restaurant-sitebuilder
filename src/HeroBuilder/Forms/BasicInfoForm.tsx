@@ -29,7 +29,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit} className="bg-frosted pt-1 px-5 shadow-lg rounded-5">
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <TextInput
         label="What is your restaurant name?"
         required={true}
@@ -43,7 +43,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
           })
         }
       />
-      <Form.Group className="mt-3" controlId="formCuisineType">
+      <Form.Group className="mt-2" controlId="formCuisineType">
         <Form.Label className="d-flex justify-content-between">What type of restaurant is it?</Form.Label>
         <Form.Select
           aria-label="Select a cuisine type"
@@ -68,22 +68,28 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
           <small>This field is required</small>
         </Form.Control.Feedback>
       </Form.Group>
-      <TextInput
-        label="Add a catch phrase!"
-        required={true}
-        placeholder="PRIME. SIZZLING. PERFECTION."
-        currentValue={basicInfo.catchPhrase ?? ""}
-        changeHandler={(e: any) =>
-          setBasicInfo({
-            ...basicInfo,
-            catchPhrase: e.target.value,
-          })
-        }
-      />
-      <label className="mt-3 me-3" htmlFor="colorPicker">
-        Font color
-      </label>
-      <input id="colorPicker" className="mt-3" type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+      <div className="d-flex mt-2">
+        <div className="flex-grow-1">
+          <TextInput
+            label="Add a catch phrase!"
+            required={true}
+            placeholder="PRIME. SIZZLING. PERFECTION."
+            currentValue={basicInfo.catchPhrase ?? ""}
+            changeHandler={(e: any) =>
+              setBasicInfo({
+                ...basicInfo,
+                catchPhrase: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="d-flex flex-column justify-content-end align-items-center">
+          <label htmlFor="colorPicker" className="small">
+            color
+          </label>
+          <input id="colorPicker" type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+        </div>
+      </div>
       {/* <Form.Group className="mt-3" controlId="formAbout">
           <Form.Label>Tell us about your business</Form.Label>
           <Form.Control

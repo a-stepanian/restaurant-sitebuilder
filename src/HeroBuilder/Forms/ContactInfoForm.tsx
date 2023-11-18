@@ -3,6 +3,7 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import { TextInput } from "../../Components/TextInput";
 import { IContactInfo } from "../../App";
 import { BsChevronUp, BsQuestion } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 interface IContactInfoFormProps {
   contactInfo: IContactInfo;
@@ -14,8 +15,8 @@ interface IContactInfoFormProps {
 export const ContactInfoForm = (props: IContactInfoFormProps) => {
   const { contactInfo, setContactInfo, step, setStep } = props;
   const [showHelp, setShowHelp] = useState<boolean>(false);
-
   const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -26,10 +27,11 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
       setStep((prev) => prev + 1);
     }
     setValidated(true);
+    navigate("/preview");
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit} className="bg-frosted pt-1 px-5 shadow-lg rounded-5">
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mt-3" controlId="formEmailAddress">
         <Form.Label className="d-flex justify-content-between">
           Email Address
@@ -87,7 +89,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
           </button>
         )}
         <button type="submit" className="btn btn-lg btn-dark bg-black rounded-pill border-2 px-4">
-          Take me to my website!
+          Preview My Website
         </button>
       </div>
     </Form>

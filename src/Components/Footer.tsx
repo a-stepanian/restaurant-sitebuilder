@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiTwotoneMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaRightLong } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineFastfood } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -12,24 +12,35 @@ interface IFooterProps {
 }
 export const Footer = (props: IFooterProps) => {
   const { onGetStartedPage, onFourOhFourPage } = props;
+
+  const footerLogo = useRef<null | HTMLAnchorElement>(null);
+
+  const animateLogo = () => {
+    if (footerLogo?.current?.classList?.contains("footer-logo")) {
+      return;
+    }
+    footerLogo?.current?.classList?.add("footer-logo");
+    setTimeout(() => {
+      footerLogo?.current?.classList?.remove("footer-logo");
+    }, 800);
+  };
+
   return (
     <>
       {!onGetStartedPage && !onFourOhFourPage && (
-        <Container fluid className="px-0 py-5" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
-          <Row className="g-0 py-5">
+        <Container fluid className="py-5" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
+          <Row className="py-5">
             <Col>
               <div className="d-flex flex-column align-items-center">
                 <h2 className="text-center mb-5">
                   Increase your online presence
-                  <br className="d-none d-md-inline" />
+                  <br className="d-none d-sm-inline" />
                   &nbsp;& increase your sales now.
                 </h2>
                 <p className="text-center mb-5 lead">
                   Whether you want to simply get your menu online
-                  <br className="d-none d-md-inline" />
-                  &nbsp;or a fully customized website,
-                  <br className="d-md-none" />
-                  &nbsp;we have you covered.
+                  <br className="d-none d-sm-inline" />
+                  &nbsp;or a fully customized website, &nbsp;we have you covered.
                 </p>
                 <Link to="/get-started" className="btn btn-dark btn-lg bg-black rounded-pill">
                   Start free trial
@@ -43,10 +54,16 @@ export const Footer = (props: IFooterProps) => {
         <Row className="g-0">
           <Col md={4}>
             <div className="d-none d-md-flex footer-col">
-              <p className="display-6 mb-0 text-nowrap">
-                <MdOutlineFastfood className="mb-2 me-2" />
-                MenuWeb
-              </p>
+              <Link to="/" ref={footerLogo} className="display-6 mb-0 text-nowrap" onMouseEnter={animateLogo}>
+                <MdOutlineFastfood className="mb-2 me-2 footer-logo-icon" />
+                <span className="d-inline-block">M</span>
+                <span className="d-inline-block">e</span>
+                <span className="d-inline-block">n</span>
+                <span className="d-inline-block">u</span>
+                <span className="d-inline-block">W</span>
+                <span className="d-inline-block">e</span>
+                <span className="d-inline-block">b</span>
+              </Link>
             </div>
           </Col>
           <Col md={8}>
@@ -62,25 +79,25 @@ export const Footer = (props: IFooterProps) => {
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/">
                           Home&nbsp;
-                          <FaRightLong className="link" />
+                          <FaArrowRight className="small link" />
                         </Link>
                       </li>
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/pricing">
                           Pricing&nbsp;
-                          <FaRightLong className="link" />
+                          <FaArrowRight className="small link" />
                         </Link>
                       </li>
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/login">
                           Log in&nbsp;
-                          <FaRightLong className="link" />
+                          <FaArrowRight className="small link" />
                         </Link>
                       </li>
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/get-started">
                           Get Started&nbsp;
-                          <FaRightLong className="link" />
+                          <FaArrowRight className="small link" />
                         </Link>
                       </li>
                     </ul>

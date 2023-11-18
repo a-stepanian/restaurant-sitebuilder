@@ -29,11 +29,7 @@ export const AddressForm = (props: IAddressFormProps) => {
   };
 
   return (
-    <Form
-      noValidate
-      validated={validated}
-      onSubmit={handleSubmit}
-      className="row bg-frosted pt-1 px-5 shadow-lg rounded-5">
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Col xs={12}>
         <TextInput
           label="Street"

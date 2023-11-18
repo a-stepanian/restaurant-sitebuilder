@@ -25,17 +25,26 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
   return (
     <main style={{ minHeight: "100vh" }}>
       <Container className="my-5">
-        <Row className="p-lg-5 m-lg-5 gradient-bg rounded shadow-lg" style={{ transition: "0.5s" }}>
-          <Col lg={6}>
-            <h1 className="text-center display-5 mb-3">
+        <Row>
+          <Col lg={6} className="p-3 shadow-lg rounded-3">
+            <h2 className="text-center display-6 mb-3">
               {step === 1
-                ? "Let's get started!"
+                ? "Let's get started"
                 : step === 2
-                ? "What's your address?"
+                ? "Enter your address"
                 : step === 3
                 ? "Almost done..."
                 : "Final Step!"}
-            </h1>
+            </h2>
+            {step <= 4 && (
+              <ProgressBar
+                now={(step / 4) * 100 - 10}
+                variant="dark"
+                label={`${(step / 4) * 100 - 10}%`}
+                className="mb-4 bg-light"
+              />
+            )}
+            {step === 5 && <p>Sign up form here</p>}
             {step === 1 && (
               <BasicInfoForm
                 basicInfo={basicInfo}
@@ -67,8 +76,6 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
               color={color}
               step={step}
             />
-            {step <= 4 && <ProgressBar now={(step / 4) * 100 - 10} variant="black" className="mb-4 mx-4 p-1" />}
-            {step === 5 && <p>Sign up form here</p>}
           </Col>
         </Row>
       </Container>

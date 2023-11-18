@@ -30,7 +30,12 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
   const { catchPhrase } = basicInfo;
 
   const heroRef = useRef<null | HTMLDivElement>(null);
+  const catchPhraseRef = useRef<null | HTMLDivElement>(null);
   const addressRef = useRef<null | HTMLDivElement>(null);
+
+  const openEditorBox = (refName: React.MutableRefObject<HTMLDivElement | null>): void => {
+    refName?.current?.classList?.add("editor-mode");
+  };
 
   useEffect(() => {
     if (step === 1 && heroRef?.current) {
@@ -83,11 +88,13 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
     <section className="computer-screen">
       <PreviewHeader basicInfo={basicInfo} />
       <div ref={heroRef} className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
-        {catchPhrase && catchPhrase.length > 0 ? (
-          <h2 style={{ fontSize: "9rem", fontFamily: "Anton", color: color }}>{catchPhrase}</h2>
-        ) : (
-          <h2 style={{ fontSize: "8rem", fontFamily: "Anton", color: color }}>
-            PRIME. <br /> SIZZLING. <br /> PERFECTION.
+        {catchPhrase && catchPhrase.length > 0 && (
+          <h2
+            ref={catchPhraseRef}
+            onDoubleClick={() => openEditorBox(catchPhraseRef)}
+            className="catch-phrase"
+            style={{ fontSize: "9rem", fontFamily: "Anton", color: color }}>
+            {catchPhrase}
           </h2>
         )}
       </div>
@@ -95,6 +102,20 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
         <Row ref={addressRef} className={`${isLightTheme ? "bg-light text-dark" : "bg-dark text-light"}`}>
           <Col lg={6}>
             <h3>Hours of operation</h3>
+            <Row>
+              <Col>Day</Col>
+              <Col>Open</Col>
+              <Col>Close</Col>
+            </Row>
+            {basicInfo.hours.map((x) => {
+              return (
+                <Row key={x.day}>
+                  <Col>{x.day}</Col>
+                  <Col>{x.open}</Col>
+                  <Col>{x.close}</Col>
+                </Row>
+              );
+            })}
             <h3>Contact Us</h3>
             <p className="text">
               <AiOutlinePhone className="me-3" />

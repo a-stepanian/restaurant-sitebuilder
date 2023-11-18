@@ -6,7 +6,7 @@ import { Home, Login, Pricing } from "./Pages/pageIndex";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
 import { FourOhFour } from "./Pages/FourOhFour/FourOhFour";
-import { LiveSite } from "./Pages/LiveSite/LiveSite";
+import { Preview } from "./Pages/Preview/Preview";
 import { HeroBuilder } from "./HeroBuilder/HeroBuilder";
 
 export interface IHours {
@@ -36,11 +36,12 @@ export interface IAddress {
 export const App = () => {
   const [onGetStartedPage, setOnGetStartedPage] = useState<boolean>(false);
   const [onFourOhFourPage, setOnFourOhFourPage] = useState<boolean>(false);
+  const [onPricingPage, setOnPricingPage] = useState<boolean>(false);
   const [onLiveSite, setOnLiveSite] = useState<boolean>(false);
   const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
-    restaurantName: "DAMIAN",
-    catchPhrase: "",
-    about: "",
+    restaurantName: "Dim Sum Heaven",
+    catchPhrase: "So good you'll think you died and went to heaven.",
+    about: "Dim Sum Heaven opened in",
     cuisineType: "Pick one",
     hours: [
       { day: "Sunday", open: "06:00", close: "22:00" },
@@ -68,30 +69,23 @@ export const App = () => {
 
   // Run when url changes
   useEffect(() => {
-    setOnGetStartedPage(location.pathname === "/get-started");
     setOnLiveSite(location.pathname === "/live-site");
+    setOnPricingPage(["/pricing", "/get-started"].includes(location.pathname));
     setOnFourOhFourPage(!["", "/", "/get-started", "/pricing", "login"].includes(location.pathname));
-    if (location.pathname !== "/get-started") {
-      document.querySelector(".navbar")?.classList.remove("solid-white");
-      window.onscroll = function () {
-        var scrollLimit = 60;
-        if (window.scrollY >= scrollLimit) {
-          document.querySelector(".navbar")?.classList.add("solid-white");
-        } else {
-          document.querySelector(".navbar")?.classList.remove("solid-white");
-        }
-      };
-    } else {
-      document.querySelector(".navbar")?.classList.add("solid-white");
-      window.onscroll = null;
-    }
+    document.querySelector(".navbar")?.classList.remove("solid-white");
+    window.onscroll = function () {
+      var scrollLimit = 60;
+      if (window.scrollY >= scrollLimit) {
+        document.querySelector(".navbar")?.classList.add("solid-white");
+      } else {
+        document.querySelector(".navbar")?.classList.remove("solid-white");
+      }
+    };
   }, [location]);
 
   return (
     <>
-      <Container
-        fluid
-        className={`px-0 pb-5 ${onGetStartedPage ? "gradient-bg3" : onFourOhFourPage ? "space-bg" : "bg-light"}`}>
+      <Container fluid className={`px-0 ${onFourOhFourPage ? "space-bg" : onPricingPage ? "radial-bg" : "bg-light"}`}>
         <Header onGetStartedPage={onGetStartedPage} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -109,15 +103,15 @@ export const App = () => {
             }
           />
           <Route
-            path="/live-site"
-            element={<LiveSite basicInfo={basicInfo} contactInfo={contactInfo} address={address} />}
+            path="/preview"
+            element={<Preview basicInfo={basicInfo} contactInfo={contactInfo} address={address} />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="*" element={<FourOhFour />} />
         </Routes>
+        <Footer onGetStartedPage={onGetStartedPage} onFourOhFourPage={onFourOhFourPage} />
       </Container>
-      <Footer onGetStartedPage={onGetStartedPage} onFourOhFourPage={onFourOhFourPage} />
     </>
   );
 };

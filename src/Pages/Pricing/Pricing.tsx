@@ -5,9 +5,9 @@ import { LiaCheckSolid, LiaCubeSolid, LiaCubesSolid, LiaSquare, LiaTimesSolid } 
 
 export const Pricing = () => {
   return (
-    <main>
-      <Container className="py-5 py-lg-0">
-        <Table bordered hover className="my-5 d-lg-none">
+    <main className="pricing-main">
+      <Container fluid className="py-5 pe-0 pe-sm-3 py-lg-0 d-lg-none">
+        <Table bordered hover responsive>
           <thead>
             <tr>
               <th className="bg-body-secondary" style={{ width: "33%" }}>
@@ -131,52 +131,43 @@ export const Pricing = () => {
                 </Link>
               </td>
               <td className="silver-bg align-middle">
-                {/* <div className="d-flex justify-content-around align-items-center">
-                  <span className="small fw-bold ms-1">$49.99</span>
-                  <Link to="/get-started" className="btn btn-outline-dark border-1 rounded-pill">
-                    Select
-                  </Link>
-                </div> */}
                 <h5 className="mb-0 text-center text-black">Coming soon...</h5>
               </td>
               <td className="gradient-bg align-middle">
-                {/* <div className="d-flex justify-content-around align-items-center">
-                  <span className="small fw-bold ms-1">$99.99</span>
-                  <Link to="/get-started" className="btn btn-outline-dark border-1 rounded-pill">
-                    Select
-                  </Link>
-                </div> */}
                 <h5 className="mb-0 text-center text-black">Coming soon...</h5>
               </td>
             </tr>
           </tbody>
         </Table>
-        <Row className="d-none d-lg-flex py-5 align-items-center">
+      </Container>
+      <Container className="py-5 py-lg-0 d-none d-lg-flex">
+        <Row className="py-5 align-items-center">
           <Col md={4} className="py-3">
-            <Card className="bg-body-secondary border-5">
-              <Card.Header className="rounded-0 border-5 py-4 py-xl-5">
-                <Badge>Free</Badge>
+            <Card className="bg-body-secondary border-3">
+              <Card.Header className="rounded-0 border-3">
+                <h5 className="mb-0 d-flex justify-content-end">
+                  <Badge className="bg-dark">Free</Badge>
+                </h5>
                 <div className="d-flex flex-md-column align-items-center py-3">
                   <LiaSquare className="display-1" />
-                  <h2 className="m-0">Core</h2>
+                  <h2>Core</h2>
                 </div>
               </Card.Header>
-              <Card.Body className="px-4 bg-frosted">
-                <Card.Title>Free</Card.Title>
+              <Card.Body className="p-4 bg-light border-bottom">
                 <Card.Text>Everything you need to get your essential business information online.</Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush border-0">
-                <ListGroup.Item className="text-center bg-transparent border-0 d-flex">
+                <ListGroup.Item className="text-center border-bottom d-flex">
                   <LiaCheckSolid className="fs-5 text-success" />
                   <span className="small fw-bold ms-1">Basic Features</span>
                   <span className="px-2" />
                 </ListGroup.Item>
-                <ListGroup.Item className="text-center bg-transparent border-0 d-flex">
+                <ListGroup.Item className="text-center border-bottom d-flex">
                   <LiaTimesSolid className="fs-5 text-danger" />
                   <span className="small fw-bold ms-1">Expanded Themes & SEO</span>
                   <span className="px-2" />
                 </ListGroup.Item>
-                <ListGroup.Item className="text-center bg-transparent border-0 d-flex">
+                <ListGroup.Item className="text-center border-bottom d-flex">
                   <LiaTimesSolid className="fs-5 text-danger" />
                   <span className="small fw-bold ms-1">Powerful Business Analytics</span>
                   <span className="px-2" />
@@ -190,42 +181,39 @@ export const Pricing = () => {
             </Card>
           </Col>
           <Col md={4} className="py-3">
-            <Card className="gradient-bg border-5">
-              <Card.Header className="border-5 py-5">
+            <Card className="gradient-bg border-3">
+              <Card.Header className="border-3">
+                <h5 className="mb-0 d-flex justify-content-end">
+                  <Badge className="bg-dark">$149.99</Badge>
+                </h5>
                 <div className="d-flex flex-md-column align-items-center py-3">
                   <LiaCubesSolid className="display-1" />
-                  <h2 className="m-0">Professional</h2>
+                  <h2>Professional</h2>
                 </div>
               </Card.Header>
-              <Card.Body className="px-4 bg-frosted">
-                <Card.Title>$99.99</Card.Title>
+              <Card.Body className="p-4 bg-light border-bottom">
                 <Card.Text>
                   Harness our powerful business tools to optimize traffic to your website and access powerful data
                   analytics to drive growth.
                 </Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush border-0">
-                <ListGroup.Item className="text-center bg-transparent d-flex border-0">
+                <ListGroup.Item className="text-center d-flex border-bottom">
                   <LiaCheckSolid className="fs-5 text-success" />
                   <span className="small fw-bold ms-1">Basic Features</span>
                   <span className="px-2" />
                 </ListGroup.Item>
-                <ListGroup.Item className="text-center bg-transparent d-flex border-0">
+                <ListGroup.Item className="text-center d-flex border-bottom">
                   <LiaCheckSolid className="fs-5 text-success" />
                   <span className="small fw-bold ms-1">Expanded Themes & SEO</span>
                   <span className="px-2" />
                 </ListGroup.Item>
-                <ListGroup.Item className="text-center bg-transparent d-flex border-0">
+                <ListGroup.Item className="text-center d-flex border-bottom">
                   <LiaCheckSolid className="fs-5 text-success" />
                   <span className="small fw-bold ms-1">Powerful Business Analytics</span>
                   <span className="px-2" />
                 </ListGroup.Item>
               </ListGroup>
-              {/* <Card.Body className="bg-transparent">
-                <Link to="/get-started" className="btn btn-dark btn-lg bg-black rounded-pill w-100">
-                  Select
-                </Link>
-              </Card.Body> */}
               <Card.Body
                 className="bg-transparent d-flex align-items-center justify-content-center"
                 style={{ height: "81.56px" }}>
@@ -234,29 +222,31 @@ export const Pricing = () => {
             </Card>
           </Col>
           <Col md={4} className="py-3">
-            <Card className="silver-bg border-5">
-              <Card.Header className="rounded-0 border-5 py-4 py-xl-5">
+            <Card className="silver-bg border-3">
+              <Card.Header className="rounded-0 border-3">
+                <h5 className="mb-0 d-flex justify-content-end">
+                  <Badge className="bg-dark">$49.99</Badge>
+                </h5>
                 <div className="d-flex flex-md-column align-items-center py-3">
                   <LiaCubeSolid className="display-1" />
-                  <h2 className="m-0">Deluxe</h2>
+                  <h2>Deluxe</h2>
                 </div>
               </Card.Header>
-              <Card.Body className="px-4 bg-frosted">
-                <Card.Title>$19.99</Card.Title>
+              <Card.Body className="p-4 bg-light border-bottom">
                 <Card.Text>For businesses that want to stand out from their competition.</Card.Text>
               </Card.Body>
-              <ListGroup className="list-group-flush border-0 bg-transparent">
-                <ListGroup.Item className="text-center border-0 bg-transparent d-flex">
+              <ListGroup className="list-group-flush border-0">
+                <ListGroup.Item className="text-center border-bottom d-flex">
                   <LiaCheckSolid className="fs-5 text-success" />
                   <span className="small fw-bold ms-1">Basic Features</span>
                   <span className="px-2" />
                 </ListGroup.Item>
-                <ListGroup.Item className="text-center border-0 bg-transparent d-flex">
+                <ListGroup.Item className="text-center border-bottom d-flex">
                   <LiaCheckSolid className="fs-5 text-success" />
                   <span className="small fw-bold ms-1">Expanded Themes & SEO</span>
                   <span className="px-2" />
                 </ListGroup.Item>
-                <ListGroup.Item className="text-center border-0 bg-transparent d-flex">
+                <ListGroup.Item className="text-center border-bottom d-flex">
                   <LiaTimesSolid className="fs-5 text-danger" />
                   <span className="small fw-bold ms-1">Powerful Business Analytics</span>
                   <span className="px-2" />
@@ -265,11 +255,6 @@ export const Pricing = () => {
               <Card.Body className="d-flex align-items-center justify-content-center" style={{ height: "81.56px" }}>
                 <h4 className="text-center mb-0">Coming Soon...</h4>
               </Card.Body>
-              {/* <Card.Body className="silver-bg">
-                <Link to="/get-started" className="btn btn-outline-dark btn-lg border-2 rounded-pill w-100">
-                  Select
-                </Link>
-              </Card.Body> */}
             </Card>
           </Col>
         </Row>

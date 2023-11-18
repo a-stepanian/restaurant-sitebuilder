@@ -27,11 +27,7 @@ export const HoursForm = (props: IHoursFormProps) => {
   };
 
   return (
-    <Form
-      noValidate
-      validated={validated}
-      onSubmit={handleSubmit}
-      className="row bg-frosted pt-1 px-5 shadow-lg rounded-5">
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row>
         <Col xs={2} sm={4}></Col>
         <Col xs={5} sm={4}>
@@ -40,68 +36,72 @@ export const HoursForm = (props: IHoursFormProps) => {
         <Col xs={5} sm={4}>
           <p className="m-0">Close</p>
         </Col>
-        {basicInfo.hours.map((dayOfWeek) => {
-          const { day, open, close } = dayOfWeek;
-          let hoursWithoutDay = basicInfo.hours.filter((x) => x.day !== day);
-          return (
-            <>
-              <Col xs={2} sm={4}>
-                <p className="d-sm-none">{day.slice(0, 3).toUpperCase()}</p>
-                <p className="d-none d-sm-block">{day}</p>
-              </Col>
-              <Col xs={5} sm={4}>
-                <input
-                  className="text-end w-100"
-                  type="time"
-                  required
-                  placeholder="06:00"
-                  value={open}
-                  onChange={(e) => {
-                    const updatedHours = basicInfo.hours.map((x) => {
-                      if (x.day === day) {
+        <Col xs={12}>
+          {basicInfo.hours.map((dayOfWeek) => {
+            const { day, open, close } = dayOfWeek;
+            let hoursWithoutDay = basicInfo.hours.filter((x) => x.day !== day);
+            return (
+              <Row key={dayOfWeek.day}>
+                <Col xs={2} sm={4}>
+                  <p className="d-sm-none">{day.slice(0, 3).toUpperCase()}</p>
+                  <p className="d-none d-sm-block">{day}</p>
+                </Col>
+                <Col xs={5} sm={4}>
+                  <input
+                    className="text-end w-100"
+                    type="time"
+                    required
+                    placeholder="06:00"
+                    value={open}
+                    onChange={(e) => {
+                      const updatedHours = basicInfo.hours.map((x) => {
+                        if (x.day === day) {
+                          return {
+                            day,
+                            open: e.target.value,
+                            close,
+                          };
+                        }
+                        return x;
+                      });
+                      setBasicInfo((prev) => {
                         return {
-                          day,
-                          open: e.target.value,
-                          close,
+                          ...prev,
+                          hours: [...updatedHours],
                         };
-                      }
-                      return x;
-                    });
-                    setBasicInfo({
-                      ...basicInfo,
-                      hours: [...updatedHours],
-                    });
-                  }}
-                />
-              </Col>
-              <Col xs={5} sm={4}>
-                <input
-                  className="text-end w-100"
-                  type="time"
-                  required
-                  placeholder="22:00"
-                  value={close}
-                  onChange={(e) => {
-                    const updatedHours = basicInfo.hours.map((x) => {
-                      if (x.day === day) {
-                        return {
-                          day,
-                          open,
-                          close: e.target.value,
-                        };
-                      }
-                      return x;
-                    });
-                    setBasicInfo({
-                      ...basicInfo,
-                      hours: [...updatedHours],
-                    });
-                  }}
-                />
-              </Col>
-            </>
-          );
-        })}
+                      });
+                    }}
+                  />
+                </Col>
+                <Col xs={5} sm={4}>
+                  <input
+                    className="text-end w-100"
+                    type="time"
+                    required
+                    placeholder="22:00"
+                    value={close}
+                    onChange={(e) => {
+                      const updatedHours = basicInfo.hours.map((x) => {
+                        if (x.day === day) {
+                          return {
+                            day,
+                            open,
+                            close: e.target.value,
+                          };
+                        }
+                        return x;
+                      });
+                      setBasicInfo({
+                        ...basicInfo,
+                        hours: [...updatedHours],
+                      });
+                    }}
+                  />
+                </Col>
+              </Row>
+            );
+          })}
+        </Col>
       </Row>
       <div className={`py-3 d-flex justify-content-${step === 1 ? "end" : "between"}`}>
         {step > 1 && (
