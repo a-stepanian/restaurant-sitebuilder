@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { IAddress, IBasicInfo, IContactInfo } from "../../App";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 
-interface ILiveSiteProps {
+interface IPreviewProps {
   basicInfo: IBasicInfo;
   contactInfo: IContactInfo;
   address: IAddress;
 }
-export const LiveSite = (props: ILiveSiteProps) => {
+export const Preview = (props: IPreviewProps) => {
   const { basicInfo, contactInfo, address } = props;
   const [displayContent, setDisplayContent] = useState<"Home" | "Menu" | "HoursAndLocation">("Home");
   return (
