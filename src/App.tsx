@@ -70,8 +70,9 @@ export const App = () => {
   // Run when url changes
   useEffect(() => {
     setOnLiveSite(location.pathname === "/live-site");
+    setOnGetStartedPage(location.pathname === "/get-started");
     setOnPricingPage(["/pricing", "/get-started"].includes(location.pathname));
-    setOnFourOhFourPage(!["", "/", "/get-started", "/pricing", "login"].includes(location.pathname));
+    setOnFourOhFourPage(!["", "/", "/get-started", "/pricing", "/login"].includes(location.pathname));
     document.querySelector(".navbar")?.classList.remove("solid-white");
     window.onscroll = function () {
       var scrollLimit = 60;
@@ -84,34 +85,32 @@ export const App = () => {
   }, [location]);
 
   return (
-    <>
-      <Container fluid className={`px-0 ${onFourOhFourPage ? "space-bg" : onPricingPage ? "radial-bg" : "bg-light"}`}>
-        <Header onGetStartedPage={onGetStartedPage} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/get-started"
-            element={
-              <HeroBuilder
-                basicInfo={basicInfo}
-                setBasicInfo={setBasicInfo}
-                contactInfo={contactInfo}
-                setContactInfo={setContactInfo}
-                address={address}
-                setAddress={setAddress}
-              />
-            }
-          />
-          <Route
-            path="/preview"
-            element={<Preview basicInfo={basicInfo} contactInfo={contactInfo} address={address} />}
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="*" element={<FourOhFour />} />
-        </Routes>
-        <Footer onGetStartedPage={onGetStartedPage} onFourOhFourPage={onFourOhFourPage} />
-      </Container>
-    </>
+    <Container fluid className={`site-container px-0 ${onFourOhFourPage ? "space-bg" : "bg-light"}`}>
+      <Header onGetStartedPage={onGetStartedPage} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/get-started"
+          element={
+            <HeroBuilder
+              basicInfo={basicInfo}
+              setBasicInfo={setBasicInfo}
+              contactInfo={contactInfo}
+              setContactInfo={setContactInfo}
+              address={address}
+              setAddress={setAddress}
+            />
+          }
+        />
+        <Route
+          path="/preview"
+          element={<Preview basicInfo={basicInfo} contactInfo={contactInfo} address={address} />}
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="*" element={<FourOhFour />} />
+      </Routes>
+      <Footer onGetStartedPage={onGetStartedPage} onFourOhFourPage={onFourOhFourPage} />
+    </Container>
   );
 };
