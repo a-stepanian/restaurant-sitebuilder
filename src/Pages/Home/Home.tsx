@@ -53,7 +53,7 @@ export const Home = () => {
         <Row className="my-5 py-5">
           <Col md={6} className="order-1 order-md-2">
             <div className="d-flex flex-column justify-content-center h-100">
-              <h2 className="increase-text">Increase your sales</h2>
+              <h2 className="increase-text fw-bold">Increase your sales</h2>
               <p className="fs-2 lead">Attract new customers and provide the information they need with ease.</p>
             </div>
           </Col>
@@ -84,15 +84,13 @@ export const Home = () => {
         <Row className="mt-5 py-5">
           <Col md={6}>
             <div className="d-flex flex-column justify-content-center align-items-center h-100">
-              <h2 className="increase-text display-1 my-5">Increase your online presence</h2>
+              <h2 className="increase-text fw-bold display-1 my-5">Increase your online presence</h2>
               <p className="fs-2 lead">Get in front of your customers, position your restaurant for success.</p>
             </div>
           </Col>
           <Col className="pb-5" md={6}>
             <div className="d-flex justify-content-center align-items-center">
-              <video autoPlay loop muted playsInline>
-                <source src="/images/mobile-menu.mp4" type="video/mp4" />
-              </video>
+              <img src="/images/pizzeria.png" alt="A chef" />
             </div>
           </Col>
         </Row>
