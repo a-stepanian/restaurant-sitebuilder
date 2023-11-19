@@ -38,7 +38,7 @@ export const Home = () => {
             <div className="h-100 d-flex flex-column justify-content-center align-items-center">
               <img
                 className="img-fluid rounded-circle hero-image"
-                src="/images/food-doodle.jpg"
+                src="/images/food-doodle-sm.webp"
                 loading="eager"
                 width="640"
                 height="360"
@@ -69,7 +69,7 @@ export const Home = () => {
       <Container fluid className="home-try-it-now">
         <Row className="py-5">
           <Col className="py-5">
-            <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="d-flex justify-content-end align-items-center h-100">
               <Link to="/get-started" className="py-3 px-5 my-3 btn btn-dark btn-lg bg-black rounded-pill">
                 Try it now for free!
               </Link>
