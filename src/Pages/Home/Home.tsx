@@ -59,9 +59,20 @@ export const Home = () => {
           </Col>
           <Col md={6}>
             <div className="h-100 d-flex align-items-center justify-content-center">
-              <video autoPlay loop muted playsInline>
-                <source src="/images/computer.mp4" type="video/mp4" />
-              </video>
+              <img
+                width={"100px"}
+                className="img-fluid food-truck"
+                loading="lazy"
+                src="/images/food-truck.svg"
+                alt="Sandwiches"
+              />
+              <img
+                width={"200px"}
+                className="img-fluid chart"
+                loading="lazy"
+                src="/images/chart.svg"
+                alt="Sandwiches"
+              />
             </div>
           </Col>
         </Row>
@@ -76,21 +87,35 @@ export const Home = () => {
             </div>
           </Col>
           <Col>
-            <img src="/images/cat-food.png" height={"300px"} alt="" />
+            <img
+              width={"300px"}
+              className="img-fluid"
+              loading="lazy"
+              src="/images/cat-food.png"
+              height={"300px"}
+              alt=""
+            />
           </Col>
         </Row>
       </Container>
       <Container>
         <Row className="mt-5 py-5">
           <Col md={6}>
-            <div className="d-flex flex-column justify-content-center align-items-center h-100">
-              <h2 className="increase-text fw-bold display-1 my-5">Increase your online presence</h2>
-              <p className="fs-2 lead">Get in front of your customers, position your restaurant for success.</p>
+            <div className="h-100 d-flex justify-content-center align-items-center">
+              <img
+                width={"200px"}
+                className="img-fluid"
+                loading="lazy"
+                src="/images/food-app-computer.svg"
+                alt="A chef"
+              />
+              <img width={"200px"} className="img-fluid" loading="lazy" src="/images/food-app.svg" alt="A chef" />
             </div>
           </Col>
-          <Col className="pb-5" md={6}>
-            <div className="d-flex justify-content-center align-items-center">
-              <img src="/images/pizzeria.png" alt="A chef" />
+          <Col md={6}>
+            <div className="d-flex flex-column justify-content-center align-items-center h-100">
+              <h2 className="increase-text fw-bold">Increase your online presence</h2>
+              <p className="fs-2 lead">Get in front of your customers, position your restaurant for success.</p>
             </div>
           </Col>
         </Row>

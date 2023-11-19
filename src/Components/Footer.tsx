@@ -28,7 +28,7 @@ export const Footer = (props: IFooterProps) => {
   return (
     <>
       {!onGetStartedPage && !onFourOhFourPage && (
-        <Container fluid className="py-5" style={{ backgroundColor: "rgba(21, 188, 223, 0.1)" }}>
+        <Container fluid className="py-5" style={{ backgroundColor: "#e6eff2" }}>
           <Row className="py-5">
             <Col>
               <div className="d-flex flex-column align-items-center">
@@ -72,9 +72,9 @@ export const Footer = (props: IFooterProps) => {
                 <div className="footer-col">
                   <nav className="d-flex align-items-center">
                     <MdOutlineFastfood className="d-none d-sm-block d-md-none m-4 display-6" />
-                    <h5 className="mb-0">
+                    <p className="mb-0">
                       <span className="d-none d-lg-block">Links</span>
-                    </h5>
+                    </p>
                     <ul className="list-unstyled m-3">
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/">
@@ -105,14 +105,11 @@ export const Footer = (props: IFooterProps) => {
                 </div>
               </Col>
               <Col xs={6}>
-                <div
-                  className="footer-col"
-                  style={{
-                    backgroundImage: "url('/images/scribble.png')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "left",
-                  }}>
-                  <ul className="list-unstyled m-0 d-flex align-items-center">
+                <div className="footer-col">
+                  <div className="d-flex position-absolute">
+                    <img src="/images/scribble.png" alt="Scribbles" className="img-fluid" loading="lazy" />
+                  </div>
+                  <ul className="list-unstyled mb-0 mt-3 d-flex align-items-center" style={{ zIndex: "1" }}>
                     <li>
                       <a
                         href="https://www.linkedin.com/in/alexander-stepanian/"

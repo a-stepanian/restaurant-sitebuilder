@@ -406,3 +406,9 @@ input,
   overflow-y: scroll;
   height: 100vh;
 }
+.chart {
+  transform: translateX(-25%);
+}
+.food-truck {
+  transform: translate(10%, -60%) rotate(-45deg);
+}
