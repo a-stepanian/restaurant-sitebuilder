@@ -41,7 +41,7 @@ const Home = () => {
                 src="/images/food-doodle-sm.webp"
                 loading="eager"
                 width="640"
-                height="360"
+                height="640"
                 alt="Assorted snack foods"
               />
               <Link to="/get-started" className="d-md-none mt-5 w-100 btn btn-dark btn-lg bg-black rounded-pill">
@@ -73,14 +73,16 @@ const Home = () => {
                 />
               </svg>
               <img
-                width={"100px"}
+                width="100px"
+                height="100px"
                 className="img-fluid food-truck"
                 loading="lazy"
                 src="/images/food-truck.svg"
                 alt="Sandwiches"
               />
               <img
-                width={"200px"}
+                width="200px"
+                height="200px"
                 className="img-fluid chart"
                 loading="lazy"
                 src="/images/chart.svg"
@@ -100,14 +102,7 @@ const Home = () => {
             </div>
           </Col>
           <Col md={6} className="order-1">
-            <img
-              width={"300px"}
-              className="img-fluid"
-              loading="lazy"
-              src="/images/cat-food.png"
-              height={"300px"}
-              alt=""
-            />
+            <img width="300px" height="300px" className="img-fluid" loading="lazy" src="/images/cat-food.png" alt="" />
           </Col>
         </Row>
       </Container>
@@ -116,13 +111,21 @@ const Home = () => {
           <Col md={6}>
             <div className="h-100 d-flex justify-content-center align-items-center">
               <img
-                width={"200px"}
+                width="200px"
+                height="200px"
                 className="img-fluid"
                 loading="lazy"
                 src="/images/food-app-computer.svg"
                 alt="A chef"
               />
-              <img width={"100px"} className="img-fluid" loading="lazy" src="/images/food-app.svg" alt="A chef" />
+              <img
+                width="100px"
+                height="100px"
+                className="img-fluid"
+                loading="lazy"
+                src="/images/food-app.svg"
+                alt="A chef"
+              />
             </div>
           </Col>
           <Col md={6}>
