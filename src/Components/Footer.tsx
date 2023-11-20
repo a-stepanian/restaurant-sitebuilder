@@ -107,7 +107,14 @@ export const Footer = (props: IFooterProps) => {
               <Col xs={6}>
                 <div className="footer-col">
                   <div className="d-flex position-absolute">
-                    <img src="/images/scribble.png" alt="Scribbles" className="img-fluid" loading="lazy" />
+                    <img
+                      width="640"
+                      height="320"
+                      src="/images/scribble.png"
+                      alt="Scribbles"
+                      className="img-fluid"
+                      loading="lazy"
+                    />
                   </div>
                   <ul className="list-unstyled mb-0 mt-3 d-flex align-items-center" style={{ zIndex: "1" }}>
                     <li>
