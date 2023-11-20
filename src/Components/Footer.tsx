@@ -28,7 +28,9 @@ export const Footer = (props: IFooterProps) => {
   return (
     <>
       {!onGetStartedPage && !onFourOhFourPage && (
-        <div style={{ backgroundColor: "#e6eff2", padding: "5rem 0" }}>
+        <div
+          className="d-flex align-items-center justify-content-center"
+          style={{ backgroundColor: "#e6eff2", height: "30rem" }}>
           <Row className="py-5">
             <Col>
               <div className="d-flex flex-column align-items-center">
