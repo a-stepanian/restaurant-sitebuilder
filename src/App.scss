@@ -193,9 +193,7 @@ img::-webkit-selection {
 
 // PreviewWidescreen.tsx
 .computer-screen {
-  transform: scale(0.5) translate(-50%, -50%);
-  width: 200%;
-  height: 50%;
+  transform: scale(0.75);
   .text {
     display: flex;
     align-items: center;
@@ -227,7 +225,7 @@ img::-webkit-selection {
 // Get Started
 form {
   opacity: 0;
-  animation: fadeIn 0.8s forwards linear;
+  animation: fadeIn 0.2s forwards linear;
 }
 
 @keyframes fadeIn {
