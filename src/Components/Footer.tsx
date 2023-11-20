@@ -28,7 +28,7 @@ export const Footer = (props: IFooterProps) => {
   return (
     <>
       {!onGetStartedPage && !onFourOhFourPage && (
-        <Container fluid className="py-5" style={{ backgroundColor: "#e6eff2" }}>
+        <Container fluid style={{ backgroundColor: "#e6eff2" }}>
           <Row className="py-5">
             <Col>
               <div className="d-flex flex-column align-items-center">
