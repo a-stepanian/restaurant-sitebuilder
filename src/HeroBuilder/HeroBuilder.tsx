@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Modal, CloseButton } from "react-bootstrap";
 import { ComputerScreen } from "./ComputerScreen/ComputerScreen";
 import { BasicInfoForm } from "./Forms/BasicInfoForm";
 import { ContactInfoForm } from "./Forms/ContactInfoForm";
@@ -17,17 +17,17 @@ interface IHeroBuilderProps {
   setAddress: any;
 }
 
-export const HeroBuilder = (props: IHeroBuilderProps) => {
+const HeroBuilder = (props: IHeroBuilderProps) => {
   const { basicInfo, setBasicInfo, contactInfo, setContactInfo, address, setAddress } = props;
   const [step, setStep] = useState<number>(1);
   const [color, setColor] = useState("#000000");
-
+  const [showModal, setShowModal] = useState<boolean>(true);
   return (
     <main style={{ minHeight: "100vh" }}>
       <Container className="my-5">
-        <Row>
-          <Col lg={6} className="p-3 shadow-lg rounded-3">
-            <h2 className="text-center display-6 mb-3">
+        <Modal show={showModal}>
+          <Modal.Header className="bg-dark-subtle d-flex justify-content-between">
+            <p className="mb-0">
               {step === 1
                 ? "Let's get started"
                 : step === 2
@@ -35,15 +35,10 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
                 : step === 3
                 ? "Almost done..."
                 : "Final Step!"}
-            </h2>
-            {step <= 4 && (
-              <ProgressBar
-                now={(step / 4) * 100 - 10}
-                variant="dark"
-                label={`${(step / 4) * 100 - 10}%`}
-                className="mb-4 bg-light"
-              />
-            )}
+            </p>
+            <CloseButton onClick={() => setShowModal(false)} />
+          </Modal.Header>
+          <Modal.Body>
             {step === 5 && <p>Sign up form here</p>}
             {step === 1 && (
               <BasicInfoForm
@@ -67,8 +62,22 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
                 setStep={setStep}
               />
             )}
-          </Col>
-          <Col lg={6}>
+          </Modal.Body>
+          <Modal.Footer className="bg-dark-subtle">
+            <div className="w-100">
+              {step <= 4 && (
+                <ProgressBar
+                  now={(step / 4) * 100 - 10}
+                  variant="dark"
+                  label={`${(step / 4) * 100 - 10}%`}
+                  className="bg-light"
+                />
+              )}
+            </div>
+          </Modal.Footer>
+        </Modal>
+        <Row>
+          <Col>
             <ComputerScreen
               basicInfo={basicInfo}
               contactInfo={contactInfo}
@@ -82,3 +91,4 @@ export const HeroBuilder = (props: IHeroBuilderProps) => {
     </main>
   );
 };
+export default HeroBuilder;

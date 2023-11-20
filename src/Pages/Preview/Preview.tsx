@@ -7,7 +7,7 @@ interface IPreviewProps {
   contactInfo: IContactInfo;
   address: IAddress;
 }
-export const Preview = (props: IPreviewProps) => {
+const Preview = (props: IPreviewProps) => {
   const { basicInfo, contactInfo, address } = props;
   const [displayContent, setDisplayContent] = useState<"Home" | "Menu" | "HoursAndLocation">("Home");
   return (
@@ -57,3 +57,4 @@ export const Preview = (props: IPreviewProps) => {
     </div>
   );
 };
+export default Preview;

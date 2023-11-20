@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaRightLong } from "react-icons/fa6";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <Container>
@@ -138,3 +138,4 @@ export const Home = () => {
     </>
   );
 };
+export default Home;

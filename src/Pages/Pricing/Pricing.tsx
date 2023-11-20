@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Badge, Card, Col, Container, ListGroup, Row, Table } from "react-bootstrap";
 import { LiaCheckSolid, LiaCubeSolid, LiaCubesSolid, LiaSquare, LiaTimesSolid } from "react-icons/lia";
 
-export const Pricing = () => {
+const Pricing = () => {
   return (
     <main className="pricing-main">
       <Container fluid className="py-5 pe-0 pe-sm-3 py-lg-0 d-lg-none">
@@ -262,3 +262,4 @@ export const Pricing = () => {
     </main>
   );
 };
+export default Pricing;

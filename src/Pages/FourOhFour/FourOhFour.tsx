@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 
-export const FourOhFour = () => {
+const FourOhFour = () => {
   return (
     <Container>
       <Row className="mt-5 pb-5">
@@ -27,3 +27,4 @@ export const FourOhFour = () => {
     </Container>
   );
 };
+export default FourOhFour;
