@@ -18,7 +18,6 @@ interface IBackgroundStyles {
   backgroundSize: string;
   backgroundRepeat: string;
   backgroundPosition: string;
-  height: string;
 }
 
 interface ITheme {
@@ -62,7 +61,6 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center center",
-      height: "600px",
     },
   });
 
@@ -86,8 +84,8 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
 
   return (
     <section className="computer-screen">
-      <PreviewHeader basicInfo={basicInfo} />
-      <div ref={heroRef} className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
+      <PreviewHeader heroRef={heroRef} basicInfo={basicInfo} />
+      <div className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
         {catchPhrase && catchPhrase.length > 0 && (
           <h2
             ref={catchPhraseRef}

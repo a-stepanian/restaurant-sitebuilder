@@ -55,7 +55,9 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
               cuisineType: e.target.value,
             });
           }}>
-          <option value="">Pick one</option>
+          <option disabled value="">
+            Pick one
+          </option>
           {data.cuisines.map((cuisine) => {
             return (
               <option key={cuisine.name} value={cuisine.name}>

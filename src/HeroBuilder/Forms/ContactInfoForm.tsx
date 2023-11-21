@@ -10,13 +10,14 @@ interface IContactInfoFormProps {
   setContactInfo: React.Dispatch<React.SetStateAction<IContactInfo>>;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ContactInfoForm = (props: IContactInfoFormProps) => {
-  const { contactInfo, setContactInfo, step, setStep } = props;
+  const { contactInfo, setContactInfo, step, setStep, setShowModal } = props;
+
   const [showHelp, setShowHelp] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
       setStep((prev) => prev + 1);
     }
     setValidated(true);
-    navigate("/preview");
+    setShowModal(false);
   };
 
   return (
@@ -89,7 +90,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
           </button>
         )}
         <button type="submit" className="btn btn-lg btn-dark bg-black rounded-pill border-2 px-4">
-          Preview My Website
+          Preview
         </button>
       </div>
     </Form>

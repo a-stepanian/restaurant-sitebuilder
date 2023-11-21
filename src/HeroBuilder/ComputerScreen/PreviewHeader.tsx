@@ -4,14 +4,18 @@ import { IBasicInfo } from "../../App";
 
 interface IPreviewHeaderProps {
   basicInfo: IBasicInfo;
+  heroRef: any;
 }
 
 export const PreviewHeader = (props: IPreviewHeaderProps) => {
-  const { restaurantName } = props.basicInfo;
+  const { basicInfo, heroRef } = props;
+
   return (
-    <Navbar expand="xs" bg="dark" data-bs-theme="dark">
+    <Navbar expand="xs" bg="dark" data-bs-theme="dark" ref={heroRef}>
       <Container>
-        <Navbar.Brand href="#">{restaurantName.length > 0 ? restaurantName : "Smoky Bones"}</Navbar.Brand>
+        <Navbar.Brand href="#">
+          {basicInfo.restaurantName.length > 0 ? basicInfo.restaurantName : "Smoky Bones"}
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

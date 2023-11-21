@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Modal, CloseButton } from "react-bootstrap";
 import { ComputerScreen } from "./ComputerScreen/ComputerScreen";
 import { BasicInfoForm } from "./Forms/BasicInfoForm";
@@ -21,11 +21,27 @@ const HeroBuilder = (props: IHeroBuilderProps) => {
   const { basicInfo, setBasicInfo, contactInfo, setContactInfo, address, setAddress } = props;
   const [step, setStep] = useState<number>(1);
   const [color, setColor] = useState("#000000");
-  const [showModal, setShowModal] = useState<boolean>(true);
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShowModal(true);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
-    <main style={{ minHeight: "100vh" }}>
-      <Container className="my-5">
-        <Modal show={showModal}>
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "url('/images/wave.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "top",
+        backgroundRepeat: "no-repeat",
+      }}>
+      <Container className="py-5">
+        <Modal show={showModal} centered>
           <Modal.Header className="bg-dark-subtle d-flex justify-content-between">
             <p className="mb-0">
               {step === 1
@@ -60,6 +76,7 @@ const HeroBuilder = (props: IHeroBuilderProps) => {
                 setContactInfo={setContactInfo}
                 step={step}
                 setStep={setStep}
+                setShowModal={setShowModal}
               />
             )}
           </Modal.Body>
