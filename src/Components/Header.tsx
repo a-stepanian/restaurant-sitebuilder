@@ -39,11 +39,13 @@ export const Header = (props: IHeaderProps) => {
         <Link to="/login" className="d-none d-md-block px-3 text-black">
           Log in
         </Link>
-        {!onGetStartedPage && (
-          <Link to="/get-started" className="d-none d-md-block btn btn-dark bg-black rounded-pill nav-cta">
-            Start free trial
-          </Link>
-        )}
+        <Link
+          to="/get-started"
+          className={`d-none d-md-block btn btn-dark bg-black rounded-pill nav-cta ${
+            onGetStartedPage ? "shrink" : ""
+          }`}>
+          Start free trial
+        </Link>
       </Container>
     </Navbar>
   );

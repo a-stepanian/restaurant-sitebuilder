@@ -156,6 +156,13 @@ img::-webkit-selection {
     font-family: "Poppins", sans-serif;
     font-size: 0.75rem;
     font-weight: 400 !important;
+    transition: 0.05s;
+  }
+  .shrink {
+    padding: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
 }
 .solid-white {
