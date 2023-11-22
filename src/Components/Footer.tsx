@@ -74,33 +74,30 @@ export const Footer = (props: IFooterProps) => {
                 <div className="footer-col">
                   <nav className="d-flex align-items-center">
                     <MdOutlineFastfood className="d-none d-sm-block d-md-none m-4 display-6" />
-                    <p className="mb-0">
-                      <span className="d-none d-lg-block">Links</span>
-                    </p>
                     <ul className="list-unstyled m-3">
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/">
-                          Home&nbsp;
-                          <FaArrowRight className="small link" />
+                          Home
                         </Link>
-                      </li>
-                      <li className="p-2 footer-link">
-                        <Link className="p-2" to="/pricing">
-                          Pricing&nbsp;
-                          <FaArrowRight className="small link" />
-                        </Link>
+                        <FaArrowRight className="link" />
                       </li>
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/login">
-                          Log in&nbsp;
-                          <FaArrowRight className="small link" />
+                          Log in
                         </Link>
+                        <FaArrowRight className="link" />
+                      </li>
+                      <li className="p-2 footer-link">
+                        <Link className="p-2" to="/pricing">
+                          Pricing
+                        </Link>
+                        <FaArrowRight className="link" />
                       </li>
                       <li className="p-2 footer-link">
                         <Link className="p-2" to="/get-started">
-                          Get Started&nbsp;
-                          <FaArrowRight className="small link" />
+                          Get Started
                         </Link>
+                        <FaArrowRight className="link" />
                       </li>
                     </ul>
                   </nav>

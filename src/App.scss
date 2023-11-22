@@ -200,7 +200,6 @@ img::-webkit-selection {
 
 // PreviewWidescreen.tsx
 .computer-screen {
-  transform: scale(0.75);
   .text {
     display: flex;
     align-items: center;
@@ -253,12 +252,15 @@ form {
   height: 400px;
   .footer-link {
     .link {
+      font-size: 0.7rem;
       opacity: 0;
+      transform: translateX(-10px);
       transition: 0.2s;
     }
     &:hover {
       .link {
         opacity: 1;
+        transform: translateX(0);
       }
     }
   }

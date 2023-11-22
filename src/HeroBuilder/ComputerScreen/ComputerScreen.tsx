@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { ScreenContent } from "./ScreenContent";
 import { MdArrowBack, MdArrowForward, MdClose, MdRefresh } from "react-icons/md";
 import { IAddress, IBasicInfo, IContactInfo } from "../../App";
@@ -22,12 +22,12 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
     if (showRefresh) {
       setTimeout(() => {
         setShowRefresh(false);
-      }, 1000);
+      }, 600);
     }
   }, [showRefresh]);
 
   return (
-    <Container fluid className="bg-body p-2 border border-2 border-secondary-subtle rounded">
+    <Container className="bg-body p-2 border border-2 border-secondary-subtle rounded">
       <div className="d-flex mb-1">
         <button
           type="button"
@@ -60,12 +60,12 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
       <div
         style={{ height: "calc(100vh - 200px)", overflowY: "scroll", overflowX: "hidden", border: "1px solid gray" }}>
         {showRefresh && (
-          <div className="d-flex justify-content-center">
-            <h1>Refreshing...</h1>
+          <div className="d-flex flex-column justify-content-center align-items-center w-100 h-100 bg-dark-subtle">
+            <Spinner animation="border" variant="black" />
           </div>
         )}
         {showYouTube && !showRefresh && (
-          <div>
+          <div className="d-flex justify-content-center">
             <img src="/images/youtube.png" alt="Rick Astley - Never Gonna Give You Up" />
           </div>
         )}
