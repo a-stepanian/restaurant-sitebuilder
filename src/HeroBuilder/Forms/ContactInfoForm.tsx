@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { TextInput } from "../../Components/TextInput";
-import { IContactInfo } from "../../App";
 import { BsChevronUp, BsQuestion } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../AppContext";
 
 interface IContactInfoFormProps {
-  contactInfo: IContactInfo;
-  setContactInfo: React.Dispatch<React.SetStateAction<IContactInfo>>;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ContactInfoForm = (props: IContactInfoFormProps) => {
-  const { contactInfo, setContactInfo, step, setStep, setShowModal } = props;
+  const { step, setStep } = props;
+  const { contactInfo, updateContactInfo } = useAppContext();
 
   const [showHelp, setShowHelp] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
@@ -28,7 +25,6 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
       setStep((prev) => prev + 1);
     }
     setValidated(true);
-    setShowModal(false);
   };
 
   return (
@@ -57,7 +53,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
           autoComplete="off"
           value={contactInfo.emailAddress}
           onChange={(e) =>
-            setContactInfo({
+            updateContactInfo({
               ...contactInfo,
               emailAddress: e.target.value,
             })
@@ -74,7 +70,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
         placeholder="555-555-5555"
         currentValue={contactInfo.phoneNumber}
         changeHandler={(e: any) =>
-          setContactInfo({
+          updateContactInfo({
             ...contactInfo,
             phoneNumber: e.target.value,
           })

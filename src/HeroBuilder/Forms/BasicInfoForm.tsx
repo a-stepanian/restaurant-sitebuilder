@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Row, Col, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { data } from "../../data";
 import { TextInput } from "../../Components/TextInput";
-import { IBasicInfo } from "../../App";
+import { useAppContext } from "../../AppContext";
 
 interface IBasicInfoFormProps {
-  basicInfo: IBasicInfo;
-  setBasicInfo: React.Dispatch<React.SetStateAction<IBasicInfo>>;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   color: string;
@@ -14,7 +12,8 @@ interface IBasicInfoFormProps {
 }
 
 export const BasicInfoForm = (props: IBasicInfoFormProps) => {
-  const { basicInfo, setBasicInfo, step, setStep, color, setColor } = props;
+  const { step, setStep, color, setColor } = props;
+  const { basicInfo, updateBasicInfo } = useAppContext();
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (e: any) => {
@@ -37,7 +36,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
         placeholder="Smoky Bones"
         currentValue={basicInfo.restaurantName}
         changeHandler={(e: any) =>
-          setBasicInfo({
+          updateBasicInfo({
             ...basicInfo,
             restaurantName: e.target.value,
           })
@@ -50,7 +49,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
           required
           value={basicInfo.cuisineType}
           onChange={(e) => {
-            setBasicInfo({
+            updateBasicInfo({
               ...basicInfo,
               cuisineType: e.target.value,
             });
@@ -78,7 +77,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
             placeholder="PRIME. SIZZLING. PERFECTION."
             currentValue={basicInfo.catchPhrase ?? ""}
             changeHandler={(e: any) =>
-              setBasicInfo({
+              updateBasicInfo({
                 ...basicInfo,
                 catchPhrase: e.target.value,
               })

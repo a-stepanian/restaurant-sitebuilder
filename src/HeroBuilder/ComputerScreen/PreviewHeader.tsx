@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import { IBasicInfo } from "../../App";
+import { useAppContext } from "../../AppContext";
 
 interface IPreviewHeaderProps {
-  basicInfo: IBasicInfo;
   heroRef: any;
 }
 
 export const PreviewHeader = (props: IPreviewHeaderProps) => {
-  const { basicInfo, heroRef } = props;
+  const { heroRef } = props;
+  const { basicInfo } = useAppContext();
 
   return (
     <Navbar expand="xs" bg="dark" data-bs-theme="dark" ref={heroRef}>

@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { Row, Col, Button, Form } from "react-bootstrap";
-import { TextInput } from "../../Components/TextInput";
-import { IBasicInfo } from "../../App";
+import { Row, Col, Form } from "react-bootstrap";
+import { useAppContext } from "../../AppContext";
 
 interface IHoursFormProps {
-  basicInfo: IBasicInfo;
-  setBasicInfo: React.Dispatch<React.SetStateAction<IBasicInfo>>;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const HoursForm = (props: IHoursFormProps) => {
-  const { basicInfo, setBasicInfo, step, setStep } = props;
+  const { step, setStep } = props;
+  const { basicInfo, updateBasicInfo } = useAppContext();
 
   const [validated, setValidated] = useState(false);
 
@@ -64,11 +62,9 @@ export const HoursForm = (props: IHoursFormProps) => {
                         }
                         return x;
                       });
-                      setBasicInfo((prev) => {
-                        return {
-                          ...prev,
-                          hours: [...updatedHours],
-                        };
+                      updateBasicInfo({
+                        ...basicInfo,
+                        hours: [...updatedHours],
                       });
                     }}
                   />
@@ -91,7 +87,7 @@ export const HoursForm = (props: IHoursFormProps) => {
                         }
                         return x;
                       });
-                      setBasicInfo({
+                      updateBasicInfo({
                         ...basicInfo,
                         hours: [...updatedHours],
                       });

@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 import { data } from "../../data";
 import { TextInput } from "../../Components/TextInput";
-import { IAddress } from "../../App";
+import { useAppContext } from "../../AppContext";
 
 interface IAddressFormProps {
-  address: IAddress;
-  setAddress: React.Dispatch<React.SetStateAction<IAddress>>;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const AddressForm = (props: IAddressFormProps) => {
-  const { address, setAddress, step, setStep } = props;
+  const { step, setStep } = props;
+  const { address, updateAddress } = useAppContext();
 
   const [showSecondAddressLine, setShowSecondAddressLine] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
@@ -38,7 +37,7 @@ export const AddressForm = (props: IAddressFormProps) => {
           placeholder="123 Elm St."
           currentValue={address.street1}
           changeHandler={(e) =>
-            setAddress({
+            updateAddress({
               ...address,
               street1: e.target.value,
             })
@@ -58,7 +57,7 @@ export const AddressForm = (props: IAddressFormProps) => {
             placeholder="Suite B"
             currentValue={address.street2}
             changeHandler={(e) =>
-              setAddress({
+              updateAddress({
                 ...address,
                 street2: e.target.value,
               })
@@ -74,7 +73,7 @@ export const AddressForm = (props: IAddressFormProps) => {
           placeholder="Twin Peaks"
           currentValue={address.city}
           changeHandler={(e) =>
-            setAddress({
+            updateAddress({
               ...address,
               city: e.target.value,
             })
@@ -89,7 +88,7 @@ export const AddressForm = (props: IAddressFormProps) => {
             required
             value={address.state}
             onChange={(e) => {
-              setAddress({
+              updateAddress({
                 ...address,
                 state: e.target.value,
               });
@@ -114,7 +113,7 @@ export const AddressForm = (props: IAddressFormProps) => {
           placeholder="68652"
           currentValue={address.zipCode}
           changeHandler={(e: any) =>
-            setAddress({
+            updateAddress({
               ...address,
               zipCode: e.target.value,
             })

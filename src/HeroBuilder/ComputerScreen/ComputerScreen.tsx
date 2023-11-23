@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { ScreenContent } from "./ScreenContent";
 import { MdArrowBack, MdArrowForward, MdClose, MdRefresh } from "react-icons/md";
-import { IAddress, IBasicInfo, IContactInfo } from "../../App";
+import { useAppContext } from "../../AppContext";
 
 interface IWidescreenViewProps {
-  basicInfo: IBasicInfo;
-  contactInfo: IContactInfo;
-  address: IAddress;
   color: string;
   step?: number;
 }
 
 export const ComputerScreen = (props: IWidescreenViewProps) => {
-  const { basicInfo, contactInfo, address, color, step } = props;
+  const { color, step } = props;
+  const { basicInfo } = useAppContext();
 
   const [showYouTube, setShowYouTube] = useState<boolean>(false);
   const [showRefresh, setShowRefresh] = useState<boolean>(false);
@@ -47,13 +45,14 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
           <MdRefresh className="text-secondary fs-5" />
         </button>
         <p
-          className="text-nowrap rounded-pill mx-1 mb-1 ps-3 flex-grow-1 bg-secondary-subtle text-dark"
+          className="mb-0 d-flex align-items-center rounded-pill ps-3 flex-grow-1 bg-secondary-subtle"
           style={{ fontSize: "12px" }}>
           www.
-          {basicInfo.restaurantName.length > 0
-            ? basicInfo.restaurantName.toLowerCase().replace(/\s/g, "-")
-            : "double-r-diner"}
-          .com
+          {showYouTube
+            ? "youtube.com/watch?v=dQw4w9WgXcQ"
+            : basicInfo.restaurantName.length > 0
+            ? basicInfo.restaurantName.toLowerCase().replace(/\s/g, "-") + ".com"
+            : "dimsumdelight.com"}
         </p>
         <MdClose className="text-secondary" />
       </div>
@@ -66,12 +65,10 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
         )}
         {showYouTube && !showRefresh && (
           <div className="d-flex justify-content-center">
-            <img src="/images/youtube.png" alt="Rick Astley - Never Gonna Give You Up" />
+            <img src="/images/youtube.png" alt="Rick Astley - Never Gonna Give You Up" className="img-fluid" />
           </div>
         )}
-        {!showYouTube && !showRefresh && (
-          <ScreenContent basicInfo={basicInfo} contactInfo={contactInfo} address={address} color={color} step={step} />
-        )}
+        {!showYouTube && !showRefresh && <ScreenContent color={color} step={step} />}
       </div>
     </Container>
   );

@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { IAddress, IBasicInfo, IContactInfo } from "../../App";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import { useAppContext } from "../../AppContext";
 
-interface IPreviewProps {
-  basicInfo: IBasicInfo;
-  contactInfo: IContactInfo;
-  address: IAddress;
-}
-const Preview = (props: IPreviewProps) => {
-  const { basicInfo, contactInfo, address } = props;
+const Preview = () => {
+  const appContext = useAppContext;
+  const { basicInfo, contactInfo, address } = appContext();
   const [displayContent, setDisplayContent] = useState<"Home" | "Menu" | "HoursAndLocation">("Home");
   return (
     <div className="silver-bg" style={{ zIndex: "2" }}>

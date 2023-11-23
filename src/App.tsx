@@ -1,69 +1,19 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "./App.scss";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
-
-export interface IHours {
-  day: string;
-  open: string;
-  close: string;
-}
-export interface IBasicInfo {
-  restaurantName: string;
-  cuisineType: string;
-  about: string;
-  catchPhrase?: string;
-  hours: IHours[];
-}
-export interface IContactInfo {
-  emailAddress: string;
-  phoneNumber: string;
-}
-export interface IAddress {
-  street1: string;
-  street2: string;
-  city: string;
-  state: string;
-  zipCode: string;
-}
+import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
+import Preview from "./Pages/Preview/Preview";
+import Pricing from "./Pages/Pricing/Pricing";
+import FourOhFour from "./Pages/FourOhFour/FourOhFour";
+import HeroBuilder from "./HeroBuilder/HeroBuilder";
 
 export const App = () => {
-  const Home = React.lazy(() => import("./Pages/Home/Home"));
-  const Login = React.lazy(() => import("./Pages/Login/Login"));
-  const Preview = React.lazy(() => import("./Pages/Preview/Preview"));
-  const Pricing = React.lazy(() => import("./Pages/Pricing/Pricing"));
-  const FourOhFour = React.lazy(() => import("./Pages/FourOhFour/FourOhFour"));
-  const HeroBuilder = React.lazy(() => import("./HeroBuilder/HeroBuilder"));
   const [onGetStartedPage, setOnGetStartedPage] = useState<boolean>(false);
   const [onFourOhFourPage, setOnFourOhFourPage] = useState<boolean>(false);
-  const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
-    restaurantName: "Dim Sum Heaven",
-    catchPhrase: "So good you'll think you died and went to heaven.",
-    about: "Dim Sum Heaven opened in",
-    cuisineType: "Pick one",
-    hours: [
-      { day: "Sunday", open: "06:00", close: "22:00" },
-      { day: "Monday", open: "06:00", close: "22:00" },
-      { day: "Tuesday", open: "06:00", close: "22:00" },
-      { day: "Wednesday", open: "06:00", close: "22:00" },
-      { day: "Thursday", open: "06:00", close: "22:00" },
-      { day: "Friday", open: "06:00", close: "22:00" },
-      { day: "Saturday", open: "06:00", close: "22:00" },
-    ],
-  });
-  const [contactInfo, setContactInfo] = useState<IContactInfo>({
-    emailAddress: "",
-    phoneNumber: "",
-  });
-  const [address, setAddress] = useState<IAddress>({
-    street1: "",
-    street2: "",
-    city: "",
-    state: "",
-    zipCode: "",
-  });
 
   const location = useLocation();
 
@@ -86,61 +36,12 @@ export const App = () => {
     <Container fluid className={`site-container px-0 ${onFourOhFourPage ? "space-bg" : "bg-light"}`}>
       <Header onGetStartedPage={onGetStartedPage} />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Suspense>
-              <Home />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/get-started"
-          element={
-            <Suspense>
-              <HeroBuilder
-                basicInfo={basicInfo}
-                setBasicInfo={setBasicInfo}
-                contactInfo={contactInfo}
-                setContactInfo={setContactInfo}
-                address={address}
-                setAddress={setAddress}
-              />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/preview"
-          element={
-            <Suspense>
-              <Preview basicInfo={basicInfo} contactInfo={contactInfo} address={address} />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <Suspense>
-              <Login />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/pricing"
-          element={
-            <Suspense>
-              <Pricing />
-            </Suspense>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <Suspense>
-              <FourOhFour />{" "}
-            </Suspense>
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/get-started" element={<HeroBuilder />} />
+        <Route path="/preview" element={<Preview />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="*" element={<FourOhFour />} />
       </Routes>
       <Footer onGetStartedPage={onGetStartedPage} onFourOhFourPage={onFourOhFourPage} />
     </Container>
