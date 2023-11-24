@@ -13,7 +13,7 @@ export const HoursForm = (props: IHoursFormProps) => {
 
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -25,7 +25,7 @@ export const HoursForm = (props: IHoursFormProps) => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
       <Row>
         <Col xs={2} sm={4}></Col>
         <Col xs={5} sm={4}>

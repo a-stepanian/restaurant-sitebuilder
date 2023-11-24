@@ -16,7 +16,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
   const [showHelp, setShowHelp] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -69,7 +69,7 @@ export const ContactInfoForm = (props: IContactInfoFormProps) => {
         tipText="Add a phone number where your customers can reach you."
         placeholder="555-555-5555"
         currentValue={contactInfo.phoneNumber}
-        changeHandler={(e: any) =>
+        changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
           updateContactInfo({
             ...contactInfo,
             phoneNumber: e.target.value,

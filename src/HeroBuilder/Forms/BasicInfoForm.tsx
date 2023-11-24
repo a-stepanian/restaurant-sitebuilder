@@ -16,7 +16,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
   const { basicInfo, updateBasicInfo } = useAppContext();
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false || basicInfo.cuisineType === "Pick one") {
@@ -33,9 +33,8 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
         label="What is your restaurant name?"
         required={true}
         autofocus={true}
-        placeholder="Smoky Bones"
         currentValue={basicInfo.restaurantName}
-        changeHandler={(e: any) =>
+        changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
           updateBasicInfo({
             ...basicInfo,
             restaurantName: e.target.value,
@@ -74,9 +73,8 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
           <TextInput
             label="Add a catch phrase!"
             required={true}
-            placeholder="PRIME. SIZZLING. PERFECTION."
             currentValue={basicInfo.catchPhrase ?? ""}
-            changeHandler={(e: any) =>
+            changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
               updateBasicInfo({
                 ...basicInfo,
                 catchPhrase: e.target.value,

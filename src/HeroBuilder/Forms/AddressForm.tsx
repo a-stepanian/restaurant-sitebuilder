@@ -16,7 +16,7 @@ export const AddressForm = (props: IAddressFormProps) => {
   const [showSecondAddressLine, setShowSecondAddressLine] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -112,7 +112,7 @@ export const AddressForm = (props: IAddressFormProps) => {
           required={true}
           placeholder="68652"
           currentValue={address.zipCode}
-          changeHandler={(e: any) =>
+          changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
             updateAddress({
               ...address,
               zipCode: e.target.value,

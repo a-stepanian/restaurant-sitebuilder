@@ -7,7 +7,7 @@ interface ITextInputProps {
   required: boolean;
   currentValue: string;
   changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
+  placeholder?: string;
   tipText?: string;
   hideLabel?: boolean;
   inputClasses?: string;
@@ -43,7 +43,7 @@ export const TextInput = (props: ITextInputProps) => {
         className={`${inputClasses ?? ""}`}
         autoComplete="off"
         autoFocus={autofocus ?? false}
-        placeholder={placeholder}
+        placeholder={placeholder ?? ""}
         required={required}
         value={currentValue}
         onChange={changeHandler}
