@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import { useAppContext } from "../../AppContext";
+import { useAppContext } from "../../../AppContext";
 
 interface IPreviewHeaderProps {
-  heroRef: any;
+  heroRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
 export const PreviewHeader = (props: IPreviewHeaderProps) => {
@@ -13,9 +13,7 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
   return (
     <Navbar expand="xs" bg="dark" data-bs-theme="dark" ref={heroRef}>
       <Container>
-        <Navbar.Brand href="#">
-          {basicInfo.restaurantName.length > 0 ? basicInfo.restaurantName : "Smoky Bones"}
-        </Navbar.Brand>
+        <Navbar.Brand href="#">{basicInfo.restaurantName}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

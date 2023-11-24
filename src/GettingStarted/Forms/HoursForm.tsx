@@ -27,12 +27,12 @@ export const HoursForm = (props: IHoursFormProps) => {
   return (
     <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
       <Row>
-        <Col xs={2} sm={4}></Col>
-        <Col xs={5} sm={4}>
-          <p className="m-0">Open</p>
+        <Col xs={2}></Col>
+        <Col xs={5}>
+          <p className="m-0 small">Open</p>
         </Col>
-        <Col xs={5} sm={4}>
-          <p className="m-0">Close</p>
+        <Col xs={5}>
+          <p className="m-0 small">Close</p>
         </Col>
         <Col xs={12}>
           {basicInfo.hours.map((dayOfWeek) => {
@@ -40,11 +40,11 @@ export const HoursForm = (props: IHoursFormProps) => {
             let hoursWithoutDay = basicInfo.hours.filter((x) => x.day !== day);
             return (
               <Row key={dayOfWeek.day}>
-                <Col xs={2} sm={4}>
+                <Col xs={2}>
                   <p className="d-sm-none">{day.slice(0, 3).toUpperCase()}</p>
-                  <p className="d-none d-sm-block">{day}</p>
+                  <p className="d-none d-sm-block small">{day}</p>
                 </Col>
-                <Col xs={5} sm={4}>
+                <Col xs={5}>
                   <input
                     className="text-end w-100"
                     type="time"
@@ -69,7 +69,7 @@ export const HoursForm = (props: IHoursFormProps) => {
                     }}
                   />
                 </Col>
-                <Col xs={5} sm={4}>
+                <Col xs={5}>
                   <input
                     className="text-end w-100"
                     type="time"

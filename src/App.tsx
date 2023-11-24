@@ -9,7 +9,7 @@ import Login from "./Pages/Login/Login";
 import Preview from "./Pages/Preview/Preview";
 import Pricing from "./Pages/Pricing/Pricing";
 import FourOhFour from "./Pages/FourOhFour/FourOhFour";
-import HeroBuilder from "./HeroBuilder/HeroBuilder";
+import GetStarted from "./Pages/GetStarted/GetStarted";
 
 export const App = () => {
   const [onGetStartedPage, setOnGetStartedPage] = useState<boolean>(false);
@@ -37,7 +37,7 @@ export const App = () => {
       <Header onGetStartedPage={onGetStartedPage} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/get-started" element={<HeroBuilder />} />
+        <Route path="/get-started" element={<GetStarted />} />
         <Route path="/preview" element={<Preview />} />
         <Route path="/login" element={<Login />} />
         <Route path="/pricing" element={<Pricing />} />

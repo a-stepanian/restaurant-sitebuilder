@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { data } from "../../data";
-import { TextInput } from "../../Components/TextInput";
-import { useAppContext } from "../../AppContext";
+import { data } from "../../../data";
+import { TextInput } from "../../../Components/TextInput";
+import { useAppContext } from "../../../AppContext";
 
 interface IBasicInfoFormProps {
   step: number;
@@ -46,6 +46,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
         <Form.Select
           aria-label="Select a cuisine type"
           required
+          size="lg"
           value={basicInfo.cuisineType}
           onChange={(e) => {
             updateBasicInfo({
@@ -53,9 +54,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
               cuisineType: e.target.value,
             });
           }}>
-          <option disabled value="">
-            Pick one
-          </option>
+          <option disabled value=""></option>
           {data.cuisines.map((cuisine) => {
             return (
               <option key={cuisine.name} value={cuisine.name}>

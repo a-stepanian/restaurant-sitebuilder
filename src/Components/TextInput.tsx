@@ -42,6 +42,7 @@ export const TextInput = (props: ITextInputProps) => {
         type="text"
         className={`${inputClasses ?? ""}`}
         autoComplete="off"
+        size="lg"
         autoFocus={autofocus ?? false}
         placeholder={placeholder ?? ""}
         required={required}

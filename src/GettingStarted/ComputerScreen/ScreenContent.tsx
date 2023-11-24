@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Card, Col, Container, Nav, Row, Tab } from "react-bootstrap";
+import { Card, Col, Nav, Row, Tab } from "react-bootstrap";
 import { PreviewHeader } from "./PreviewHeader";
 import { data } from "../../data";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import { IoLocationOutline } from "react-icons/io5";
 import { useAppContext } from "../../AppContext";
 
 interface IPreviewWidescreenProps {
@@ -54,8 +55,7 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
   const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   const [theme, setTheme] = useState<ITheme>({
     backgroundStyles: {
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1538128844159-f08f41bfb169?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2044&q=80')",
+      backgroundImage: "none",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center center",
@@ -81,12 +81,12 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
   }, [basicInfo.cuisineType]);
 
   return (
-    <section className="computer-screen">
+    <section className="computer-screen h-100">
       <PreviewHeader heroRef={heroRef} />
-      <div className="bg-body px-0 border-3 py-5" style={theme.backgroundStyles}>
+      <div className="bg-body px-0 border-3 py-5 h-100" style={theme.backgroundStyles}>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
-            <Col sm={3}>
+            <Col xs={3}>
               {catchPhrase && catchPhrase.length > 0 && (
                 <h2
                   ref={catchPhraseRef}
@@ -108,12 +108,49 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col sm={9}>
+            <Col xs={9}>
               <Tab.Content>
                 <Tab.Pane eventKey="locationTab">
-                  <Card style={{ width: "100%" }}>
-                    <Card.Header>
+                  <Row className="bg-frosted">
+                    <Col lg={6}>
+                      <Row>
+                        <Col xs={1}>
+                          <IoLocationOutline className="me-3" />
+                        </Col>
+                        <Col xs={10}>
+                          <p className="mb-0">{address.street1.length > 0 ? address.street1 : "123 Elm Street"}</p>
+                          {address.street2.length > 0 && <p className="mb-0">{address.street2}</p>}
+                          <p className="mb-3 small">
+                            {address.city.length > 0 ? address.city : "Twin Peaks"},&nbsp;
+                            {address.state.length > 0 ? address.state : "WA"}&nbsp;
+                            {address.zipCode.length > 0 ? address.zipCode : "98045"}
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={1}>
+                          <AiOutlinePhone className="me-3" />
+                        </Col>
+                        <Col xs={10}>
+                          <p className="mb-3 small">
+                            {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={1}>
+                          <AiOutlineMail className="me-3" />
+                        </Col>
+                        <Col xs={10}>
+                          <p className="mb-0 small">
+                            {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
+                          </p>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <Col lg={6}>
                       <iframe
+                        title="map"
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10782.926239124838!2d-121.7868641!3d47.4951426!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54907c3cb1ed631f%3A0x1ec460db5eadfbc4!2sTwede&#39;s%20Cafe!5e0!3m2!1sen!2sus!4v1689124203589!5m2!1sen!2sus"
                         width="300"
                         height="200"
@@ -121,29 +158,8 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
                         allowFullScreen={true}
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
-                    </Card.Header>
-                    <Card.Body>
-                      <Card.Title>
-                        <p className="text">{address.street1.length > 0 ? address.street1 : "123 Elm Street"}</p>
-                        <p className="text">{address.street2.length > 0 && address.street2}</p>
-                      </Card.Title>
-                      <Card.Text>
-                        <p className="text">
-                          {address.city.length > 0 ? address.city : "Twin Peaks"},&nbsp;
-                          {address.state.length > 0 ? address.state : "WA"},&nbsp;
-                          {address.zipCode.length > 0 ? address.zipCode : "98045"},&nbsp;
-                        </p>
-                        <p className="text">
-                          <AiOutlinePhone className="me-3" />
-                          {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
-                        </p>
-                        <p className="text">
-                          <AiOutlineMail className="me-3" />
-                          {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
-                        </p>
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
+                    </Col>
+                  </Row>
                 </Tab.Pane>
                 <Tab.Pane eventKey="hoursTab">
                   <Row>

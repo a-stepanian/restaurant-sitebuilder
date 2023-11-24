@@ -25,7 +25,7 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
   }, [showRefresh]);
 
   return (
-    <Container className="bg-body p-2 border border-2 border-secondary-subtle rounded">
+    <Container className="bg-body p-2 border rounded-3 shadow">
       <div className="d-flex mb-1">
         <button
           type="button"
@@ -45,19 +45,19 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
           <MdRefresh className="text-secondary fs-5" />
         </button>
         <p
-          className="mb-0 d-flex align-items-center rounded-pill ps-3 flex-grow-1 bg-secondary-subtle"
+          className="mb-0 d-flex align-items-center rounded rounded-pill ps-3 flex-grow-1 bg-secondary-subtle"
           style={{ fontSize: "12px" }}>
           www.
           {showYouTube
             ? "youtube.com/watch?v=dQw4w9WgXcQ"
             : basicInfo.restaurantName.length > 0
             ? basicInfo.restaurantName.toLowerCase().replace(/\s/g, "-") + ".com"
-            : "dimsumdelight.com"}
+            : "your-future-website.com"}
         </p>
-        <MdClose className="text-secondary" />
       </div>
       <div
-        style={{ height: "calc(100vh - 200px)", overflowY: "scroll", overflowX: "hidden", border: "1px solid gray" }}>
+        className="rounded border"
+        style={{ height: "calc(100vh - 200px)", overflowY: "scroll", overflowX: "hidden" }}>
         {showRefresh && (
           <div className="d-flex flex-column justify-content-center align-items-center w-100 h-100 bg-dark-subtle">
             <Spinner animation="border" variant="black" />

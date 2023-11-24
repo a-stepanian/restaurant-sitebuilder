@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Col, Form } from "react-bootstrap";
-import { data } from "../../data";
-import { TextInput } from "../../Components/TextInput";
-import { useAppContext } from "../../AppContext";
+import { data } from "../../../data";
+import { TextInput } from "../../../Components/TextInput";
+import { useAppContext } from "../../../AppContext";
 
 interface IAddressFormProps {
   step: number;
@@ -86,6 +86,7 @@ export const AddressForm = (props: IAddressFormProps) => {
           <Form.Select
             aria-label="Select a state"
             required
+            size="lg"
             value={address.state}
             onChange={(e) => {
               updateAddress({

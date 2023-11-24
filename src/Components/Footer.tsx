@@ -56,7 +56,7 @@ export const Footer = (props: IFooterProps) => {
         <Row className="g-0">
           <Col md={4}>
             <div className="d-none d-md-flex footer-col">
-              <Link to="/" ref={footerLogo} className="display-6 mb-0 text-nowrap" onMouseEnter={animateLogo}>
+              <Link to="/" ref={footerLogo} className="fw-normal display-6 mb-0 text-nowrap" onMouseEnter={animateLogo}>
                 <MdOutlineFastfood className="mb-2 me-2 footer-logo-icon" />
                 <span className="d-inline-block">M</span>
                 <span className="d-inline-block">e</span>
@@ -107,7 +107,7 @@ export const Footer = (props: IFooterProps) => {
                 <div className="footer-col">
                   <div className="d-flex position-absolute">
                     <img
-                      width="640"
+                      width="320"
                       height="320"
                       src="/images/scribble.png"
                       alt="Scribbles"

@@ -21,13 +21,17 @@ interface IAddress {
   zipCode: string;
 }
 
+type TDevice = "mobile" | "computer";
+
 interface IAppState {
+  device: TDevice;
   basicInfo: IBasicInfo;
   contactInfo: IContactInfo;
   address: IAddress;
   updateBasicInfo: (info: IBasicInfo) => void;
   updateContactInfo: (info: IContactInfo) => void;
   updateAddress: (info: IAddress) => void;
+  updateDevice: (info: TDevice) => void;
 }
 
 interface Props {
@@ -45,19 +49,20 @@ const useAppContext = () => {
 };
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
+  const [device, setDevice] = useState<TDevice>("computer");
   const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
-    restaurantName: "Dim Sum Delight",
-    catchPhrase: "World Famous Dim Sum.",
-    about: "Dim Sum Heaven opened in",
-    cuisineType: "Chinese",
+    restaurantName: "",
+    catchPhrase: "",
+    about: "",
+    cuisineType: "",
     hours: [
-      { day: "Sunday", open: "06:00", close: "22:00" },
-      { day: "Monday", open: "06:00", close: "22:00" },
-      { day: "Tuesday", open: "06:00", close: "22:00" },
-      { day: "Wednesday", open: "06:00", close: "22:00" },
-      { day: "Thursday", open: "06:00", close: "22:00" },
-      { day: "Friday", open: "06:00", close: "22:00" },
-      { day: "Saturday", open: "06:00", close: "22:00" },
+      { day: "Sun", open: "06:00", close: "22:00" },
+      { day: "Mon", open: "06:00", close: "22:00" },
+      { day: "Tue", open: "06:00", close: "22:00" },
+      { day: "Wed", open: "06:00", close: "22:00" },
+      { day: "Thu", open: "06:00", close: "22:00" },
+      { day: "Fri", open: "06:00", close: "22:00" },
+      { day: "Sat", open: "06:00", close: "22:00" },
     ],
   });
   const [contactInfo, setContactInfo] = useState<IContactInfo>({
@@ -75,14 +80,17 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const updateBasicInfo = (info: IBasicInfo) => setBasicInfo(info);
   const updateContactInfo = (info: IContactInfo) => setContactInfo(info);
   const updateAddress = (info: IAddress) => setAddress(info);
+  const updateDevice = (info: TDevice) => setDevice(info);
 
   const contextValue: IAppState = {
     basicInfo,
     contactInfo,
     address,
+    device,
     updateBasicInfo,
     updateContactInfo,
     updateAddress,
+    updateDevice,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
