@@ -24,7 +24,7 @@ interface ITheme {
 
 export const ScreenContent = (props: IPreviewWidescreenProps) => {
   const { color, step } = props;
-  const { basicInfo, contactInfo, address } = useAppContext();
+  const { basicInfo, contactInfo, address, device } = useAppContext();
   const { catchPhrase } = basicInfo;
 
   function isCurrentlyOpen(hours: { day: string; open: string; close: string }[]): boolean {
@@ -109,7 +109,7 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
       <div className="bg-body px-0 border-3 py-5 h-100" style={theme.backgroundStyles}>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
-            <Col xs={3}>
+            <Col xs={device === "mobile" ? 12 : 3} className={device === "mobile" ? "" : ""}>
               {catchPhrase && catchPhrase.length > 0 && (
                 <h2
                   ref={catchPhraseRef}
@@ -119,7 +119,7 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
                   {catchPhrase}
                 </h2>
               )}
-              <Nav variant="pills" className="flex-column">
+              <Nav variant={device === "mobile" ? "tabs" : "tabs"} className={device === "mobile" ? "" : "flex-column"}>
                 <Nav.Item>
                   <Nav.Link eventKey="locationTab">Location</Nav.Link>
                 </Nav.Item>

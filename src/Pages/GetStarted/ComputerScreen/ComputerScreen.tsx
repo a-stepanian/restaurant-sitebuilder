@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { ScreenContent } from "./ScreenContent";
-import { MdArrowBack, MdArrowForward, MdRefresh } from "react-icons/md";
+import { MdArrowBack, MdArrowForward, MdClose, MdRefresh } from "react-icons/md";
 import { useAppContext } from "../../../AppContext";
 
 interface IWidescreenViewProps {
