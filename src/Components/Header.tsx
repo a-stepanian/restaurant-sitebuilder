@@ -10,7 +10,7 @@ export const Header = (props: IHeaderProps) => {
   const { onGetStartedPage } = props;
 
   return (
-    <Navbar expand="md" className="main-navbar navbar sticky-top" data-bs-theme="light">
+    <Navbar expand="md" className="main-navbar navbar" data-bs-theme="light">
       <Container>
         <Navbar.Brand className="pt-0">
           <Link to="/" className="text-black text-decoration-none nav-home">
