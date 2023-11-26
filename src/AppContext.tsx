@@ -21,17 +21,17 @@ interface IAddress {
   zipCode: string;
 }
 
-type TDevice = "mobile" | "computer";
-
 interface IAppState {
-  device: TDevice;
+  device: "mobile" | "computer";
   basicInfo: IBasicInfo;
   contactInfo: IContactInfo;
   address: IAddress;
+  step: number;
   updateBasicInfo: (info: IBasicInfo) => void;
   updateContactInfo: (info: IContactInfo) => void;
   updateAddress: (info: IAddress) => void;
-  updateDevice: (info: TDevice) => void;
+  updateDevice: (info: "mobile" | "computer") => void;
+  updateStep: (info: number) => void;
 }
 
 interface Props {
@@ -49,7 +49,7 @@ const useAppContext = () => {
 };
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
-  const [device, setDevice] = useState<TDevice>("computer");
+  const [device, setDevice] = useState<"mobile" | "computer">("computer");
   const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
     restaurantName: "",
     catchPhrase: "",
@@ -76,21 +76,25 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     state: "",
     zipCode: "",
   });
+  const [step, setStep] = useState<number>(1);
 
   const updateBasicInfo = (info: IBasicInfo) => setBasicInfo(info);
   const updateContactInfo = (info: IContactInfo) => setContactInfo(info);
   const updateAddress = (info: IAddress) => setAddress(info);
-  const updateDevice = (info: TDevice) => setDevice(info);
+  const updateDevice = (info: "mobile" | "computer") => setDevice(info);
+  const updateStep = (info: number) => setStep(info);
 
   const contextValue: IAppState = {
     basicInfo,
     contactInfo,
     address,
     device,
+    step,
     updateBasicInfo,
     updateContactInfo,
     updateAddress,
     updateDevice,
+    updateStep,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

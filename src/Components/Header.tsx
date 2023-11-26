@@ -12,7 +12,7 @@ export const Header = (props: IHeaderProps) => {
   return (
     <Navbar expand="md" className="main-navbar navbar" data-bs-theme="light">
       <Container>
-        <Navbar.Brand className="pt-0">
+        <Navbar.Brand className="pt-0 my-1">
           <Link to="/" className="text-black text-decoration-none nav-home">
             <div className="d-flex justify-content-center align-items-center">
               <MdOutlineFastfood />
@@ -39,11 +39,7 @@ export const Header = (props: IHeaderProps) => {
         <Link to="/login" className="d-none d-md-block px-3 text-black">
           Log in
         </Link>
-        <Link
-          to="/get-started"
-          className={`d-none d-md-block btn btn-dark bg-black rounded-pill nav-cta ${
-            onGetStartedPage ? "shrink" : ""
-          }`}>
+        <Link to="/get-started" className={`d-none d-md-block btn btn-dark bg-black rounded-pill nav-cta`}>
           Start free trial
         </Link>
       </Container>

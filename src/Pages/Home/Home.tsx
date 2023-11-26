@@ -43,7 +43,7 @@ const Home = () => {
       <Container className="mh75vh">
         <div
           className="border border-4 border-black rounded-3 bg-frosted"
-          style={{ boxShadow: "-4px 20px 2px #000000c2", transform: "rotate(357deg)" }}>
+          style={{ boxShadow: "-4px 20px 0 #000000", transform: "rotate(357deg)" }}>
           <Row className="my-5 py-5">
             <Col md={6} className="order-1 order-md-2">
               <div className="d-flex flex-column justify-content-center h-100">
@@ -79,7 +79,7 @@ const Home = () => {
       <Container fluid className="position-relative d-flex justify-content-center align-items-center mh75vh">
         <div
           className="home-try-it-now border border-4 border-black rounded-3"
-          style={{ boxShadow: "4px 20px 2px #000000c2", transform: "rotate(3deg)" }}>
+          style={{ boxShadow: "4px 20px 0 #000000", transform: "rotate(3deg)" }}>
           <Row>
             <Col sm={6} className="order-2 order-sm-1">
               <div className="m-2 justify-content-start justify-content-sm-end h-100 d-sm-flex align-items-sm-center">
@@ -106,7 +106,7 @@ const Home = () => {
       <Container className="mh75vh">
         <div
           className="bg-frosted border border-4 border-black rounded-3"
-          style={{ boxShadow: "-4px 20px 2px #000000c2", transform: "rotate(357deg)" }}>
+          style={{ boxShadow: "-4px 20px 0 #000000", transform: "rotate(357deg)" }}>
           <Row className="mt-5 py-5">
             <Col md={6}>
               <div className="h-100 d-flex justify-content-center align-items-center">

@@ -119,7 +119,9 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
                   {catchPhrase}
                 </h2>
               )}
-              <Nav variant={device === "mobile" ? "tabs" : "tabs"} className={device === "mobile" ? "" : "flex-column"}>
+              <Nav
+                variant={device === "mobile" ? "tabs" : "pills dark"}
+                className={device === "mobile" ? "" : "flex-column"}>
                 <Nav.Item>
                   <Nav.Link eventKey="locationTab">Location</Nav.Link>
                 </Nav.Item>

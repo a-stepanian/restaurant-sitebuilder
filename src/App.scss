@@ -2,7 +2,8 @@
 @import "../node_modules/bootstrap/scss/functions";
 
 // Bootstrap default variable overrides
-$primary: #000;
+$black: #0a0a0a;
+$primary: #0a0a0a;
 
 // Bootstrap Required
 @import "../node_modules/bootstrap/scss/variables";
@@ -115,6 +116,15 @@ img::-webkit-selection {
 }
 .radial-bg {
   background: radial-gradient(#f9fbff 80%, #dae4f4);
+}
+.bg-custom-blue {
+  background-color: #b6fff2 !important;
+}
+.bg-custom-yellow {
+  background-color: #fff488 !important;
+}
+.opaque {
+  opacity: 1 !important;
 }
 
 // Header
@@ -420,9 +430,96 @@ input,
   display: flex;
   align-items: center;
 }
+.mh100vh {
+  min-height: 100vh !important;
+  display: flex;
+  align-items: center;
+}
 .chart {
   transform: translateX(-25%);
 }
 .food-truck {
   transform: translate(10%, -60%) rotate(-45deg);
+}
+
+// CustomProgressBar
+.progress-line {
+  position: absolute;
+  left: 0;
+  bottom: 60%;
+  transition: 0.5s;
+  background-color: #0a0a0a;
+}
+.thin-line {
+  height: 2px;
+  width: 100%;
+}
+.thick-line {
+  height: 6px;
+  bottom: calc(60% - 2px);
+  border-radius: 3px;
+}
+.progress-step {
+  font-size: 0.7rem;
+  text-wrap: nowrap;
+  position: absolute;
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & p {
+    transition: 0.3s;
+    color: black;
+    position: absolute;
+    font-size: 0.5rem;
+    top: -14px;
+  }
+  &:nth-of-type(1) {
+    left: calc(0% - 0.9rem);
+  }
+  &:nth-of-type(2) {
+    left: calc(25% - 0.9rem);
+  }
+  &:nth-of-type(3) {
+    left: calc(50% - 0.9rem);
+  }
+  &:nth-of-type(4) {
+    left: calc(75% - 0.9rem);
+  }
+  &:nth-of-type(5) {
+    left: calc(100% - 0.9rem);
+  }
+}
+@media (min-width: 768px) {
+  .form-aside {
+    height: 0;
+    padding-top: 0;
+    & * {
+      opacity: 0;
+      animation: appear 0.5s 0.5s forwards;
+    }
+    animation: openAside 0.5s 0.3s forwards;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes openAside {
+    0% {
+      height: 0;
+      padding-top: 0;
+    }
+    100% {
+      height: 100%;
+      padding-top: 3rem;
+    }
+  }
 }

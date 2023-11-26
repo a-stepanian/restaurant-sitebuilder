@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import { Col, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { data } from "../../../data";
 import { TextInput } from "../../../Components/TextInput";
 import { useAppContext } from "../../../AppContext";
 
-interface IAddressFormProps {
-  step: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-}
-
-export const AddressForm = (props: IAddressFormProps) => {
-  const { step, setStep } = props;
+export const AddressForm = () => {
+  const { step, updateStep } = useAppContext();
   const { address, updateAddress } = useAppContext();
 
   const [showSecondAddressLine, setShowSecondAddressLine] = useState<boolean>(false);
@@ -22,14 +17,18 @@ export const AddressForm = (props: IAddressFormProps) => {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      setStep((prev) => prev + 1);
+      updateStep(step + 1);
     }
     setValidated(true);
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Col xs={12}>
+    <Form
+      noValidate
+      validated={validated}
+      onSubmit={handleSubmit}
+      className="h-100 d-flex flex-column justify-content-between">
+      <div>
         <TextInput
           label="Street"
           required={true}
@@ -64,8 +63,6 @@ export const AddressForm = (props: IAddressFormProps) => {
             }
           />
         )}
-      </Col>
-      <Col sm={6}>
         <TextInput
           label="City"
           required={true}
@@ -79,8 +76,6 @@ export const AddressForm = (props: IAddressFormProps) => {
             })
           }
         />
-      </Col>
-      <Col sm={3}>
         <Form.Group className="mt-2" controlId="formState">
           <Form.Label className="d-flex justify-content-between mb-0">State</Form.Label>
           <Form.Select
@@ -106,8 +101,6 @@ export const AddressForm = (props: IAddressFormProps) => {
             <small>This field is required</small>
           </Form.Control.Feedback>
         </Form.Group>
-      </Col>
-      <Col sm={3}>
         <TextInput
           label="Zip"
           required={true}
@@ -120,17 +113,15 @@ export const AddressForm = (props: IAddressFormProps) => {
             })
           }
         />
-      </Col>
+      </div>
       <div className={`py-3 d-flex justify-content-${step === 1 ? "end" : "between"}`}>
-        {step > 1 && (
-          <button
-            type="button"
-            className="btn btn-outline-dark rounded-pill border-2 px-4"
-            onClick={() => setStep((prev) => prev - 1)}>
-            Back
-          </button>
-        )}
-        <button type="submit" className="btn btn-dark rounded-pill border-2 px-4">
+        <button
+          type="button"
+          className="btn btn-lg btn-outline-dark rounded-pill border-2 px-4"
+          onClick={() => updateStep(step - 1)}>
+          Back
+        </button>
+        <button type="submit" className="btn btn-lg btn-dark rounded-pill border-2 px-4">
           Next
         </button>
       </div>

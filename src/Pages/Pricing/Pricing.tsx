@@ -5,7 +5,7 @@ import { LiaCheckSolid, LiaCubeSolid, LiaCubesSolid, LiaSquare, LiaTimesSolid } 
 
 const Pricing = () => {
   return (
-    <main className="pricing-main">
+    <main className="pricing-main home-try-it-now">
       <Container className="py-5 py-lg-0 d-flex mh100vh">
         <Row className="py-5 align-items-center">
           <Col lg={4} className="py-3">
@@ -38,7 +38,7 @@ const Pricing = () => {
                     <span className="px-2" />
                   </ListGroup.Item>
                 </ListGroup>
-                <Link to="/get-started" className="d-lg-none btn btn-dark btn-lg bg-black rounded-pill w-100">
+                <Link to="/get-started" className="d-lg-none btn btn-dark btn-lg bg-black rounded-pill w-100 mt-3">
                   Select
                 </Link>
               </Card.Body>
@@ -83,11 +83,16 @@ const Pricing = () => {
                     <span className="px-2" />
                   </ListGroup.Item>
                 </ListGroup>
+                <button disabled={true} className="d-lg-none btn btn-dark btn-lg bg-black rounded-pill w-100 mt-3">
+                  Coming soon...
+                </button>
               </Card.Body>
               <Card.Body
                 className="d-none d-lg-flex bg-transparent align-items-center justify-content-center"
                 style={{ height: "81.56px" }}>
-                <h4 className="text-center mb-0">Coming Soon...</h4>
+                <button disabled={true} className="btn btn-dark btn-lg bg-black rounded-pill w-100">
+                  Coming soon...
+                </button>
               </Card.Body>
             </Card>
           </Col>
@@ -122,11 +127,16 @@ const Pricing = () => {
                     <span className="px-2" />
                   </ListGroup.Item>
                 </ListGroup>
+                <button disabled={true} className="d-lg-none btn btn-dark btn-lg bg-black rounded-pill w-100 mt-3">
+                  Coming soon...
+                </button>
               </Card.Body>
               <Card.Body
                 className="d-none d-lg-flex align-items-center justify-content-center"
                 style={{ height: "81.56px" }}>
-                <h4 className="text-center mb-0">Coming Soon...</h4>
+                <button disabled={true} className="btn btn-dark btn-lg bg-black rounded-pill w-100">
+                  Coming soon...
+                </button>
               </Card.Body>
             </Card>
           </Col>
