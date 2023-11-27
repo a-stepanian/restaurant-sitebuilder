@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import "./App.scss";
-import { Header } from "./Components/Header";
-import { Footer } from "./Components/Footer";
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
-import Preview from "./Pages/Preview/Preview";
-import Pricing from "./Pages/Pricing/Pricing";
-import FourOhFour from "./Pages/FourOhFour/FourOhFour";
-import GetStarted from "./Pages/GetStarted/GetStarted";
+import { Container } from "react-bootstrap";
+import { Header, Footer } from "./Components";
+import { Home, Login, Pricing, FourOhFour, GetStarted } from "./Pages";
 
 export const App = () => {
   const [onGetStartedPage, setOnGetStartedPage] = useState<boolean>(false);
@@ -34,13 +28,12 @@ export const App = () => {
 
   return (
     <Container fluid className={`site-container px-0 ${onFourOhFourPage ? "space-bg" : "bg-light"}`}>
-      <Header onGetStartedPage={onGetStartedPage} />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/get-started" element={<GetStarted />} />
-        <Route path="/preview" element={<Preview />} />
         <Route path="/login" element={<Login />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/get-started" element={<GetStarted />} />
         <Route path="*" element={<FourOhFour />} />
       </Routes>
       <Footer onGetStartedPage={onGetStartedPage} onFourOhFourPage={onFourOhFourPage} />

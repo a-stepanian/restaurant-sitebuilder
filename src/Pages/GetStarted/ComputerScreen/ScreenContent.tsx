@@ -5,6 +5,7 @@ import { data } from "../../../data";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { IoLocationOutline } from "react-icons/io5";
 import { useAppContext } from "../../../AppContext";
+import ContentNav from "./ContentNav";
 
 interface IPreviewWidescreenProps {
   color: string;
@@ -22,8 +23,11 @@ interface ITheme {
   backgroundStyles: IBackgroundStyles;
 }
 
+export type TTab = "home" | "location" | "hours" | "menu";
+
 export const ScreenContent = (props: IPreviewWidescreenProps) => {
   const { color, step } = props;
+  const [tab, setTab] = useState<TTab>("home");
   const { basicInfo, contactInfo, address, device } = useAppContext();
   const { catchPhrase } = basicInfo;
 
@@ -107,108 +111,88 @@ export const ScreenContent = (props: IPreviewWidescreenProps) => {
     <section className="computer-screen h-100">
       <PreviewHeader heroRef={heroRef} />
       <div className="bg-body px-0 border-3 py-5 h-100" style={theme.backgroundStyles}>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <Row>
-            <Col xs={device === "mobile" ? 12 : 3} className={device === "mobile" ? "" : ""}>
-              {catchPhrase && catchPhrase.length > 0 && (
-                <h2
-                  ref={catchPhraseRef}
-                  onDoubleClick={() => openEditorBox(catchPhraseRef)}
-                  className="catch-phrase"
-                  style={{ fontSize: "2rem", fontFamily: "Anton", color: color }}>
-                  {catchPhrase}
-                </h2>
-              )}
-              <Nav
-                variant={device === "mobile" ? "tabs" : "pills dark"}
-                className={device === "mobile" ? "" : "flex-column"}>
-                <Nav.Item>
-                  <Nav.Link eventKey="locationTab">Location</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="hoursTab">Hours</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="menuTab">Menu</Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Col>
-            <Col xs={9}>
-              <Tab.Content>
-                <Tab.Pane eventKey="locationTab">
-                  <Row className="bg-frosted">
-                    <Col lg={6}>
-                      <Row>
-                        <Col xs={1}>
-                          <IoLocationOutline className="me-3" />
-                        </Col>
-                        <Col xs={10}>
-                          <p className="mb-0">{address.street1.length > 0 ? address.street1 : "123 Elm Street"}</p>
-                          {address.street2.length > 0 && <p className="mb-0">{address.street2}</p>}
-                          <p className="mb-3 small">
-                            {address.city.length > 0 ? address.city : "Twin Peaks"},&nbsp;
-                            {address.state.length > 0 ? address.state : "WA"}&nbsp;
-                            {address.zipCode.length > 0 ? address.zipCode : "98045"}
-                          </p>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col xs={1}>
-                          <AiOutlinePhone className="me-3" />
-                        </Col>
-                        <Col xs={10}>
-                          <p className="mb-3 small">
-                            {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
-                          </p>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col xs={1}>
-                          <AiOutlineMail className="me-3" />
-                        </Col>
-                        <Col xs={10}>
-                          <p className="mb-0 small">
-                            {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
-                          </p>
-                        </Col>
-                      </Row>
-                    </Col>
-                    <Col lg={6}>
-                      <iframe
-                        title="map"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10782.926239124838!2d-121.7868641!3d47.4951426!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54907c3cb1ed631f%3A0x1ec460db5eadfbc4!2sTwede&#39;s%20Cafe!5e0!3m2!1sen!2sus!4v1689124203589!5m2!1sen!2sus"
-                        width="300"
-                        height="200"
-                        style={{ border: "0" }}
-                        allowFullScreen={true}
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"></iframe>
-                    </Col>
-                  </Row>
-                </Tab.Pane>
-                <Tab.Pane eventKey="hoursTab">
-                  <Row>
-                    <Col>
-                      <Alert variant={restaurantIsOpen ? "success" : "danger"}>
-                        We are currently&nbsp;{restaurantIsOpen ? "open" : "closed"}
-                      </Alert>
-                    </Col>
-                  </Row>
-                  {basicInfo.hours.map((x) => {
-                    return (
-                      <Row key={x.day}>
-                        <Col>{x.day}</Col>
-                        <Col>{x.open}</Col>
-                        <Col>{x.close}</Col>
-                      </Row>
-                    );
-                  })}
-                </Tab.Pane>
-                <Tab.Pane eventKey="menuTab">Second tab content</Tab.Pane>
-              </Tab.Content>
-            </Col>
-          </Row>
-        </Tab.Container>
+        <Row>
+          <Col xs={device === "mobile" ? 12 : 3} className={device === "mobile" ? "" : ""}>
+            {catchPhrase?.length > 0 && (
+              <h2
+                ref={catchPhraseRef}
+                onDoubleClick={() => openEditorBox(catchPhraseRef)}
+                className="catch-phrase"
+                style={{ fontSize: "2rem", fontFamily: "Anton", color: color }}>
+                {catchPhrase}
+              </h2>
+            )}
+            <ContentNav tab={tab} setTab={setTab} />
+          </Col>
+          <Col xs={9}>
+            <Row className="bg-frosted">
+              <Col lg={6}>
+                <Row>
+                  <Col xs={1}>
+                    <IoLocationOutline className="me-3" />
+                  </Col>
+                  <Col xs={10}>
+                    <p className="mb-0">{address.street1.length > 0 ? address.street1 : "123 Elm Street"}</p>
+                    {address.street2.length > 0 && <p className="mb-0">{address.street2}</p>}
+                    <p className="mb-3 small">
+                      {address.city.length > 0 ? address.city : "Twin Peaks"},&nbsp;
+                      {address.state.length > 0 ? address.state : "WA"}&nbsp;
+                      {address.zipCode.length > 0 ? address.zipCode : "98045"}
+                    </p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={1}>
+                    <AiOutlinePhone className="me-3" />
+                  </Col>
+                  <Col xs={10}>
+                    <p className="mb-3 small">
+                      {contactInfo.phoneNumber.length > 0 ? contactInfo.phoneNumber : "555-555-5555"}
+                    </p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={1}>
+                    <AiOutlineMail className="me-3" />
+                  </Col>
+                  <Col xs={10}>
+                    <p className="mb-0 small">
+                      {contactInfo.emailAddress.length > 0 ? contactInfo.emailAddress : "RRdiner@gmail.com"}
+                    </p>
+                  </Col>
+                </Row>
+              </Col>
+              <Col lg={6}>
+                <iframe
+                  title="map"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10782.926239124838!2d-121.7868641!3d47.4951426!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54907c3cb1ed631f%3A0x1ec460db5eadfbc4!2sTwede&#39;s%20Cafe!5e0!3m2!1sen!2sus!4v1689124203589!5m2!1sen!2sus"
+                  width="300"
+                  height="200"
+                  style={{ border: "0" }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"></iframe>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Alert variant={restaurantIsOpen ? "success" : "danger"}>
+                  We are currently&nbsp;{restaurantIsOpen ? "open" : "closed"}
+                </Alert>
+              </Col>
+            </Row>
+            {basicInfo.hours.map((x) => {
+              return (
+                <Row key={x.day}>
+                  <Col>{x.day}</Col>
+                  <Col>{x.open}</Col>
+                  <Col>{x.close}</Col>
+                </Row>
+              );
+            })}
+          </Col>
+        </Row>
       </div>
     </section>
   );

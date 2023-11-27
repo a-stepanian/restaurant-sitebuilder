@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { data } from "../../../data";
-import { TextInput } from "../../../Components/TextInput";
+import { TextInput } from "../../../Components";
 import { useAppContext } from "../../../AppContext";
 
 interface IBasicInfoFormProps {
@@ -50,7 +50,6 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
           <Form.Select
             aria-label="Select a cuisine type"
             required
-            size="lg"
             value={basicInfo.cuisineType}
             onChange={(e) => {
               updateBasicInfo({

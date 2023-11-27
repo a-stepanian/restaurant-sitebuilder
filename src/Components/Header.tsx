@@ -1,14 +1,9 @@
 import React from "react";
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { MdOutlineFastfood } from "react-icons/md";
 import { Link } from "react-router-dom";
-interface IHeaderProps {
-  onGetStartedPage: boolean;
-}
 
-export const Header = (props: IHeaderProps) => {
-  const { onGetStartedPage } = props;
-
+const Header = () => {
   return (
     <Navbar expand="md" className="main-navbar navbar" data-bs-theme="light">
       <Container>
@@ -46,3 +41,4 @@ export const Header = (props: IHeaderProps) => {
     </Navbar>
   );
 };
+export default Header;

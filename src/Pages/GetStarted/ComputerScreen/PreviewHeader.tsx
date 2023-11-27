@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAppContext } from "../../../AppContext";
 
 interface IPreviewHeaderProps {
@@ -13,6 +13,7 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
   return (
     <Navbar
       expand="xs"
+      className="py-1"
       bg={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
       data-bs-theme={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
       ref={heroRef}>

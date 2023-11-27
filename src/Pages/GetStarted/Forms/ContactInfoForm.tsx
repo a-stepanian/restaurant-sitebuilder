@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { TextInput } from "../../../Components/TextInput";
+import { TextInput } from "../../../Components";
 import { BsChevronUp, BsQuestion } from "react-icons/bs";
 import { useAppContext } from "../../../AppContext";
 
@@ -48,8 +48,9 @@ export const ContactInfoForm = () => {
           )}
           <Form.Control
             type="email"
-            placeholder="laura.palmer@gmail.com"
+            placeholder="business@gmail.com"
             required
+            className="rounded-2"
             autoComplete="off"
             value={contactInfo.emailAddress}
             onChange={(e) =>

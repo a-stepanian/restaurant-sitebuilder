@@ -14,7 +14,7 @@ interface ITextInputProps {
   autofocus?: boolean;
 }
 
-export const TextInput = (props: ITextInputProps) => {
+const TextInput = (props: ITextInputProps) => {
   const { label, required, tipText, placeholder, currentValue, changeHandler, hideLabel, inputClasses, autofocus } =
     props;
   const [showHelp, setShowHelp] = useState(false);
@@ -40,7 +40,7 @@ export const TextInput = (props: ITextInputProps) => {
       )}
       <Form.Control
         type="text"
-        className={`${inputClasses ?? ""}`}
+        className={`rounded-2 ${inputClasses ?? ""}`}
         autoComplete="off"
         autoFocus={autofocus ?? false}
         placeholder={placeholder ?? ""}
@@ -56,3 +56,5 @@ export const TextInput = (props: ITextInputProps) => {
     </Form.Group>
   );
 };
+
+export default TextInput;

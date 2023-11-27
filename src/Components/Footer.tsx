@@ -1,17 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiTwotoneMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineFastfood } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { GiEasterEgg } from "react-icons/gi";
 
 interface IFooterProps {
   onGetStartedPage: boolean;
   onFourOhFourPage: boolean;
 }
-export const Footer = (props: IFooterProps) => {
+const Footer = (props: IFooterProps) => {
   const { onGetStartedPage, onFourOhFourPage } = props;
+  const [showEasterEgg, setShowEasterEgg] = useState<boolean>(false);
 
   const footerLogo = useRef<null | HTMLAnchorElement>(null);
 
@@ -148,7 +150,22 @@ export const Footer = (props: IFooterProps) => {
           </Col>
         </Row>
       </Container>
-      <p className="bg-black text-white mb-0 small text-center">MenuWeb &copy;2023</p>
+      {showEasterEgg && (
+        <div className="position-relative">
+          <div className="d-flex justify-content-end waldo">
+            <img className="img-fluid" loading="lazy" src="/images/waldo.jpg" alt="Waldo" />
+          </div>
+        </div>
+      )}
+      <div className="bg-black d-flex justify-content-center">
+        <button
+          type="button"
+          onClick={() => setShowEasterEgg((prev) => !prev)}
+          className="p-0 rounded-0 btn btn-sm bg-black text-white mb-0 small text-center">
+          MenuWeb &copy;2023
+        </button>
+      </div>
     </>
   );
 };
+export default Footer;

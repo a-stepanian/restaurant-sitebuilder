@@ -10,7 +10,7 @@ import { useAppContext } from "../../AppContext";
 import CustomProgressBar from "../../Components/CustomProgressBar";
 
 const GetStarted = () => {
-  const { device, updateDevice, step, updateStep } = useAppContext();
+  const { device, updateDevice, step } = useAppContext();
   const [color, setColor] = useState("#0a0a0a");
 
   return (

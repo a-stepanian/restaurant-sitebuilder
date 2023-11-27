@@ -289,6 +289,21 @@ form {
     font-size: 1.5rem;
   }
 }
+.waldo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 0;
+  animation: openUp 0.2s forwards;
+}
+@keyframes openUp {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 6rem;
+  }
+}
 @media (min-width: 768px) {
   .footer-col {
     .linkedin {

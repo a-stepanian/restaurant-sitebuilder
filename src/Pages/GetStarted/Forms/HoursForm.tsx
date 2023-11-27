@@ -39,8 +39,7 @@ export const HoursForm = () => {
           return (
             <Row className="gx-0" key={dayOfWeek.day}>
               <Col xs={2}>
-                <p className="d-sm-none">{day.slice(0, 3).toUpperCase()}</p>
-                <p className="d-none d-sm-block small">{day}</p>
+                <p className="small">{day}</p>
               </Col>
               <Col xs={5}>
                 <input
