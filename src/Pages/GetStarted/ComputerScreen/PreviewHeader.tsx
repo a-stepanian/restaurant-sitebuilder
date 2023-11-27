@@ -2,12 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAppContext } from "../../../AppContext";
 
-interface IPreviewHeaderProps {
-  heroRef: React.MutableRefObject<HTMLDivElement | null>;
-}
-
-export const PreviewHeader = (props: IPreviewHeaderProps) => {
-  const { heroRef } = props;
+export const PreviewHeader = () => {
   const { basicInfo } = useAppContext();
 
   return (
@@ -15,8 +10,7 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
       expand="xs"
       className="py-1"
       bg={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
-      data-bs-theme={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
-      ref={heroRef}>
+      data-bs-theme={basicInfo.restaurantName.length > 0 ? "dark" : "light"}>
       <Container>
         <Navbar.Brand href="#">{basicInfo.restaurantName}</Navbar.Brand>
         {basicInfo.restaurantName.length > 0 && (

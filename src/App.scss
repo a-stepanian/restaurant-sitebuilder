@@ -51,41 +51,6 @@ img::-moz-selection {
 img::-webkit-selection {
   background: #a2cbd2;
 }
-.gradient-bg {
-  background-image: linear-gradient(
-    200deg,
-    #84aef1dd 8.4%,
-    rgba(38, 238, 159, 0.47) 30.67%,
-    rgba(21, 188, 223, 0.333) 70.04%,
-    hsla(0, 0%, 100%, 0) 85%
-  );
-}
-.gradient-bg1 {
-  background-image: linear-gradient(
-    135deg,
-    rgba(132, 174, 241, 0.8) 10%,
-    rgba(38, 238, 159, 0.4) 30%,
-    rgba(21, 188, 223, 0.3) 70%,
-    hsla(0, 0%, 100%, 0) 85%
-  );
-}
-.gradient-bg2 {
-  background-image: linear-gradient(
-    -135deg,
-    hsla(0, 0%, 100%, 0) 10%,
-    rgba(21, 188, 223, 0.3) 30%,
-    rgba(38, 238, 159, 0.4) 70%,
-    rgba(132, 174, 241, 0.8) 85%
-  );
-}
-.gradient-bg3 {
-  background-image: linear-gradient(
-    90deg,
-    rgba(38, 238, 159, 0.4) 10%,
-    rgba(21, 188, 223, 0.3) 25%,
-    hsla(0, 0%, 100%, 0) 75%
-  );
-}
 .silver-bg {
   background: linear-gradient(115deg, #bdcbd5, #ffffff, #c6dbe9);
 }
@@ -102,14 +67,6 @@ img::-webkit-selection {
 .bg-black.rounded-pill:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 2px rgba(0, 0, 0, 0.3);
-}
-.checkered-bg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-position: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  padding: 10rem 0;
 }
 .space-bg {
   background-image: linear-gradient(120deg, #0d1b31dd 8%, rgb(61, 60, 84) 30%, rgb(5, 41, 48) 60%, rgb(16, 21, 40) 85%);
@@ -175,10 +132,6 @@ img::-webkit-selection {
     opacity: 0;
   }
 }
-.solid-white {
-  background-image: linear-gradient(white 70%, white);
-  border-bottom: 1px solid #ccc;
-}
 
 // Pages/Home
 .above-the-fold {
@@ -208,33 +161,15 @@ img::-webkit-selection {
   }
 }
 
-// PreviewWidescreen.tsx
-.computer-screen {
-  .text {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-  }
-}
-
 // Pricing
 .pricing-main {
-  table {
-    min-width: 540px;
-  }
-  table h2,
-  h4 {
-    font-family: "Poppins", sans-serif;
-  }
-  table,
-  tr,
-  th,
-  td {
-    border: 1px solid rgb(150, 150, 150);
-  }
-  .card:hover {
+  .card {
     transition: 0.2s;
-    box-shadow: 0 4px 12px rgba(57, 125, 165, 0.5);
+    box-shadow: 3px 6px 1px #0a0a0a !important;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 4px 8px 1px #0a0a0a !important;
+    }
   }
 }
 
@@ -425,9 +360,7 @@ form {
   background-position: center;
 }
 
-.rounded-pill,
-input,
-.card {
+.rounded-pill {
   border-radius: 3px !important;
 }
 
@@ -508,6 +441,8 @@ input,
     left: calc(100% - 0.9rem);
   }
 }
+
+// Pages/GetStarted
 @media (min-width: 768px) {
   .form-aside {
     height: 0;

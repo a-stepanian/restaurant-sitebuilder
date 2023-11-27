@@ -1,19 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiTwotoneMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineFastfood } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { GiEasterEgg } from "react-icons/gi";
+import { Link, useLocation } from "react-router-dom";
 
-interface IFooterProps {
-  onGetStartedPage: boolean;
-  onFourOhFourPage: boolean;
-}
-const Footer = (props: IFooterProps) => {
-  const { onGetStartedPage, onFourOhFourPage } = props;
+const Footer = () => {
+  const [onGetStartedPage, setOnGetStartedPage] = useState<boolean>(false);
+  const [onFourOhFourPage, setOnFourOhFourPage] = useState<boolean>(false);
   const [showEasterEgg, setShowEasterEgg] = useState<boolean>(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setOnGetStartedPage(location.pathname === "/get-started");
+    setOnFourOhFourPage(!["", "/", "/get-started", "/pricing", "/login"].includes(location.pathname));
+  }, [location]);
 
   const footerLogo = useRef<null | HTMLAnchorElement>(null);
 
