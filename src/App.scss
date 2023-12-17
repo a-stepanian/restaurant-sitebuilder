@@ -165,8 +165,11 @@ img::-webkit-selection {
 .pricing-main .card {
   box-shadow: 3px 6px 1px #0a0a0a !important;
   .card-header {
-    width: 8rem;
+    min-width: 6rem;
     border-right: 4px solid #0a0a0a;
+  }
+  .card-body svg {
+    min-width: 1.3rem;
   }
   @media (min-width: 992px) {
     .card-header {
