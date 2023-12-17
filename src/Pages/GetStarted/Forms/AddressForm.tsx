@@ -81,6 +81,7 @@ export const AddressForm = () => {
           <Form.Select
             aria-label="Select a state"
             required
+            className="shadow"
             value={address.state}
             onChange={(e) => {
               updateAddress({

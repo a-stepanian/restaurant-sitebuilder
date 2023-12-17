@@ -11,12 +11,10 @@ interface ITextInputProps {
   tipText?: string;
   hideLabel?: boolean;
   inputClasses?: string;
-  autofocus?: boolean;
 }
 
 const TextInput = (props: ITextInputProps) => {
-  const { label, required, tipText, placeholder, currentValue, changeHandler, hideLabel, inputClasses, autofocus } =
-    props;
+  const { label, required, tipText, placeholder, currentValue, changeHandler, hideLabel, inputClasses } = props;
   const [showHelp, setShowHelp] = useState(false);
 
   return (
@@ -40,9 +38,8 @@ const TextInput = (props: ITextInputProps) => {
       )}
       <Form.Control
         type="text"
-        className={`rounded-2 ${inputClasses ?? ""}`}
+        className={`rounded-2 shadow ${inputClasses ?? ""}`}
         autoComplete="off"
-        autoFocus={autofocus ?? false}
         placeholder={placeholder ?? ""}
         required={required}
         value={currentValue}

@@ -50,7 +50,6 @@ const Login = () => {
                   type="email"
                   placeholder="you@gmail.com"
                   aria-label="username"
-                  autoFocus
                 />
               </Form.Group>
               <Form.Group className="mb-3">

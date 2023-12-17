@@ -59,12 +59,12 @@ export const data = {
     },
     {
       name: "Chinese",
-      url: "https://images.unsplash.com/photo-1651399436026-3ca4088b3d6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80",
+      url: "/images/chinese-sm.jpg",
       style: "light",
     },
     {
       name: "Pizza",
-      url: "https://images.unsplash.com/photo-1561350111-7daa4f284bc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      url: "/images/pizza-sm.jpg",
       style: "dark",
     },
     {
@@ -74,12 +74,12 @@ export const data = {
     },
     {
       name: "Sushi",
-      url: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+      url: "/images/sushi-sm-2.jpg",
       style: "dark",
     },
     {
       name: "Steak",
-      url: "https://images.unsplash.com/photo-1558030089-02acba3c214e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80",
+      url: "/images/steak-lg.jpg",
       style: "dark",
     },
   ],

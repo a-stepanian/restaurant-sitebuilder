@@ -6,15 +6,14 @@ import { useAppContext } from "../../../AppContext";
 
 interface IWidescreenViewProps {
   color: string;
-  step?: number;
 }
 
 export const ComputerScreen = (props: IWidescreenViewProps) => {
-  const { color, step } = props;
-  const { basicInfo } = useAppContext();
-
+  const { color } = props;
   const [showYouTube, setShowYouTube] = useState<boolean>(false);
   const [showRefresh, setShowRefresh] = useState<boolean>(false);
+
+  const { basicInfo } = useAppContext();
 
   useEffect(() => {
     if (showRefresh) {
@@ -56,7 +55,7 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
         </p>
       </div>
       <div
-        className="rounded border"
+        className="rounded border scrollable-screen"
         style={{ height: "calc(100vh - 200px)", overflowY: "scroll", overflowX: "hidden" }}>
         {showRefresh && (
           <div className="d-flex flex-column justify-content-center align-items-center w-100 h-100 bg-dark-subtle">
@@ -68,7 +67,7 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
             <img src="/images/youtube.png" alt="Rick Astley - Never Gonna Give You Up" className="img-fluid" />
           </div>
         )}
-        {!showYouTube && !showRefresh && <ScreenContent color={color} step={step} />}
+        {!showYouTube && !showRefresh && <ScreenContent color={color} />}
       </div>
     </Container>
   );

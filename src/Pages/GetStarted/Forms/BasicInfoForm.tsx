@@ -36,7 +36,6 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
         <TextInput
           label="What is your restaurant name?"
           required={true}
-          autofocus={true}
           currentValue={basicInfo.restaurantName}
           changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
             updateBasicInfo({
@@ -50,6 +49,7 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
           <Form.Select
             aria-label="Select a cuisine type"
             required
+            className="shadow"
             value={basicInfo.cuisineType}
             onChange={(e) => {
               updateBasicInfo({
@@ -84,12 +84,12 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
               }
             />
           </div>
-          <div className="d-flex flex-column justify-content-end align-items-center">
+          {/* <div className="d-flex flex-column justify-content-end align-items-center">
             <label htmlFor="colorPicker" className="small">
               color
             </label>
             <input id="colorPicker" type="color" value={color} onChange={(e) => setColor(e.target.value)} />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="py-3 d-flex justify-content-end">

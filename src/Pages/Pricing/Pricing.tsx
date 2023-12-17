@@ -22,7 +22,7 @@ const Pricing = () => {
                   <Badge className="bg-dark">Free</Badge>
                 </h5>
                 <div className="d-flex flex-column align-items-center">
-                  <LiaSquare className="display-1" />
+                  <LiaSquare className="display-1" style={{ width: "4rem !important" }} />
                   <h2 className="fw-bold">Core</h2>
                 </div>
               </Card.Header>
@@ -58,12 +58,12 @@ const Pricing = () => {
           </Col>
           <Col lg={4} className="py-3">
             <Card className="flex-row flex-lg-column border-4 border-black rounded-3 bg-custom-yellow">
-              <Card.Header className="d-flex flex-column">
+              <Card.Header className="d-flex flex-column rounded-0">
                 <h5 className="mb-0 d-none d-lg-flex justify-content-center justify-content-lg-end">
                   <Badge className="bg-dark">$149.99</Badge>
                 </h5>
                 <div className="d-flex flex-column align-items-center">
-                  <LiaCubesSolid className="display-1" />
+                  <LiaCubesSolid className="display-1" style={{ width: "4rem !important" }} />
                   <h2 className="fw-bold d-lg-none">Pro</h2>
                   <h2 className="fw-bold d-none d-lg-block">Professional</h2>
                 </div>
@@ -110,7 +110,7 @@ const Pricing = () => {
                   <Badge className="bg-dark">$49.99</Badge>
                 </h5>
                 <div className="d-flex flex-column align-items-center">
-                  <LiaCubeSolid className="display-1" />
+                  <LiaCubeSolid className="display-1" style={{ width: "4rem !important" }} />
                   <h2 className="fw-bold d-lg-none">Lux</h2>
                   <h2 className="fw-bold d-none d-lg-block">Deluxe</h2>
                 </div>
