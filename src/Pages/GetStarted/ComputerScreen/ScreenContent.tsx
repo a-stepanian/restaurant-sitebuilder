@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Col, Row } from "react-bootstrap";
+import { Alert, Col, Row, Table } from "react-bootstrap";
 import { PreviewHeader } from "./PreviewHeader";
 import { data } from "../../../data";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
@@ -88,16 +88,36 @@ export const ScreenContent = (props: IScreenContentProps) => {
     }
   }, [basicInfo.cuisineType]);
 
+  const convertTo12HourFormat = (time24hr: string) => {
+    let timeArray = time24hr.split(":");
+    let hours = parseInt(timeArray[0], 10);
+    let minutes = parseInt(timeArray[1], 10);
+    let period = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 ? hours % 12 : 12; // 0 should be converted to 12 in 12-hour format
+    let minuteString = minutes < 10 ? "0" + minutes : minutes;
+    return hours.toString() + ":" + minuteString + " " + period;
+  };
+
+  const getCurrentDay = () => {
+    let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let today = new Date();
+    let dayIndex = today.getDay();
+    return daysOfWeek[dayIndex];
+  };
+  let currentDay = getCurrentDay();
+
   return (
     <section className="computer-screen h-100">
       <PreviewHeader />
       <div className="bg-body px-0 border-3 py-3 h-100" style={theme.backgroundStyles}>
         <Row>
-          {catchPhrase?.length > 0 && device === "computer" && (
-            <h2 className="catch-phrase" style={{ fontSize: "1.5rem", fontFamily: "Anton", color: color }}>
-              {catchPhrase}
-            </h2>
-          )}
+          <Col xs={12}>
+            {catchPhrase?.length > 0 && device === "computer" && (
+              <h2 className="catch-phrase m-3" style={{ fontSize: "1.5rem", fontFamily: "Anton", color: color }}>
+                {catchPhrase}
+              </h2>
+            )}
+          </Col>
           <Col xs={device === "mobile" ? 12 : 3} className={device === "mobile" ? "px-3" : "px-3"}>
             <div
               className={`m-2 d-flex flex-${
@@ -144,7 +164,7 @@ export const ScreenContent = (props: IScreenContentProps) => {
               </div>
             )}
             {tab === "hours" && (
-              <div className="bg-light p-2 m-2 d-flex flex-column align-items-center rounded">
+              <div className="bg-light m-2 py-3 d-flex flex-column align-items-center justify-content-center rounded">
                 <Row>
                   <Col>
                     <Alert variant={restaurantIsOpen ? "success" : "danger"}>
@@ -152,15 +172,30 @@ export const ScreenContent = (props: IScreenContentProps) => {
                     </Alert>
                   </Col>
                 </Row>
-                {basicInfo.hours.map((x) => {
-                  return (
-                    <Row key={x.day}>
-                      <Col>{x.day}</Col>
-                      <Col>{x.open}</Col>
-                      <Col>{x.close}</Col>
-                    </Row>
-                  );
-                })}
+                <Row>
+                  <Col>
+                    <Table striped bordered hover>
+                      <tbody>
+                        {basicInfo.hours.map((x) => {
+                          let statusColor = `bg-${
+                            currentDay === x.day && restaurantIsOpen ? "success" : "danger"
+                          }-subtle`;
+                          return (
+                            <tr key={x.day}>
+                              <td className={`text-end ${currentDay === x.day ? statusColor : ""}`}>{x.day}</td>
+                              <td className={`text-end ${currentDay === x.day ? statusColor : ""}`}>
+                                {convertTo12HourFormat(x.open)}
+                              </td>
+                              <td className={`text-end ${currentDay === x.day ? statusColor : ""}`}>
+                                {convertTo12HourFormat(x.close)}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  </Col>
+                </Row>
               </div>
             )}
           </Col>
