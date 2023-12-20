@@ -6,7 +6,6 @@ import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { IoLocationOutline } from "react-icons/io5";
 import { PiCopyright } from "react-icons/pi";
 import { useAppContext } from "../../../AppContext";
-import ContentNav from "./ContentNav";
 
 interface IScreenContentProps {
   color: string;
@@ -108,7 +107,7 @@ export const ScreenContent = (props: IScreenContentProps) => {
 
   return (
     <section className="computer-screen h-100">
-      <PreviewHeader />
+      <PreviewHeader tab={tab} setTab={setTab} device={device} />
       <div className="bg-body px-0 border-3 py-3 h-100" style={theme.backgroundStyles}>
         <Row>
           <Col xs={12}>
@@ -128,7 +127,6 @@ export const ScreenContent = (props: IScreenContentProps) => {
                   {catchPhrase}
                 </h2>
               )}
-              <ContentNav tab={tab} setTab={setTab} />
             </div>
           </Col>
           <Col xs={device === "mobile" ? 12 : 9}>

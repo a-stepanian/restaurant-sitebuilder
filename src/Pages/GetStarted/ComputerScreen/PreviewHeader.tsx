@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAppContext } from "../../../AppContext";
+import MobileNav from "./MobileNav";
+import { TTab } from "./ScreenContent";
+import ComputerNav from "./ComputerNav";
 
-export const PreviewHeader = () => {
+interface IPreviewHeaderProps {
+  tab: TTab;
+  setTab: React.Dispatch<React.SetStateAction<TTab>>;
+  device: "mobile" | "computer";
+}
+
+export const PreviewHeader = (props: IPreviewHeaderProps) => {
+  const { tab, setTab, device } = props;
   const { basicInfo } = useAppContext();
+
+  const hamburgerButton = useRef<HTMLButtonElement>(null);
+  const clickHamburgerButton = () => hamburgerButton?.current?.click();
 
   return (
     <Navbar
@@ -12,24 +25,19 @@ export const PreviewHeader = () => {
       bg={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
       data-bs-theme={basicInfo.restaurantName.length > 0 ? "dark" : "light"}>
       <Container>
-        <Navbar.Brand href="#">{basicInfo.restaurantName}</Navbar.Brand>
-        {basicInfo.restaurantName.length > 0 && (
+        <Navbar.Brand className="py-0" href="#">
+          {basicInfo.restaurantName}
+        </Navbar.Brand>
+        {basicInfo.restaurantName.length > 0 && device === "mobile" && (
           <>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" ref={hamburgerButton} />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav variant="pills" className="flex-column">
-                <Nav.Item>
-                  <Nav.Link eventKey="locationTab">Location</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="hoursTab">Hours</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="menuTab">Menu</Nav.Link>
-                </Nav.Item>
-              </Nav>
+              <MobileNav tab={tab} setTab={setTab} clickHamburgerButton={clickHamburgerButton} />
             </Navbar.Collapse>
           </>
+        )}
+        {basicInfo.restaurantName.length > 0 && device === "computer" && (
+          <ComputerNav tab={tab} setTab={setTab} clickHamburgerButton={clickHamburgerButton} />
         )}
       </Container>
     </Navbar>

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaRightLong } from "react-icons/fa6";
 
 const Home = () => {
+  const [degrees, setDegrees] = useState<number>(0);
+
+  const spinMe = () => {
+    setDegrees(Math.floor(Math.random() * 360));
+  };
   return (
     <Container fluid className="home-try-it-now">
       <Container className="mh75vh">
@@ -32,6 +37,8 @@ const Home = () => {
                 width="640"
                 height="640"
                 alt="Assorted snack foods"
+                style={{ transform: `rotate(${degrees}deg)` }}
+                onClick={() => setDegrees((prev) => prev + Math.floor(Math.random() * 90 + 90))}
               />
               <Link to="/get-started" className="d-md-none mt-5 w-100 btn btn-dark btn-lg bg-black rounded-pill">
                 Get Started <FaRightLong />
@@ -42,35 +49,35 @@ const Home = () => {
       </Container>
       <Container className="mh75vh">
         <div
-          className="border border-4 border-black rounded-3 bg-frosted"
+          className="bg-frosted border border-4 border-black rounded-3"
           style={{ boxShadow: "-4px 20px 0 #000000", transform: "rotate(357deg)" }}>
-          <Row className="my-5 py-5">
-            <Col md={6} className="order-1 order-md-2">
-              <div className="d-flex flex-column justify-content-center h-100">
-                <h2 className="text-center text-md-start increase-text fw-bold">Increase your sales</h2>
-                <p className="text-center text-md-start fs-2 lead">
-                  Attract new customers and provide the information they need with ease.
-                </p>
-              </div>
-            </Col>
+          <Row className="mt-5 py-5">
             <Col md={6}>
-              <div className="h-100 d-flex align-items-center justify-content-center position-relative">
-                <img
-                  width="100px"
-                  height="100px"
-                  className="img-fluid food-truck"
-                  loading="lazy"
-                  src="/images/food-truck.svg"
-                  alt="Sandwiches"
-                />
+              <div className="h-100 d-flex justify-content-center align-items-center">
                 <img
                   width="200px"
                   height="200px"
-                  className="img-fluid chart"
+                  className="img-fluid"
                   loading="lazy"
-                  src="/images/chart.svg"
-                  alt="Sandwiches"
+                  src="/images/food-app-computer.svg"
+                  alt="A chef"
                 />
+                <img
+                  width="100px"
+                  height="100px"
+                  className="img-fluid"
+                  loading="lazy"
+                  src="/images/food-app.svg"
+                  alt="A chef"
+                />
+              </div>
+            </Col>
+            <Col md={6}>
+              <div className="d-flex flex-column justify-content-center align-items-center h-100">
+                <h2 className="text-center text-md-start increase-text fw-bold">Increase your online presence</h2>
+                <p className="text-center text-md-start fs-2 lead">
+                  Get in front of your customers, position your restaurant for success.
+                </p>
               </div>
             </Col>
           </Row>
@@ -105,35 +112,35 @@ const Home = () => {
       </Container>
       <Container className="mh75vh">
         <div
-          className="bg-frosted border border-4 border-black rounded-3"
+          className="border border-4 border-black rounded-3 bg-frosted"
           style={{ boxShadow: "-4px 20px 0 #000000", transform: "rotate(357deg)" }}>
-          <Row className="mt-5 py-5">
-            <Col md={6}>
-              <div className="h-100 d-flex justify-content-center align-items-center">
-                <img
-                  width="200px"
-                  height="200px"
-                  className="img-fluid"
-                  loading="lazy"
-                  src="/images/food-app-computer.svg"
-                  alt="A chef"
-                />
-                <img
-                  width="100px"
-                  height="100px"
-                  className="img-fluid"
-                  loading="lazy"
-                  src="/images/food-app.svg"
-                  alt="A chef"
-                />
+          <Row className="my-5 py-5">
+            <Col md={6} className="order-1 order-md-2">
+              <div className="d-flex flex-column justify-content-center h-100">
+                <h2 className="text-center text-md-start increase-text fw-bold">Increase your sales</h2>
+                <p className="text-center text-md-start fs-2 lead">
+                  Attract new customers and provide the information they need with ease.
+                </p>
               </div>
             </Col>
             <Col md={6}>
-              <div className="d-flex flex-column justify-content-center align-items-center h-100">
-                <h2 className="text-center text-md-start increase-text fw-bold">Increase your online presence</h2>
-                <p className="text-center text-md-start fs-2 lead">
-                  Get in front of your customers, position your restaurant for success.
-                </p>
+              <div className="h-100 d-flex align-items-center justify-content-center position-relative">
+                <img
+                  width="100px"
+                  height="100px"
+                  className="img-fluid food-truck"
+                  loading="lazy"
+                  src="/images/food-truck.svg"
+                  alt="Sandwiches"
+                />
+                <img
+                  width="200px"
+                  height="200px"
+                  className="img-fluid chart"
+                  loading="lazy"
+                  src="/images/chart.svg"
+                  alt="Sandwiches"
+                />
               </div>
             </Col>
           </Row>

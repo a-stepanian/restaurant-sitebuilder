@@ -30,7 +30,7 @@ const Pricing = () => {
           </Col>
           <Col lg={4} className="py-3">
             <PriceCard
-              price={"$149.99"}
+              price={"n/a"}
               productName="Professional"
               productNameAbbr="Pro"
               shortDescription="Powerful tools and analytics to drive site traffic and customer engagement."
@@ -45,7 +45,7 @@ const Pricing = () => {
           </Col>
           <Col lg={4} className="py-3">
             <PriceCard
-              price={"$49.99"}
+              price={"n/a"}
               productName="Deluxe"
               productNameAbbr="Lux"
               shortDescription="For businesses that want to stand out from their competition."

@@ -379,6 +379,11 @@ form {
 
 .hero-image {
   border: 10px solid #b6fff2;
+  transition: 1s;
+  &:hover {
+    box-shadow: 0 0 20px #00ffd088;
+    cursor: pointer;
+  }
 }
 
 .hero-shape {
