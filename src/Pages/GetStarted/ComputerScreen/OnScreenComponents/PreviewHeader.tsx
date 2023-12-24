@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Navbar, OverlayTrigger, Popover } from "react-bootstrap";
 import { useAppContext } from "../../../../AppContext";
 import MobileNav from "./MobileNav";
 import { TTab } from "../ScreenContent";
@@ -17,6 +17,12 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
   const hamburgerButton = useRef<HTMLButtonElement>(null);
   const clickHamburgerButton = () => hamburgerButton?.current?.click();
 
+  const popoverClickRootClose = (
+    <Popover id="popover-trigger-click-root-close" title="Popover bottom" className="p-5">
+      <strong>Holy guacamole!</strong> Check this info.
+    </Popover>
+  );
+
   return (
     <Navbar
       expand="xs"
@@ -24,9 +30,11 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
       bg={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
       data-bs-theme={basicInfo.restaurantName.length > 0 ? "dark" : "light"}>
       <Container>
-        <Navbar.Brand className="py-0" onClick={() => setTab("home")}>
-          {basicInfo.restaurantName}
-        </Navbar.Brand>
+        <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={popoverClickRootClose}>
+          <Navbar.Brand className="py-0" onClick={() => setTab("home")}>
+            {basicInfo.restaurantName}
+          </Navbar.Brand>
+        </OverlayTrigger>
         {basicInfo.restaurantName.length > 0 && device === "mobile" && (
           <>
             <Navbar.Toggle aria-controls="basic-navbar-nav" ref={hamburgerButton} />

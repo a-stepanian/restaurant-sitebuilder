@@ -1,39 +1,33 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface IBasicInfo {
+  address: {
+    street1: string;
+    street2: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+  emailAddress: string;
+  phoneNumber: string;
   restaurantName: string;
   catchPhrase: string;
   about: string;
   cuisineType: string;
-  hours: Array<{ day: string; open: string; close: string }>;
-}
-
-interface IContactInfo {
-  emailAddress: string;
-  phoneNumber: string;
-}
-
-interface IAddress {
-  street1: string;
-  street2: string;
-  city: string;
-  state: string;
-  zipCode: string;
+  hours: Array<{
+    day: string;
+    open: string;
+    close: string;
+  }>;
 }
 
 interface IAppState {
   showWelcomeModal: boolean;
-  color: string;
   device: "mobile" | "computer";
   basicInfo: IBasicInfo;
-  contactInfo: IContactInfo;
-  address: IAddress;
   step: number;
   updateShowWelcomeModal: (info: boolean) => void;
-  updateColor: (info: string) => void;
   updateBasicInfo: (info: IBasicInfo) => void;
-  updateContactInfo: (info: IContactInfo) => void;
-  updateAddress: (info: IAddress) => void;
   updateDevice: (info: "mobile" | "computer") => void;
   updateStep: (info: number) => void;
 }
@@ -54,13 +48,22 @@ const useAppContext = () => {
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [showWelcomeModal, setShowWelcomeModal] = useState<boolean>(true);
-  const [color, setColor] = useState("#0a0a0a");
+  const [step, setStep] = useState<number>(1);
   const [device, setDevice] = useState<"mobile" | "computer">("mobile");
   const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
-    restaurantName: "",
-    catchPhrase: "",
     about: "",
+    address: {
+      street1: "",
+      street2: "",
+      city: "",
+      state: "",
+      zipCode: "",
+    },
+    catchPhrase: "",
     cuisineType: "",
+    emailAddress: "",
+    restaurantName: "",
+    phoneNumber: "",
     hours: [
       { day: "Sun", open: "06:00", close: "22:00" },
       { day: "Mon", open: "06:00", close: "22:00" },
@@ -71,40 +74,19 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
       { day: "Sat", open: "06:00", close: "22:00" },
     ],
   });
-  const [contactInfo, setContactInfo] = useState<IContactInfo>({
-    emailAddress: "",
-    phoneNumber: "",
-  });
-  const [address, setAddress] = useState<IAddress>({
-    street1: "",
-    street2: "",
-    city: "",
-    state: "",
-    zipCode: "",
-  });
-  const [step, setStep] = useState<number>(1);
 
   const updateShowWelcomeModal = (info: boolean) => setShowWelcomeModal(info);
-  const updateColor = (info: string) => setColor(info);
   const updateBasicInfo = (info: IBasicInfo) => setBasicInfo(info);
-  const updateContactInfo = (info: IContactInfo) => setContactInfo(info);
-  const updateAddress = (info: IAddress) => setAddress(info);
   const updateDevice = (info: "mobile" | "computer") => setDevice(info);
   const updateStep = (info: number) => setStep(info);
 
   const contextValue: IAppState = {
     showWelcomeModal,
-    color,
     basicInfo,
-    contactInfo,
-    address,
     device,
     step,
     updateShowWelcomeModal,
-    updateColor,
     updateBasicInfo,
-    updateContactInfo,
-    updateAddress,
     updateDevice,
     updateStep,
   };

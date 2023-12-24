@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { TextInput } from "../../../../../Components";
-import { BsChevronUp, BsQuestion } from "react-icons/bs";
 import { useAppContext } from "../../../../../AppContext";
 
 export const ContactInfoForm = () => {
   const { step, updateStep } = useAppContext();
-  const { contactInfo, updateContactInfo } = useAppContext();
+  const { basicInfo, updateBasicInfo } = useAppContext();
 
-  const [showHelp, setShowHelp] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,32 +28,17 @@ export const ContactInfoForm = () => {
       className="h-100 d-flex flex-column justify-content-between">
       <div>
         <Form.Group className="mt-3" controlId="formEmailAddress">
-          <Form.Label className="d-flex justify-content-between">
-            Email Address
-            <Button
-              className="btn btn-outline-dark d-flex py-0 px-2 fs-5 bg-transparent"
-              onClick={() => setShowHelp((prev) => !prev)}>
-              {showHelp ? <BsChevronUp /> : <BsQuestion />}
-            </Button>
-          </Form.Label>
-          {showHelp && (
-            <p className="text-secondary mb-3">
-              <small>
-                Add an email address that can be used to contact your business. This will also serve as your username to
-                login.
-              </small>
-            </p>
-          )}
+          <Form.Label className="d-flex justify-content-between">Email Address</Form.Label>
           <Form.Control
             type="email"
             placeholder="business@gmail.com"
             required
             className="rounded-2"
             autoComplete="off"
-            value={contactInfo.emailAddress}
+            value={basicInfo.emailAddress}
             onChange={(e) =>
-              updateContactInfo({
-                ...contactInfo,
+              updateBasicInfo({
+                ...basicInfo,
                 emailAddress: e.target.value,
               })
             }
@@ -67,12 +50,11 @@ export const ContactInfoForm = () => {
         <TextInput
           label="Business Phone Number"
           required={true}
-          tipText="Add a phone number where your customers can reach you."
           placeholder="555-555-5555"
-          currentValue={contactInfo.phoneNumber}
+          currentValue={basicInfo.phoneNumber}
           changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateContactInfo({
-              ...contactInfo,
+            updateBasicInfo({
+              ...basicInfo,
               phoneNumber: e.target.value,
             })
           }

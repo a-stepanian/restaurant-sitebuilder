@@ -5,24 +5,24 @@ import { PiCopyright } from "react-icons/pi";
 import React from "react";
 
 export const PreviewFooter = () => {
-  const { basicInfo, contactInfo, device } = useAppContext();
+  const { basicInfo, device } = useAppContext();
 
   return (
     <footer className="py-5 bg-dark text-white">
       <Row>
         <Col sm={device === "mobile" ? 12 : 4}>
-          {contactInfo.phoneNumber.length > 0 && (
+          {basicInfo.phoneNumber.length > 0 && (
             <p className="my-3 small text-center">
               <AiOutlinePhone className="me-1" />
-              {contactInfo.phoneNumber}
+              {basicInfo.phoneNumber}
             </p>
           )}
         </Col>
         <Col sm={device === "mobile" ? 12 : 4}>
-          {contactInfo.emailAddress.length > 0 && (
+          {basicInfo.emailAddress.length > 0 && (
             <p className="my-3 small text-center">
               <AiOutlineMail className="me-1" />
-              {contactInfo.emailAddress}
+              {basicInfo.emailAddress}
             </p>
           )}
         </Col>

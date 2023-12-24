@@ -6,7 +6,7 @@ import { useAppContext } from "../../../../../AppContext";
 
 export const AddressForm = () => {
   const { step, updateStep } = useAppContext();
-  const { address, updateAddress } = useAppContext();
+  const { basicInfo, updateBasicInfo } = useAppContext();
 
   const [showSecondAddressLine, setShowSecondAddressLine] = useState<boolean>(false);
   const [validated, setValidated] = useState(false);
@@ -34,11 +34,14 @@ export const AddressForm = () => {
           required={true}
           inputClasses="text-capitalize"
           placeholder="123 Elm St."
-          currentValue={address.street1}
+          currentValue={basicInfo.address.street1}
           changeHandler={(e) =>
-            updateAddress({
-              ...address,
-              street1: e.target.value,
+            updateBasicInfo({
+              ...basicInfo,
+              address: {
+                ...basicInfo.address,
+                street1: e.target.value,
+              },
             })
           }
         />
@@ -54,11 +57,14 @@ export const AddressForm = () => {
             required={false}
             inputClasses="text-capitalize"
             placeholder="Suite B"
-            currentValue={address.street2}
+            currentValue={basicInfo.address.street2}
             changeHandler={(e) =>
-              updateAddress({
-                ...address,
-                street2: e.target.value,
+              updateBasicInfo({
+                ...basicInfo,
+                address: {
+                  ...basicInfo.address,
+                  street2: e.target.value,
+                },
               })
             }
           />
@@ -68,11 +74,14 @@ export const AddressForm = () => {
           required={true}
           inputClasses="text-capitalize"
           placeholder="Twin Peaks"
-          currentValue={address.city}
+          currentValue={basicInfo.address.city}
           changeHandler={(e) =>
-            updateAddress({
-              ...address,
-              city: e.target.value,
+            updateBasicInfo({
+              ...basicInfo,
+              address: {
+                ...basicInfo.address,
+                city: e.target.value,
+              },
             })
           }
         />
@@ -82,11 +91,14 @@ export const AddressForm = () => {
             aria-label="Select a state"
             required
             className="shadow"
-            value={address.state}
+            value={basicInfo.address.state}
             onChange={(e) => {
-              updateAddress({
-                ...address,
-                state: e.target.value,
+              updateBasicInfo({
+                ...basicInfo,
+                address: {
+                  ...basicInfo.address,
+                  state: e.target.value,
+                },
               });
             }}>
             {data.states.map((state) => {
@@ -105,11 +117,14 @@ export const AddressForm = () => {
           label="Zip"
           required={true}
           placeholder="68652"
-          currentValue={address.zipCode}
+          currentValue={basicInfo.address.zipCode}
           changeHandler={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateAddress({
-              ...address,
-              zipCode: e.target.value,
+            updateBasicInfo({
+              ...basicInfo,
+              address: {
+                ...basicInfo.address,
+                zipCode: e.target.value,
+              },
             })
           }
         />

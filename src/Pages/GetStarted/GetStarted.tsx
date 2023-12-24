@@ -14,7 +14,7 @@ const GetStarted = () => {
       <GetStartedModal />
       <Container>
         <Row>
-          <Col style={{ boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.3)" }}>
+          <Col style={{ boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.3)" }} className="bg-light">
             <div className="d-flex justify-content-between mx-5 my-3">
               <CustomProgressBar />
               <div>

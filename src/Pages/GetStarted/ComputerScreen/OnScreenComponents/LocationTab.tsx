@@ -3,7 +3,10 @@ import { useAppContext } from "../../../../AppContext";
 import { IoLocationOutline } from "react-icons/io5";
 
 const LocationTab = () => {
-  const { address, device } = useAppContext();
+  const {
+    basicInfo: { address },
+    device,
+  } = useAppContext();
 
   return (
     <>

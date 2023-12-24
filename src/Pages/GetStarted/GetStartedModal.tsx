@@ -9,8 +9,8 @@ import { useAppContext } from "../../AppContext";
 const GetStartedModal = () => {
   const { step, showWelcomeModal, updateShowWelcomeModal, updateDevice } = useAppContext();
   return (
-    <Modal show={showWelcomeModal}>
-      <Modal.Header>
+    <Modal show={showWelcomeModal} onHide={() => updateShowWelcomeModal(false)}>
+      <Modal.Header closeButton>
         <Modal.Title>Let's Get Started...</Modal.Title>
       </Modal.Header>
       <Modal.Body className="home-try-it-now" style={{ minHeight: "150px" }}>
@@ -19,20 +19,23 @@ const GetStartedModal = () => {
         {step === 2 && <AddressForm />}
         {step === 3 && <HoursForm />}
         {step === 4 && <ContactInfoForm />}
-        {step === 5 && <p>Sign up form here</p>}
+        {step === 5 && (
+          <p>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  updateShowWelcomeModal(false);
+                  setTimeout(() => {
+                    updateDevice("computer");
+                  }, 500);
+                }}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </p>
+        )}
       </Modal.Body>
-      <Modal.Footer>
-        <Button
-          variant="secondary"
-          onClick={() => {
-            updateShowWelcomeModal(false);
-            setTimeout(() => {
-              updateDevice("computer");
-            }, 500);
-          }}>
-          Close
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 };
