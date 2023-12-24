@@ -4,12 +4,7 @@ import { ScreenContent } from "./ScreenContent";
 import { MdArrowBack, MdArrowForward, MdRefresh } from "react-icons/md";
 import { useAppContext } from "../../../AppContext";
 
-interface IWidescreenViewProps {
-  color: string;
-}
-
-export const ComputerScreen = (props: IWidescreenViewProps) => {
-  const { color } = props;
+export const ComputerScreen = () => {
   const [showYouTube, setShowYouTube] = useState<boolean>(false);
   const [showRefresh, setShowRefresh] = useState<boolean>(false);
 
@@ -67,7 +62,7 @@ export const ComputerScreen = (props: IWidescreenViewProps) => {
             <img src="/images/youtube.png" alt="Rick Astley - Never Gonna Give You Up" className="img-fluid" />
           </div>
         )}
-        {!showYouTube && !showRefresh && <ScreenContent color={color} />}
+        {!showYouTube && !showRefresh && <ScreenContent />}
       </div>
     </Container>
   );

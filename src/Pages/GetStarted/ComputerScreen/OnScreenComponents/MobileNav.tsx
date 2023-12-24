@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { TTab } from "./ScreenContent";
+import React from "react";
+import { TTab } from "../ScreenContent";
 
 interface IMobileNavProps {
   tab: TTab;

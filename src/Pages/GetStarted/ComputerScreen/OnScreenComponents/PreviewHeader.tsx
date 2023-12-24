@@ -1,19 +1,18 @@
 import React, { useRef } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { useAppContext } from "../../../AppContext";
+import { Container, Navbar } from "react-bootstrap";
+import { useAppContext } from "../../../../AppContext";
 import MobileNav from "./MobileNav";
-import { TTab } from "./ScreenContent";
+import { TTab } from "../ScreenContent";
 import ComputerNav from "./ComputerNav";
 
 interface IPreviewHeaderProps {
   tab: TTab;
   setTab: React.Dispatch<React.SetStateAction<TTab>>;
-  device: "mobile" | "computer";
 }
 
 export const PreviewHeader = (props: IPreviewHeaderProps) => {
-  const { tab, setTab, device } = props;
-  const { basicInfo } = useAppContext();
+  const { tab, setTab } = props;
+  const { basicInfo, device } = useAppContext();
 
   const hamburgerButton = useRef<HTMLButtonElement>(null);
   const clickHamburgerButton = () => hamburgerButton?.current?.click();
@@ -25,7 +24,7 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
       bg={basicInfo.restaurantName.length > 0 ? "dark" : "light"}
       data-bs-theme={basicInfo.restaurantName.length > 0 ? "dark" : "light"}>
       <Container>
-        <Navbar.Brand className="py-0" href="#">
+        <Navbar.Brand className="py-0" onClick={() => setTab("home")}>
           {basicInfo.restaurantName}
         </Navbar.Brand>
         {basicInfo.restaurantName.length > 0 && device === "mobile" && (

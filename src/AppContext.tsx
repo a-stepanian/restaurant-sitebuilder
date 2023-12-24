@@ -22,11 +22,15 @@ interface IAddress {
 }
 
 interface IAppState {
+  showWelcomeModal: boolean;
+  color: string;
   device: "mobile" | "computer";
   basicInfo: IBasicInfo;
   contactInfo: IContactInfo;
   address: IAddress;
   step: number;
+  updateShowWelcomeModal: (info: boolean) => void;
+  updateColor: (info: string) => void;
   updateBasicInfo: (info: IBasicInfo) => void;
   updateContactInfo: (info: IContactInfo) => void;
   updateAddress: (info: IAddress) => void;
@@ -49,7 +53,9 @@ const useAppContext = () => {
 };
 
 const AppContextProvider: React.FC<Props> = ({ children }) => {
-  const [device, setDevice] = useState<"mobile" | "computer">("computer");
+  const [showWelcomeModal, setShowWelcomeModal] = useState<boolean>(true);
+  const [color, setColor] = useState("#0a0a0a");
+  const [device, setDevice] = useState<"mobile" | "computer">("mobile");
   const [basicInfo, setBasicInfo] = useState<IBasicInfo>({
     restaurantName: "",
     catchPhrase: "",
@@ -78,6 +84,8 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   });
   const [step, setStep] = useState<number>(1);
 
+  const updateShowWelcomeModal = (info: boolean) => setShowWelcomeModal(info);
+  const updateColor = (info: string) => setColor(info);
   const updateBasicInfo = (info: IBasicInfo) => setBasicInfo(info);
   const updateContactInfo = (info: IContactInfo) => setContactInfo(info);
   const updateAddress = (info: IAddress) => setAddress(info);
@@ -85,11 +93,15 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   const updateStep = (info: number) => setStep(info);
 
   const contextValue: IAppState = {
+    showWelcomeModal,
+    color,
     basicInfo,
     contactInfo,
     address,
     device,
     step,
+    updateShowWelcomeModal,
+    updateColor,
     updateBasicInfo,
     updateContactInfo,
     updateAddress,

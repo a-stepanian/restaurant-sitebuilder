@@ -1,6 +1,6 @@
 import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import { useAppContext } from "../AppContext";
+import { useAppContext } from "../../AppContext";
 
 const CustomProgressBar = () => {
   const { step, updateStep } = useAppContext();

@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { data } from "../../../data";
-import { TextInput } from "../../../Components";
-import { useAppContext } from "../../../AppContext";
+import { data } from "../../../../../data";
+import { TextInput } from "../../../../../Components";
+import { useAppContext } from "../../../../../AppContext";
 
-interface IBasicInfoFormProps {
-  color: string;
-  setColor: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export const BasicInfoForm = (props: IBasicInfoFormProps) => {
-  const { color, setColor } = props;
+export const BasicInfoForm = () => {
   const { step, updateStep } = useAppContext();
   const { basicInfo, updateBasicInfo } = useAppContext();
   const [validated, setValidated] = useState(false);
@@ -84,12 +78,6 @@ export const BasicInfoForm = (props: IBasicInfoFormProps) => {
               }
             />
           </div>
-          {/* <div className="d-flex flex-column justify-content-end align-items-center">
-            <label htmlFor="colorPicker" className="small">
-              color
-            </label>
-            <input id="colorPicker" type="color" value={color} onChange={(e) => setColor(e.target.value)} />
-          </div> */}
         </div>
       </div>
       <div className="py-3 d-flex justify-content-end">
