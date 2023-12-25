@@ -25,6 +25,7 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
           <EditableText
             innerJSX={<span className="p-1">{basicInfo.restaurantName}</span>}
             initialText={basicInfo.restaurantName}
+            singleLine={true}
             placeholderText="Enter your restaurant name here"
             onSave={(editedText: string) =>
               updateBasicInfo({

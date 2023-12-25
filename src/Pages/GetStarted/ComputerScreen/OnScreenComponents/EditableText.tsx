@@ -4,14 +4,15 @@ import { MdOutlineCancelPresentation } from "react-icons/md";
 import { useAppContext } from "../../../../AppContext";
 
 interface IEditableTextProps {
-  innerJSX: ReactNode;
   initialText: string;
-  placeholderText?: string;
+  innerJSX: ReactNode;
   onSave: any;
+  placeholderText?: string;
+  singleLine?: boolean;
 }
 
 const EditableText = (props: IEditableTextProps) => {
-  const { innerJSX, initialText, placeholderText, onSave } = props;
+  const { innerJSX, initialText, placeholderText, onSave, singleLine } = props;
 
   const { device } = useAppContext();
 
@@ -24,8 +25,10 @@ const EditableText = (props: IEditableTextProps) => {
   const innerJSXRef = useRef<HTMLDivElement>(null);
 
   const handleSaveClick = () => {
-    setIsEditing(false);
-    onSave(editedText);
+    if (editedText.length > 0) {
+      setIsEditing(false);
+      onSave(editedText);
+    }
   };
 
   const handleCancelClick = () => {
@@ -33,7 +36,10 @@ const EditableText = (props: IEditableTextProps) => {
     setEditedText(initialText);
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setEditedText(e.target.value);
+  };
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEditedText(e.target.value);
   };
 
@@ -63,25 +69,41 @@ const EditableText = (props: IEditableTextProps) => {
     <div>
       {isEditing ? (
         <div>
-          <textarea
-            placeholder={placeholderText}
-            style={{ ...elementStyles }}
-            className={elementClasses.join(" ")}
-            value={editedText}
-            onChange={handleInputChange}
-            autoFocus
-          />
+          {singleLine ? (
+            <input
+              placeholder={placeholderText}
+              style={{ ...elementStyles }}
+              className={elementClasses.join(" ")}
+              value={editedText}
+              type="text"
+              onChange={handleInputChange}
+              autoFocus
+            />
+          ) : (
+            <textarea
+              placeholder={placeholderText}
+              style={{ ...elementStyles }}
+              className={elementClasses.join(" ")}
+              value={editedText}
+              onChange={handleTextAreaChange}
+              autoFocus
+            />
+          )}
           <div className="d-flex position-absolute" style={{ zIndex: "10", bottom: "-18px", right: "0" }}>
             {/* <span className="bg-custom-blue mb-0 small fw-bold">{placeholderText}</span> */}
-            <button
-              className="btn btn-dark text-black bg-custom-yellow px-1 py-0 display-6"
-              title="Cancel"
-              onClick={handleCancelClick}>
-              <MdOutlineCancelPresentation />
-            </button>
+            {editedText.length > 0 && (
+              <button
+                className="btn btn-dark text-black bg-custom-yellow px-1 py-0 display-6"
+                title="Cancel"
+                onClick={handleCancelClick}>
+                <MdOutlineCancelPresentation />
+              </button>
+            )}
             <button
               className="btn btn-dark text-black bg-custom-blue px-1 py-0 display-6"
               title="Save"
+              type="button"
+              disabled={editedText.length === 0}
               onClick={handleSaveClick}>
               <FaRegSave />
             </button>

@@ -48,9 +48,9 @@ const GetStartedModal = () => {
             setTimeout(() => {
               updateDevice("computer");
             }, 500);
-            setTimeout(() => {
-              resetBasicInfo();
-            }, 1000);
+            // setTimeout(() => {
+            //   resetBasicInfo();
+            // }, 1000);
           }}>
           Got it!
         </Button>

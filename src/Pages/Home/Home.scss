@@ -9,6 +9,18 @@
   font-family: "Poppins", sans-serif;
   font-size: 2rem;
 }
+.hero-image {
+  border: 10px solid #b6fff2;
+  transition: 1s transform, 0.2s border;
+  &:hover {
+    border: 20px solid #b6fff2;
+    cursor: pointer;
+  }
+}
+.hero-shape {
+  top: 0;
+  left: 0;
+}
 .hero-cta {
   width: 220px !important;
 }
