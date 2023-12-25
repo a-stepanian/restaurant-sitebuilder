@@ -1,14 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Header.scss";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { MdOutlineFastfood } from "react-icons/md";
+import { LuMenu, LuX } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const mainHamburgerButton = useRef<HTMLButtonElement>(null);
   const clickMainHamburgerButton = () => mainHamburgerButton?.current?.click();
   return (
-    <Navbar expand="md" className="main-navbar navbar" data-bs-theme="light">
+    <Navbar expand="md" className="main-navbar navbar py-0" data-bs-theme="light">
       <Container>
         <Navbar.Brand className="pt-0 my-1">
           <Link to="/" className="text-black text-decoration-none nav-home">
@@ -22,17 +24,23 @@ const Header = () => {
           <Link to="/get-started" className="d-none d-sm-inline d-md-none me-4 light-link">
             Start free trial
           </Link>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0 py-0 px-1" ref={mainHamburgerButton} />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            className="border-0 py-0 px-1"
+            ref={mainHamburgerButton}
+            onClick={() => setMenuOpen((prev) => !prev)}>
+            {menuOpen ? <LuX /> : <LuMenu />}
+          </Navbar.Toggle>
         </div>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="p-3 align-items-end border-top border-bottom main-hamburger">
             <Link to="/pricing" className="nav-link" onClick={() => clickMainHamburgerButton()}>
               Pricing
             </Link>
             <Link to="/login" className="nav-link d-md-none" onClick={() => clickMainHamburgerButton()}>
               Login
             </Link>
-            <Link to="/get-started" className="nav-link" onClick={() => clickMainHamburgerButton()}>
+            <Link to="/get-started" className="nav-link d-md-none" onClick={() => clickMainHamburgerButton()}>
               Get Started
             </Link>
           </Nav>

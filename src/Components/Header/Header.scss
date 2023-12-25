@@ -45,4 +45,9 @@
     height: 0;
     opacity: 0;
   }
+  @media (min-width: 768px) {
+    .main-hamburger {
+      border-color: transparent !important;
+    }
+  }
 }
