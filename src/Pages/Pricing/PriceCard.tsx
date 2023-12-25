@@ -45,9 +45,9 @@ const PriceCard = (props: IPriceCardProps) => {
     <Card className={`flex-row flex-lg-column border-4 border-black rounded-3 ${bodyBackgroundClass}`}>
       <Card.Header
         className={`d-flex flex-column justify-content-center rounded-0 rounded-lg-3 ${headerBackgroundClass}`}>
-        <h5 className="mb-0 d-none d-lg-flex justify-content-center justify-content-lg-end">
+        <div className="mb-0 d-none d-lg-flex justify-content-center justify-content-lg-end">
           <Badge className="bg-dark">{price}</Badge>
-        </h5>
+        </div>
         <div className="d-flex flex-column align-items-center">
           {icon}
           <h2 className="fw-bold d-lg-none">{productNameAbbr}</h2>
