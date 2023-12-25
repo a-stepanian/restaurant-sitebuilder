@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 import { Container } from "react-bootstrap";
-import { Header, Footer } from "./Components";
 import { Home, Login, Pricing, FourOhFour, GetStarted } from "./Pages";
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 export const App = () => {
   return (

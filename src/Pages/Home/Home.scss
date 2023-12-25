@@ -1,0 +1,27 @@
+// Pages/Home
+.above-the-fold {
+  min-height: calc(100vh - 49px);
+}
+.feed-your-business {
+  font-size: 3rem;
+}
+.increase-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+}
+.hero-cta {
+  width: 220px !important;
+}
+@media (min-width: 768px) {
+  .feed-your-business {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .feed-your-business {
+    font-size: 5rem;
+  }
+  .increase-text {
+    font-size: 3rem;
+  }
+}

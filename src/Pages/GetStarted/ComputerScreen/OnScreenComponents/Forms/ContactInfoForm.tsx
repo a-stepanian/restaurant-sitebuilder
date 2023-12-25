@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { TextInput } from "../../../../../Components";
 import { useAppContext } from "../../../../../AppContext";
+import TextInput from "../../../../../Components/TextInput";
 
 export const ContactInfoForm = () => {
   const { step, updateStep } = useAppContext();

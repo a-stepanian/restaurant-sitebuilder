@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { TTab } from "../ScreenContent";
 
 interface IComputerNavProps {
@@ -10,8 +10,19 @@ interface IComputerNavProps {
 const ComputerNav = (props: IComputerNavProps) => {
   const { tab, setTab, clickHamburgerButton, device } = props;
 
+  const navRef = useRef<null | HTMLElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (navRef?.current) {
+        navRef.current.classList.add("d-flex");
+        navRef.current.classList.remove("d-none");
+      }
+    }, 100);
+  }, [navRef]);
+
   return (
-    <nav className="d-flex computer-nav">
+    <nav ref={navRef} className="d-none computer-nav">
       <button
         type="button"
         className={`py-1 px-1 mx-1 nav nav-link ${tab === "location" ? "dark" : "outline-dark"}`}

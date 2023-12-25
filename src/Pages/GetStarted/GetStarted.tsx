@@ -14,7 +14,7 @@ const GetStarted = () => {
       <GetStartedModal />
       <Container>
         <Row>
-          <Col style={{ boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.3)" }} className="bg-light">
+          <Col style={{ boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.3)" }} className="bg-dark-subtle">
             <div className="d-flex justify-content-between mx-5 my-3">
               <CustomProgressBar />
               <div>
@@ -33,7 +33,7 @@ const GetStarted = () => {
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-center mx-5 mb-3">
-              <div style={{ width: `${device === "mobile" ? "360px" : "100%"}`, transition: "0.8s" }}>
+              <div style={{ width: `${device === "mobile" ? "360px" : "100%"}`, transition: "0.4s" }}>
                 <ComputerScreen />
               </div>
             </div>

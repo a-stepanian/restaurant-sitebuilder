@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { data } from "../../../../../data";
-import { TextInput } from "../../../../../Components";
 import { useAppContext } from "../../../../../AppContext";
+import TextInput from "../../../../../Components/TextInput";
 
 export const AddressForm = () => {
   const { step, updateStep } = useAppContext();

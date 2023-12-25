@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import "./Footer.scss";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiTwotoneMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";

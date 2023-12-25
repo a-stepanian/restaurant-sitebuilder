@@ -1,0 +1,48 @@
+// Header
+.main-navbar {
+  & * {
+    transition: 0.2s;
+  }
+  background-image: linear-gradient(white 70%, transparent);
+  .nav-home {
+    width: 110px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.1rem;
+    svg {
+      transition: 0.2s;
+      transform: rotate(0);
+    }
+    span {
+      letter-spacing: -0.05rem;
+      font-weight: 100;
+    }
+    &:hover svg {
+      font-size: 1.3rem;
+      transform: rotate(-10deg);
+    }
+  }
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  .light-link {
+    font-weight: 400;
+    color: black;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+  }
+  .nav-cta {
+    padding: 0.6rem 1.4rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400 !important;
+    transition: 0.05s;
+  }
+  .shrink {
+    padding: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+}

@@ -1,10 +1,13 @@
 import React from "react";
 import { useAppContext } from "../../../../AppContext";
 import { IoLocationOutline } from "react-icons/io5";
+import EditableText from "./EditableText";
 
 const LocationTab = () => {
   const {
+    basicInfo,
     basicInfo: { address },
+    updateBasicInfo,
     device,
   } = useAppContext();
 
@@ -12,16 +15,68 @@ const LocationTab = () => {
     <>
       {device === "computer" && (
         <div className="d-flex position-absolute h-100">
-          <img src="/images/road-sign.svg" alt="road sign" className="img-fluid" loading="lazy" />
+          {/* <img src="/images/road-sign.svg" alt="road sign" className="img-fluid" loading="lazy" /> */}
           <div className="d-flex mb-3 text-white">
             <IoLocationOutline className="display-6" />
             <div>
-              <h5 className="mb-0">{address?.street1}</h5>
+              <h5 className="mb-0 position-relative">
+                <EditableText
+                  innerJSX={<span>{address?.street1}</span>}
+                  initialText={address?.street1}
+                  onSave={(editedText: string) =>
+                    updateBasicInfo({
+                      ...basicInfo,
+                      address: {
+                        ...basicInfo.address,
+                        street1: editedText,
+                      },
+                    })
+                  }
+                />
+              </h5>
               {address.street2.length > 0 && <p className="mb-0">{address.street2}</p>}
               <p className="small mb-0">
-                {address?.city},&nbsp;
-                {address?.state}&nbsp;
-                {address?.zipCode}
+                <EditableText
+                  innerJSX={<span>{address?.city}</span>}
+                  initialText={address?.city}
+                  onSave={(editedText: string) =>
+                    updateBasicInfo({
+                      ...basicInfo,
+                      address: {
+                        ...basicInfo.address,
+                        city: editedText,
+                      },
+                    })
+                  }
+                />
+                &nbsp;
+                <EditableText
+                  innerJSX={<span>{address?.state}</span>}
+                  initialText={address?.state}
+                  onSave={(editedText: string) =>
+                    updateBasicInfo({
+                      ...basicInfo,
+                      address: {
+                        ...basicInfo.address,
+                        state: editedText,
+                      },
+                    })
+                  }
+                />
+                &nbsp;
+                <EditableText
+                  innerJSX={<span>{address?.zipCode}</span>}
+                  initialText={address?.zipCode}
+                  onSave={(editedText: string) =>
+                    updateBasicInfo({
+                      ...basicInfo,
+                      address: {
+                        ...basicInfo.address,
+                        zipCode: editedText,
+                      },
+                    })
+                  }
+                />
               </p>
             </div>
           </div>
@@ -34,7 +89,20 @@ const LocationTab = () => {
         <div className="d-flex mb-3">
           <IoLocationOutline className="display-6" />
           <div>
-            <h5 className="mb-0">{address?.street1}</h5>
+            <EditableText
+              innerJSX={<h5 className="mb-0">{address?.street1}</h5>}
+              initialText={address?.street1}
+              onSave={(editedText: string) =>
+                updateBasicInfo({
+                  ...basicInfo,
+                  address: {
+                    ...basicInfo.address,
+                    street1: editedText,
+                  },
+                })
+              }
+            />
+
             {address.street2.length > 0 && <p className="mb-0">{address.street2}</p>}
             <p className="small mb-0">
               {address?.city},&nbsp;

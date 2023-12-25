@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Home.scss";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaRightLong } from "react-icons/fa6";
@@ -47,7 +48,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container className="mh75vh">
+      <Container className="mh75vh mt-5 my-lg-5">
         <div
           className="bg-frosted border border-4 border-black rounded-3"
           style={{ boxShadow: "-4px 20px 0 #000000", transform: "rotate(357deg)" }}>
@@ -83,7 +84,7 @@ const Home = () => {
           </Row>
         </div>
       </Container>
-      <Container fluid className="position-relative d-flex justify-content-center align-items-center mh75vh">
+      <Container fluid className="position-relative d-flex justify-content-center align-items-center mh75vh  my-lg-5">
         <div
           className="home-try-it-now border border-4 border-black rounded-3"
           style={{ boxShadow: "4px 20px 0 #000000", transform: "rotate(3deg)" }}>
@@ -110,7 +111,7 @@ const Home = () => {
           </Row>
         </div>
       </Container>
-      <Container className="mh75vh">
+      <Container className="mh75vh mb-5  my-lg-5">
         <div
           className="border border-4 border-black rounded-3 bg-frosted"
           style={{ boxShadow: "-4px 20px 0 #000000", transform: "rotate(357deg)" }}>
