@@ -7,9 +7,6 @@ import { FaRightLong } from "react-icons/fa6";
 const Home = () => {
   const [degrees, setDegrees] = useState<number>(0);
 
-  const spinMe = () => {
-    setDegrees(Math.floor(Math.random() * 360));
-  };
   return (
     <Container fluid className="home-try-it-now">
       <Container className="mh75vh">
