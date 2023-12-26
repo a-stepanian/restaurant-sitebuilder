@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ComputerScreen } from "./ComputerScreen/ComputerScreen";
+import { Device } from "./Device/Device";
 import { FaLaptop, FaMobileAlt } from "react-icons/fa";
 import { useAppContext } from "../../AppContext";
 import CustomProgressBar from "./CustomProgressBar";
@@ -10,11 +10,11 @@ const GetStarted = () => {
   const { device, updateDevice } = useAppContext();
 
   return (
-    <main className="home-try-it-now">
+    <main style={{ boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.3)" }} className="bg-dark-subtle">
       <GetStartedModal />
-      <Container>
+      <Container fluid={"md"}>
         <Row>
-          <Col style={{ boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.3)" }} className="bg-dark-subtle">
+          <Col>
             <div className="d-flex justify-content-between mx-5 my-3">
               <CustomProgressBar />
               <div>
@@ -33,8 +33,8 @@ const GetStarted = () => {
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-center mx-5 mb-3">
-              <div style={{ width: `${device === "mobile" ? "360px" : "100%"}`, transition: "0.4s" }}>
-                <ComputerScreen />
+              <div style={{ width: `${device === "mobile" ? "360px" : "100%"}`, transition: "0.2s" }}>
+                <Device />
               </div>
             </div>
           </Col>

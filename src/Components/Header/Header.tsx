@@ -12,14 +12,19 @@ const Header = () => {
   return (
     <Navbar expand="md" className="main-navbar navbar py-0" data-bs-theme="light">
       <Container>
-        <Navbar.Brand className="pt-0 my-1">
-          <Link to="/" className="text-black text-decoration-none nav-home">
-            <div className="d-flex justify-content-center align-items-center">
-              <MdOutlineFastfood />
-              <span className="mt-1 ms-1 fw-bold fs-6">MenuWeb</span>
-            </div>
+        <div className="d-flex align-items-center">
+          <Navbar.Brand className="pt-0 my-1">
+            <Link to="/" className="text-black text-decoration-none nav-home">
+              <div className="d-flex justify-content-center align-items-center">
+                <MdOutlineFastfood />
+                <span className="mt-1 ms-1 fw-bold fs-6">MenuWeb</span>
+              </div>
+            </Link>
+          </Navbar.Brand>
+          <Link to="/pricing" className="nav-link d-none d-md-block" onClick={() => clickMainHamburgerButton()}>
+            Pricing
           </Link>
-        </Navbar.Brand>
+        </div>
         <div>
           <Link to="/get-started" className="d-none d-sm-inline d-md-none me-4 light-link">
             Start free trial
@@ -34,20 +39,20 @@ const Header = () => {
         </div>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="p-3 align-items-end border-top border-bottom main-hamburger">
-            <Link to="/pricing" className="nav-link" onClick={() => clickMainHamburgerButton()}>
+            <Link to="/pricing" className="nav-link d-md-none" onClick={() => clickMainHamburgerButton()}>
               Pricing
             </Link>
-            <Link to="/login" className="nav-link d-md-none" onClick={() => clickMainHamburgerButton()}>
+            {/* <Link to="/login" className="nav-link d-md-none" onClick={() => clickMainHamburgerButton()}>
               Login
-            </Link>
+            </Link> */}
             <Link to="/get-started" className="nav-link d-md-none" onClick={() => clickMainHamburgerButton()}>
               Get Started
             </Link>
           </Nav>
         </Navbar.Collapse>
-        <Link to="/login" className="d-none d-md-block px-3 text-black">
+        {/* <Link to="/login" className="d-none d-md-block px-3 text-black">
           Log in
-        </Link>
+        </Link> */}
         <Link to="/get-started" className={`d-none d-md-block btn btn-dark bg-black rounded-pill nav-cta`}>
           Start free trial
         </Link>

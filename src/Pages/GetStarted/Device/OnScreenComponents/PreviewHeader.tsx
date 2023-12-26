@@ -19,7 +19,7 @@ export const PreviewHeader = (props: IPreviewHeaderProps) => {
   const clickHamburgerButton = () => hamburgerButton?.current?.click();
 
   return (
-    <Navbar expand="xs" className="py-1" bg={"dark"} data-bs-theme={"dark"}>
+    <Navbar expand="xs" className="py-1" bg={"dark"} data-bs-theme={"dark"} style={{ zIndex: 9 }}>
       <Container>
         <Navbar.Brand className="py-0 position-relative" onClick={() => setTab("home")}>
           <EditableText

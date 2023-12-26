@@ -3,7 +3,7 @@ import { Alert, Table } from "react-bootstrap";
 import { useAppContext } from "../../../../AppContext";
 
 const HoursTab = () => {
-  const { basicInfo } = useAppContext();
+  const { basicInfo, device } = useAppContext();
 
   const convertTo12HourFormat = (time24hr: string) => {
     let timeArray = time24hr.split(":");
@@ -43,11 +43,14 @@ const HoursTab = () => {
   const restaurantIsOpen: boolean = isCurrentlyOpen(basicInfo?.hours);
 
   return (
-    <section>
+    <div
+      className={`bg-dark-subtle d-flex align-items-center justify-content-center ${
+        device === "mobile" ? "flex-column" : ""
+      }`}>
       <Alert variant={restaurantIsOpen ? "success" : "danger"}>
         We are currently&nbsp;{restaurantIsOpen ? "open" : "closed"}
       </Alert>
-      <Table striped bordered hover>
+      <Table variant="dark" striped bordered hover className="w-auto">
         <tbody>
           {basicInfo.hours.map((x) => {
             let statusColor = `bg-${currentDay === x.day && restaurantIsOpen ? "success" : "danger"}-subtle`;
@@ -65,7 +68,7 @@ const HoursTab = () => {
           })}
         </tbody>
       </Table>
-    </section>
+    </div>
   );
 };
 

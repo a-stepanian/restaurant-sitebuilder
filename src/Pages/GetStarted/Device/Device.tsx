@@ -4,7 +4,7 @@ import { ScreenContent } from "./ScreenContent";
 import { MdArrowBack, MdArrowForward, MdRefresh } from "react-icons/md";
 import { useAppContext } from "../../../AppContext";
 
-export const ComputerScreen = () => {
+export const Device = () => {
   const [showYouTube, setShowYouTube] = useState<boolean>(false);
   const [showRefresh, setShowRefresh] = useState<boolean>(false);
 

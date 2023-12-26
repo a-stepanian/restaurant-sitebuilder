@@ -45,9 +45,12 @@
     height: 0;
     opacity: 0;
   }
-  @media (min-width: 768px) {
-    .main-hamburger {
-      border-color: transparent !important;
-    }
+}
+@media (min-width: 768px) {
+  .main-navbar {
+    height: 73.78px !important;
+  }
+  .main-hamburger {
+    border-color: transparent !important;
   }
 }

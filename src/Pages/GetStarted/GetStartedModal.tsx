@@ -32,13 +32,13 @@ const GetStartedModal = () => {
     });
   };
   return (
-    <Modal show={showWelcomeModal} onHide={() => updateShowWelcomeModal(false)}>
+    <Modal show={showWelcomeModal} onHide={() => updateShowWelcomeModal(false)} centered>
       <Modal.Header closeButton>
         <Modal.Title>Let's Get Started...</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="home-try-it-now" style={{ minHeight: "150px" }}>
-        <h2>Welcome to the website builder!</h2>
-        <p>We'll walk through this together.</p>
+      <Modal.Body className="bg-custom-blue" style={{ minHeight: "150px" }}>
+        <h2 className="text-center">Welcome to the website builder!</h2>
+        <p className="text-center fw-bold">We'll walk through this together.</p>
       </Modal.Body>
       <Modal.Footer>
         <Button
