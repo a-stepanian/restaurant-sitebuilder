@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { PreviewHeader } from "./OnScreenComponents/PreviewHeader";
+import React, { useEffect, useRef, useState } from "react";
 import { data } from "../../../data";
 import { useAppContext } from "../../../AppContext";
-import HoursTab from "./OnScreenComponents/HoursTab";
-import LocationTab from "./OnScreenComponents/LocationTab";
-import { PreviewFooter } from "./OnScreenComponents/PreviewFooter";
-import { HomeTab } from "./OnScreenComponents/HomeTab";
+import { DeviceHeader } from "./DeviceComponents/DeviceHeader";
+import { DeviceFooter } from "./DeviceComponents/DeviceFooter";
+import { HomePage } from "./DevicePages/HomePage";
+import LocationPage from "./DevicePages/LocationPage";
+import HoursPage from "./DevicePages/HoursPage";
 
 export interface ITheme {
   backgroundStyles: {
@@ -29,7 +29,15 @@ export const ScreenContent = () => {
     },
   });
 
-  const { basicInfo, step } = useAppContext();
+  const scrollTargetRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToTop = () => {
+    if (scrollTargetRef.current) {
+      scrollTargetRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  };
+
+  const { basicInfo, step, device } = useAppContext();
 
   useEffect(() => {
     if (step === 2) {
@@ -61,13 +69,14 @@ export const ScreenContent = () => {
 
   return (
     <section className="computer-screen h-100">
-      <PreviewHeader tab={tab} setTab={setTab} />
-      <div className="d-flex flex-column h-100" style={theme.backgroundStyles}>
-        {tab === "home" && <HomeTab theme={theme} />}
-        {tab === "location" && <LocationTab />}
-        {tab === "hours" && <HoursTab />}
+      <div ref={scrollTargetRef} className="scroll-target"></div>
+      <DeviceHeader tab={tab} setTab={setTab} />
+      <div className={`h-100 py-5 px-0 ${device === "mobile" ? "" : "p-md-5"}`} style={theme.backgroundStyles}>
+        {tab === "home" && <HomePage theme={theme} setTheme={setTheme} />}
+        {tab === "location" && <LocationPage />}
+        {tab === "hours" && <HoursPage />}
       </div>
-      <PreviewFooter />
+      <DeviceFooter setTab={setTab} scrollToTop={scrollToTop} />
     </section>
   );
 };

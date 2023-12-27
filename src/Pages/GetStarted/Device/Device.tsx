@@ -45,7 +45,11 @@ export const Device = () => {
           {showYouTube
             ? "youtube.com/watch?v=dQw4w9WgXcQ"
             : basicInfo.restaurantName.length > 0
-            ? basicInfo.restaurantName.toLowerCase().replace(/\s/g, "-") + ".com"
+            ? basicInfo.restaurantName
+                .trim()
+                .toLowerCase()
+                .replace(/\s/g, "-")
+                .replace(/[^a-zA-Z0-9]/g, "") + ".com"
             : "your-future-website.com"}
         </p>
       </div>

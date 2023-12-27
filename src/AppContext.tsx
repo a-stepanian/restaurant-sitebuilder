@@ -15,6 +15,7 @@ interface IBasicInfo {
   about: string;
   cuisineType: string;
   hours: Array<{
+    order: number;
     day: string;
     open: string;
     close: string;
@@ -65,13 +66,13 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
     restaurantName: "My Kitchen",
     phoneNumber: "555-555-5555",
     hours: [
-      { day: "Sun", open: "06:00", close: "22:00" },
-      { day: "Mon", open: "06:00", close: "22:00" },
-      { day: "Tue", open: "06:00", close: "22:00" },
-      { day: "Wed", open: "06:00", close: "22:00" },
-      { day: "Thu", open: "06:00", close: "22:00" },
-      { day: "Fri", open: "06:00", close: "22:00" },
-      { day: "Sat", open: "06:00", close: "22:00" },
+      { order: 1, day: "Sun", open: "06:00", close: "22:00" },
+      { order: 2, day: "Mon", open: "06:00", close: "22:00" },
+      { order: 3, day: "Tue", open: "06:00", close: "22:00" },
+      { order: 4, day: "Wed", open: "06:00", close: "22:00" },
+      { order: 5, day: "Thu", open: "06:00", close: "22:00" },
+      { order: 6, day: "Fri", open: "06:00", close: "22:00" },
+      { order: 7, day: "Sat", open: "06:00", close: "22:00" },
     ],
   });
 
