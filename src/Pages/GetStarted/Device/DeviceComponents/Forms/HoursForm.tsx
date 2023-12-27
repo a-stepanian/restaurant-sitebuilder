@@ -35,7 +35,7 @@ export const HoursForm = () => {
           </Col>
         </Row>
         {basicInfo.hours.map((dayOfWeek) => {
-          const { day, open, close } = dayOfWeek;
+          const { order, day, open, close } = dayOfWeek;
           return (
             <Row className="gx-0" key={dayOfWeek.day}>
               <Col xs={2}>
@@ -52,6 +52,7 @@ export const HoursForm = () => {
                     const updatedHours = basicInfo.hours.map((x) => {
                       if (x.day === day) {
                         return {
+                          order,
                           day,
                           open: e.target.value,
                           close,
@@ -77,6 +78,7 @@ export const HoursForm = () => {
                     const updatedHours = basicInfo.hours.map((x) => {
                       if (x.day === day) {
                         return {
+                          order,
                           day,
                           open,
                           close: e.target.value,

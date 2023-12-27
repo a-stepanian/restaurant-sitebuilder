@@ -61,19 +61,18 @@ const EditableText = (props: IEditableTextProps) => {
         const styles = window.getComputedStyle(innerJSXRef.current);
         setElementStyles({
           width: (parseInt(styles.width, 10) + 10).toString() + "px",
-          height: (parseInt(styles.height, 10) + 10).toString() + "px",
+          height: (parseInt(styles.height, 10) + 4).toString() + "px",
           paddingTop: styles.paddingTop,
           paddingBottom: styles.paddingBottom,
           paddingLeft: styles.paddingLeft,
           paddingRight: styles.paddingRight,
+          borderRadius: "5px",
           margin: styles.margin,
           fontSize: styles.fontSize,
           fontFamily: styles.fontFamily,
           outline: "0px solid transparent",
           borderWidth: "0",
         });
-        console.log("width: ", (parseInt(styles.width, 10) + 10).toString() + "px");
-        console.log("height: ", (parseInt(styles.height, 10) + 10).toString() + "px");
         const classes = Array.from(innerJSXRef.current.classList);
         setElementClasses(classes);
       }
@@ -94,7 +93,7 @@ const EditableText = (props: IEditableTextProps) => {
             <input
               placeholder={placeholderText}
               style={{ ...elementStyles }}
-              className={elementClasses.join(" ") + " bg-custom-yellow text-black"}
+              className={elementClasses.join(" ") + " bg-custom-blue text-black"}
               value={editedText}
               type="text"
               onChange={handleInputChange}
@@ -104,7 +103,7 @@ const EditableText = (props: IEditableTextProps) => {
             <textarea
               placeholder={placeholderText}
               style={{ ...elementStyles }}
-              className={elementClasses.join(" ") + " bg-custom-yellow text-black"}
+              className={elementClasses.join(" ") + " bg-custom-blue text-black"}
               value={editedText}
               onChange={handleInputChange}
               autoFocus
@@ -115,14 +114,21 @@ const EditableText = (props: IEditableTextProps) => {
             style={{
               zIndex: "10",
               right: "0",
-              bottom: `${saveOnTop ? "" : singleLine ? "-32px" : "-18px"}`,
+              bottom: `${saveOnTop ? "" : singleLine ? "-40px" : "-18px"}`,
               top: `${saveOnTop ? "-36px" : ""}`,
             }}>
-            <ButtonGroup aria-label="Basic example">
-              <Button variant="secondary" title="Cancel" onClick={handleCancelClick}>
+            <ButtonGroup>
+              <Button
+                className="editable-text-button bg-custom-yellow btn-outline-dark"
+                title="Cancel"
+                onClick={handleCancelClick}>
                 <MdOutlineCancelPresentation style={{ fontSize: "24px" }} />
               </Button>
-              <Button variant="secondary" title="Save" disabled={editedText.length === 0} onClick={handleSaveClick}>
+              <Button
+                className="editable-text-button bg-custom-yellow btn-outline-dark"
+                title="Save"
+                disabled={editedText.length === 0}
+                onClick={handleSaveClick}>
                 <FaRegSave style={{ fontSize: "24px" }} />
               </Button>
             </ButtonGroup>
@@ -134,7 +140,7 @@ const EditableText = (props: IEditableTextProps) => {
           ref={innerJSXRef}
           onMouseEnter={() => setShowEditButton(true)}
           onMouseLeave={() => setShowEditButton(false)}
-          style={{ borderRadius: "3px", outline: showEditButton ? "3px solid #f7f3b8" : "" }}
+          style={{ borderRadius: "3px", outline: showEditButton ? "3px solid #b6fff2" : "" }}
           onClick={() => {
             setIsEditing(true);
             setShowEditButton(false);

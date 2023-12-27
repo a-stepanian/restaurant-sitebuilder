@@ -1,9 +1,10 @@
 import React from "react";
 import { Alert, Table } from "react-bootstrap";
 import { useAppContext } from "../../../../AppContext";
+import EditableTime from "../DeviceComponents/EditableTime";
 
-const HoursTab = () => {
-  const { basicInfo, device } = useAppContext();
+const HoursPage = () => {
+  const { basicInfo, device, updateBasicInfo } = useAppContext();
 
   const convertTo12HourFormat = (time24hr: string) => {
     let timeArray = time24hr.split(":");
@@ -44,13 +45,13 @@ const HoursTab = () => {
 
   return (
     <div
-      className={`bg-dark-subtle d-flex align-items-center justify-content-center ${
+      className={`mt-5 d-flex align-items-center justify-content-center bg-frosted border border-black p-1 pt-3 rounded-2 ${
         device === "mobile" ? "flex-column" : ""
       }`}>
       <Alert variant={restaurantIsOpen ? "success" : "danger"}>
         We are currently&nbsp;{restaurantIsOpen ? "open" : "closed"}
       </Alert>
-      <Table variant="dark" striped bordered hover className="w-auto">
+      <Table variant="dark" striped bordered className="w-auto" style={{ borderRadius: "6px", overflow: "hidden" }}>
         <tbody>
           {basicInfo.hours.map((x) => {
             let statusColor = `bg-${currentDay === x.day && restaurantIsOpen ? "success" : "danger"}-subtle`;
@@ -58,10 +59,42 @@ const HoursTab = () => {
               <tr key={x.day}>
                 <td className={`text-end ${currentDay === x.day ? statusColor : ""}`}>{x.day}</td>
                 <td className={`text-end ${currentDay === x.day ? statusColor : ""}`}>
-                  {convertTo12HourFormat(x.open)}
+                  <EditableTime
+                    innerJSX={<span>{convertTo12HourFormat(x.open)}</span>}
+                    initialTime={convertTo12HourFormat(x.open)}
+                    day={x.day}
+                    onSave={(day: string, editedText: string) => {
+                      const dayObject = basicInfo.hours.find((dayObject) => dayObject.day === day);
+                      if (dayObject) {
+                        dayObject.open = editedText;
+                        updateBasicInfo({
+                          ...basicInfo,
+                          hours: [...basicInfo.hours.filter((x) => x.day !== day), dayObject].sort(
+                            (a, b) => a.order - b.order
+                          ),
+                        });
+                      }
+                    }}
+                  />
                 </td>
                 <td className={`text-end ${currentDay === x.day ? statusColor : ""}`}>
-                  {convertTo12HourFormat(x.close)}
+                  <EditableTime
+                    innerJSX={<span>{convertTo12HourFormat(x.close)}</span>}
+                    initialTime={convertTo12HourFormat(x.close)}
+                    day={x.day}
+                    onSave={(day: string, editedText: string) => {
+                      const dayObject = basicInfo.hours.find((dayObject) => dayObject.day === day);
+                      if (dayObject) {
+                        dayObject.close = editedText;
+                        updateBasicInfo({
+                          ...basicInfo,
+                          hours: [...basicInfo.hours.filter((x) => x.day !== day), dayObject].sort(
+                            (a, b) => a.order - b.order
+                          ),
+                        });
+                      }
+                    }}
+                  />
                 </td>
               </tr>
             );
@@ -72,4 +105,4 @@ const HoursTab = () => {
   );
 };
 
-export default HoursTab;
+export default HoursPage;
